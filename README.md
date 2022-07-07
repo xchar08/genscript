@@ -19,7 +19,7 @@ information on your computer before running this script.
 5. Submit a pull request :D
 ## History
 Currently on first iteration. 
--- includes bspwm
+<p>-- includes bspwm</p>
 -- includes sxhkd
 -- includes polybar
 -- includes custom compositor configuration
