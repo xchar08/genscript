@@ -19,7 +19,7 @@ information on your computer before running this script.
 5. Submit a pull request :D
 ## History
 Currently on first iteration. 
- <p>- Includes bspwm, sxhkd, polybar, custom compositor configuration, tor browser, and runs on openrc</p>
+ <p> -Includes bspwm, sxhkd, polybar, custom compositor configuration, tor browser, and runs on openrc</p>
  
 ## License
 MIT License (Free to modify, just give proper credits!)
