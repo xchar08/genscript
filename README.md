@@ -19,8 +19,8 @@ information on your computer before running this script.
 5. Submit a pull request :D
 ## History
 Currently on first iteration. 
- <p>-includes bspwm</p>
- <p>-includes sxhkd</p>
+ <p>-includes bspwm
+ -includes sxhkd</p>
  <p>-includes polybar</p>
  <p>-includes custom compositor configuration</p>
  <p>-includes tor browser</p>
