@@ -1,4 +1,4 @@
-# ${1:Genscript}
+## Genscript
 Minimal encrypted/hardened gentoo installation script w/ xorg, bspwm, and polybar
 ## Installation
 1. sudo su
