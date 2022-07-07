@@ -1,6 +1,8 @@
 ## Genscript
 Minimal encrypted/hardened gentoo installation script w/ xorg, bspwm, and polybar
 ## Installation
+Firstly, open linux mint on a live cd and open a terminal. 
+Then proceed with the following commands.
 1. sudo su
 2. enter root password
 3. git clone https://github.com/jpx32/genscript/
