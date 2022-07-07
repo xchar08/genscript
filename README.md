@@ -1,5 +1,5 @@
 <snippet>
-  <content><![CDATA[
+  <content>
 # ${1:Genscript}
 Minimal encrypted/hardened gentoo installation script w/ xorg, bspwm, and polybar
 ## Installation
@@ -28,6 +28,6 @@ Currently on first version
 -ready to use
 ## License
 MIT License (Free to modify, just give proper credits!)
-]]></content>
+</content>
   <tabTrigger>readme</tabTrigger>
 </snippet>
