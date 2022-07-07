@@ -6,7 +6,7 @@ Then proceed with the following commands.
 1. sudo su
 2. enter root password
 3. git clone https://github.com/jpx32/genscript/
-4. ./genscript/mint.sh  
+4. ./genscript/assets/mint.sh  
 ## Usage
 This will walk you through installation. You will be instructed to include a partition 
 to boot to, and will zap (wipe) all current partitions. Be sure to back up any 
