@@ -110,7 +110,7 @@ emerge --ask app-shells/bash-completion --autounmask{,-write,-continue}
 emerge --ask app-portage/gentoolkit --autounmask{,-write,-continue}
 echo -n "Select timezone (e.x. America/Eastern): "
 read tmzn
-echo "America/${tmzn}" > /etc/timezone
+echo "${tmzn}" > /etc/timezone
 #echo America/XX > /etc/timezone 
 emerge --config sys-libs/timezone-data --autounmask{,-write,-continue}
 nano -w /etc/locale.gen 
