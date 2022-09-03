@@ -12,38 +12,38 @@ read lukspart
 #make 300M fat32 (mkfs.fat -F 32 /dev/'$efipart') and set to efi
 #1G ext4 (mkfs.ext4 /dev/'$bootpart')
 #200G gentoo home (luks)
-parted -a optimal /dev/'$primpart' - mklabel gpt
-parted -a optimal /dev/'$primpart' - mkpart esp fat32 0% 512
-parted -a optimal /dev/'$primpart' - mkpart swap linux-swap 512 8704
-parted -a optimal /dev/'$primpart' - mkpart rootfs btrfs 8704 100%
-parted -a optimal /dev/'$primpart' - set 1 boot on
+parted -a optimal /dev/$primpart -- mklabel gpt
+parted -a optimal /dev/$primpart -- mkpart esp fat32 0% 512
+parted -a optimal /dev/$primpart -- mkpart swap linux-swap 512 8704
+parted -a optimal /dev/$primpart -- mkpart rootfs btrfs 8704 30%
+parted -a optimal /dev/$primpart -- set 1 boot on
 
-mkfs.fat -F 32 /dev/'$efipart'
-mkfs.ext4 /dev/'$bootpart'
+mkfs.fat -F 32 /dev/$efipart
+mkfs.ext4 /dev/$bootpart
 
-cryptsetup luksFormat --type luks2 /dev/'$lukspart'
-cryptsetup luksDump /dev/'$lukspart'
+cryptsetup luksFormat --type luks2 /dev/$lukspart
+cryptsetup luksDump /dev/$lukspart
 blkid
-cryptsetup open /dev/nvme0n1p3 luks-'$partuuid'
+cryptsetup open /dev/nvme0n1p3 luks-$partuuid
 cd /dev/mapper
-mkfs.btrfs /dev/mapper/luks-'$partuuid'
+mkfs.btrfs /dev/mapper/luks-$partuuid
 mkdir /mnt/btrfs
-mount /dev/mapper/luks-'$partuuid' /mnt/btrfs
+mount /dev/mapper/luks-$partuuid /mnt/btrfs
 cd /mnt/btrfs
 btrfs subvolume create ./root
 btrfs subvolume create ./home
 mkdir -p /mnt/gentoo 
-mount -o subvol=root /dev/mapper/luks-'$partuuid' /mnt/gentoo
+mount -o subvol=root /dev/mapper/luks-$partuuid /mnt/gentoo
 mkdir /mnt/gentoo/boot
 mkdir /mnt/gentoo/home
-mount -o subvol=home /dev/mapper/luks-'$partuuid' /mnt/gentoo/home
-mount /dev/'$bootpart' /mnt/gentoo/boot
+mount -o subvol=home /dev/mapper/luks-$partuuid /mnt/gentoo/home
+mount /dev/$bootpart /mnt/gentoo/boot
 mkdir /mnt/gentoo/boot/efi
-mount /dev/'$efipart' /mnt/gentoo/boot/efi
+mount /dev/$efipart /mnt/gentoo/boot/efi
 cd /mnt/gentoo
  
-wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20220626T170536Z/stage3-amd64-hardened-openrc-20220626T170536Z.tar.xz
-tar xvJpf stage3-amd64-hardened-openrc-20220626T170536Z.tar.xz --xattrs --numeric-owner
+wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20220828T170542Z/stage3-amd64-hardened-openrc-20220828T170542Z.tar.xz
+tar xvJpf stage3-amd64-hardened-openrc-20220828T170542Z.tar.xz --xattrs --numeric-owner
 #nano /mnt/gentoo/etc/portage/make.conf
 
 # These settings were set by the catalyst build script that automatically
@@ -110,7 +110,7 @@ emerge --ask app-shells/bash-completion --autounmask{,-write,-continue}
 emerge --ask app-portage/gentoolkit --autounmask{,-write,-continue}
 echo -n "Select timezone (e.x. America/Eastern): "
 read tmzn
-echo 'America/$tmz' > /etc/timezone
+echo "America/${tmzn}" > /etc/timezone
 #echo America/XX > /etc/timezone 
 emerge --config sys-libs/timezone-data --autounmask{,-write,-continue}
 nano -w /etc/locale.gen 
@@ -138,7 +138,7 @@ echo 'sys-boot/grub:2 device-mapper' >> /etc/portage/package.use/sys-boot
 emerge -a sys-boot/os-prober --autounmask{,-write,-continue}
 emerge -av grub --autounmask{,-write,-continue}
 partuuid=$(blkid | sed 's/.*PARTUUID="//' | sed 's/.$//')
-echo 'GRUB_CMDLINE_LINUX=\"rd.luks.partuuid=$partuuid\"\nGRUB_DISABLE_OS_PROBER=false\nGRUB_DISABLE_LINUX_UUID=true' >> /etc/default/grub
+echo 'GRUB_CMDLINE_LINUX=\"rd.luks.partuuid=${partuuid}\"\nGRUB_DISABLE_OS_PROBER=false\nGRUB_DISABLE_LINUX_UUID=true' >> /etc/default/grub
 #nano /etc/default/grub
 #GRUB_CMDLINE_LINUX='rd.luks.partuuid=$partuuid'
 #GRUB_DISABLE_OS_PROBER=false
