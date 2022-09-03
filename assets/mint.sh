@@ -114,7 +114,7 @@ echo "${tmzn}" > /etc/timezone
 #echo America/XX > /etc/timezone 
 emerge --config sys-libs/timezone-data --autounmask{,-write,-continue}
 nano -w /etc/locale.gen 
-#*uncomment locale*
+#*uncomment locale* (#en_US.UTF-8 UTF-8)
 locale-gen 
 eselect locale list 
 echo -n "Select locale (e.x. 1): "
