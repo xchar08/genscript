@@ -25,8 +25,10 @@ mkdir /mnt/gentoo/boot/efi
 mount /dev/$efipart /mnt/gentoo/boot/efi
 cd /mnt/gentoo
  
-wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20220828T170542Z/stage3-amd64-hardened-openrc-20220828T170542Z.tar.xz
-tar xvJpf stage3-amd64-hardened-openrc-20220828T170542Z.tar.xz --xattrs --numeric-owner
+echo -n 1 'enter stage 3 tar url'
+read tarurl
+wget $tarurl
+tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
 #nano /mnt/gentoo/etc/portage/make.conf
 
 # These settings were set by the catalyst build script that automatically
