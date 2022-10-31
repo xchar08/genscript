@@ -2,7 +2,7 @@ source /etc/profile
 export PS1="(chroot) $PS1" 
 emerge-webrsync 
 eselect profile list 
-echo -n "Select profile (e.x. 1): "
+echo -n 1 "Select profile (e.x. 1): "
 read prof
 eselect profile set $prof
 #eselect profile set X
@@ -11,7 +11,7 @@ flaggie sys-kernel/installkernel-gentoo +grub
 emerge --ask app-shells/bash-completion --autounmask{,-write,-continue}
 emerge --ask app-portage/gentoolkit --autounmask{,-write,-continue}
 emerge --ask app-portage/eix --autounmask{,-write,-continue}
-echo -n "Select timezone (e.x. America/Eastern): "
+echo -n 1 "Select timezone (e.x. America/Eastern): "
 read tmzn
 echo "${tmzn}" > /etc/timezone
 #echo America/XX > /etc/timezone 
@@ -20,7 +20,7 @@ nano -w /etc/locale.gen
 #*uncomment locale* (#en_US.UTF-8 UTF-8)
 locale-gen 
 eselect locale list 
-echo -n "Select locale (e.x. 1): "
+echo -n 1 "Select locale (e.x. 1): "
 read lclz
 eselect locale set $lclz
 #eselect locale set X

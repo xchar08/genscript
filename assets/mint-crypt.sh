@@ -43,7 +43,7 @@ echo -e 'COMMON_FLAGS=\"-O2 -march=native -pipe\"\nCFLAGS=\"${COMMON_FLAGS}\"\nC
 # MAKEOPTS="-j8"
 # ACCEPT_KEYWORDS="~amd64"
 # ACCEPT_LICENSE="*"
-echo -n 'Video Cards? (ex. \"nvidia\" \"nvidia intel\"): '
+echo -n 1 'Video Cards? (ex. \"nvidia\" \"nvidia intel\"): '
 read VID_CARDS
 echo -e 'Video_Cards=\"$VID_CARDS\"\n' >> /mnt/gentoo/etc/portage/make.conf
 #VIDEO_CARDS="nvidia intel"
@@ -51,12 +51,12 @@ echo -e '\"-ldap acl alsa bluetooth chroot cryptsetup dbus elogind fuse gecko pu
 echo -n 1 'Use hardened? [y/n]: '
 read HARD
 if [[ "$HARD" == 'y' ]]; then echo -e ' hardened' >> /mnt/gentoo/etc/portage/make.conf; fi
+echo -n 1 'Use Gnome? [y/n]: '
+read gninp
+if [[ "$gninp" == 'y' ]]; then echo -e ' -qt5 -kde X xinerama gtk gnome -systemd' >> /mnt/gentoo/etc/portage/make.conf; fi
 echo -n 1 'Use X? [y/n]: '
 read Xinp
-if [[ "$Xinp" == 'y' ]]; then echo -e ' X xinerama' >> /mnt/gentoo/etc/portage/make.conf; fi
-echo -n 1 'Use Wayland? [y/n]: '
-read Wimp
-if [[ "$Winp" == 'y' ]]; then echo -e ' wayland' >> /mnt/gentoo/etc/portage/make.conf; fi
+if [[ "$Xinp" == 'y' && "$gninp" != 'y']]; then echo -e ' X xinerama' >> /mnt/gentoo/etc/portage/make.conf; fi
 echo -e '\"\nPORTDIR=\"/var/db/repos/gentoo\"\nDISTDIR=\"/var/cache/distfiles\"\nPKGDIR=\"/var/cache/binpkgs\"\nLC_MESSAGES=C\nGENTOO_MIRRORS=\"https://mirror.leaseweb.com/gentoo/ http://mirror.leaseweb.com/gentoo/ rsync://mirror.leaseweb.com/gentoo/\"' >> /mnt/gentoo/etc/portage/make.conf
 #USE="-ldap acl alsa chroot cryptsetup dbus elogind gecko hardened pulseaudio secure_delete strict vulkan webrsync-gpg wifi X xinerama"
 # NOTE: This stage was built with the bindist Use flag enabled

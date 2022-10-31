@@ -26,39 +26,42 @@ emerge --ask media-fonts/source-pro --autounmask{,-write,-continue}
 emerge --ask media-fonts/noto --autounmask{,-write,-continue}
 emerge --ask media-fonts/noto-emoji --autounmask{,-write,-continue}
 
+
 #terminal
-emerge --ask x11-terms/alacritty --autounmask{,-write,-continue}
+echo -n 1 "Select terminal (alacritty, kitty, xterm): "
+read term
+case "$term" in
+    "alacritty") emerge --ask x11-terms/alacritty --autounmask{,-write,-continue} ;;
+    "kitty") emerge --ask x11-terms/kitty --autounmask{,-write,-continue} ;;
+    "xterm") emerge --ask x11-terms/xterm --autounmask{,-write,-continue} ;;
+esac
 
-#desktop env
-emerge --ask kde-plasma/plasma-meta --autounmask{,-write,-continue} #kde
-emerge --ask kde-apps/kwalletmanager --autounmask{,-write,-continue}
-emerge --ask kde-plasma/kwallet-pam --autounmask{,-write,-continue}
+#select desktop env
+echo -n 1 "Select desktop env (plasma, gnome): "
+read denv
+case "$denv" in
+    #desktop env
+    "plasma")emerge --ask kde-plasma/plasma-meta --autounmask{,-write,-continue} && emerge --ask kde-apps/kwalletmanager --autounmask{,-write,-continue} && emerge --ask kde-plasma/kwallet-pam --autounmask{,-write,-continue}
+    && echo "#!/bin/sh\nexec dbus-launch --exit-with-session startplasma-x11">> ~/.xinitrc ;;
+    "gnome") emerge --ask gnome-base/gnome --autounmask{,-write,-continue} && emerge --ask --noreplace gui-libs/display-manager-init --autounmask{,-write,-continue} 
+    && echo "DISPLAYMANAGER=\"gdm\"" >> /etc/conf.d/display-manager && echo "exec gnome-session" > ~/.xinitrc && sed -i '1i\export XDG_MENU_PREFIX=gnome-' ~/.xinitrc ;;
+esac
 
-#X11 : ~/.xinitrc
-#!/bin/sh
-exec dbus-launch --exit-with-session startplasma-x11
-
-#Wayland : ~/.profile
-#!/bin/sh
-dbus-launch --exit-with-session startplasma-wayland
-
-emerge --ask kde-plasma/kdeplasma-addons #widgets
-
-emerge --ask gnome-base/gnome --autounmask{,-write,-continue} #gnome
-#/etc/conf.d/display-manager
-DISPLAYMANAGER="gdm"
-
-#X11
-echo "exec gnome-session" > ~/.xinitrc
-sed -i '1i\export XDG_MENU_PREFIX=gnome-' ~/.xinitrc
-
-emerge --ask gnome-extra/gnome-shell-extensions #extensions
+echo -n 1 "Get widgets? [y/n]" 
+read widg
+if [[ "$widg" == 'y' ]]; 
+    if [["$denv" == "plasma"]];
+        then emerge --ask kde-plasma/kdeplasma-addons; 
+    else 
+        emerge --ask gnome-extra/gnome-shell-extensions
+    fi
+fi
 
 ##for later: add these to make.conf 
 #USE="-qt5 -kde X gtk gnome systemd"
 
 #!!!!
 
-emerge --ask --noreplace gui-libs/display-manager-init --autounmask{,-write,-continue}
+
 rc-update add display-manager default 
 rc-service display-manager start 
