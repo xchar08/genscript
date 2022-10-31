@@ -57,11 +57,5 @@ if [[ "$widg" == 'y' ]];
     fi
 fi
 
-##for later: add these to make.conf 
-#USE="-qt5 -kde X gtk gnome systemd"
-
-#!!!!
-
-
 rc-update add display-manager default 
 rc-service display-manager start 
