@@ -15,6 +15,7 @@ if lspci | grep -c nvidia > 0
 then
 emerge --ask x11-drivers/nvidia-drivers --autounmask{,-write,-continue}
 emerge --ask sys-firmware/nvidia-firmware --autounmask{,-write,-continue}
+modprobe nvidia
 fi
 
 #utility
@@ -68,5 +69,3 @@ touch /etc/local.d/zram.stop
 chmod +x /etc/local.d/zram.start
 chmod +x /etc/local.d/zram.stop
 rc-update add local default
-
-modprobe nvidia
