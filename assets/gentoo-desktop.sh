@@ -45,7 +45,7 @@ case "$denv" in
 "plasma") emerge --ask kde-plasma/plasma-meta --autounmask{,-write,-continue} && emerge --ask kde-apps/kwalletmanager --autounmask{,-write,-continue} && emerge --ask kde-plasma/kwallet-pam --autounmask{,-write,-continue}
 && echo "#!/bin/sh\nexec dbus-launch --exit-with-session startplasma-x11">> ~/.xinitrc ;;
 "gnome") emerge --ask gnome-base/gnome --autounmask{,-write,-continue} && emerge --ask --noreplace gui-libs/display-manager-init --autounmask{,-write,-continue}
-&& echo "DISPLAYMANAGER="gdm"" >> /etc/conf.d/display-manager && echo "exec gnome-session" > ~/.xinitrc && sed -i '1i\export XDG_MENU_PREFIX=gnome-' ~/.xinitrc ;;
+&& echo "DISPLAYMANAGER="gdm"" >> /etc/conf.d/display-manager && echo "exec gnome-session" > ~/.xinitrc && sed -i '1i\export XDG_MENU_PREFIX=gnome-' ~/.xinitrc && rc-update add display-manager default;;
 esac
 
 echo -n "Get widgets? [y/n]: "
@@ -70,6 +70,3 @@ chmod +x /etc/local.d/zram.stop
 rc-update add local default
 
 modprobe nvidia
-
-rc-update add display-manager default
-rc-service display-manager start
