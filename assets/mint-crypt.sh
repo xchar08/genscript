@@ -1,11 +1,13 @@
+#!/bin/bash
+
 partuuid=$(blkid | sed 's/.*PARTUUID="//' | sed 's/.$//')
-echo -n 'Enter device label (e.x. nvme0n1): '
+echo -n 'Enter device label (e.g. nvme0n1): '
 read primpart
-echo -n 'Enter efi partition (e.x. nvme0n1p1): '
+echo -n 'Enter efi partition (e.g. nvme0n1p1): '
 read efipart
-echo -n 'Enter boot partition (e.x. nvme0n1p2): '
+echo -n 'Enter boot partition (e.g. nvme0n1p2): '
 read bootpart
-echo -n 'Enter root/home partition (e.x. nvme0n1p3): '
+echo -n 'Enter root/home partition (e.g. nvme0n1p3): '
 read lukspart
 
 cd /dev/mapper
@@ -15,7 +17,7 @@ mount /dev/mapper/luks-$partuuid /mnt/btrfs
 cd /mnt/btrfs
 btrfs subvolume create ./root
 btrfs subvolume create ./home
-mkdir -p /mnt/gentoo 
+mkdir -p /mnt/gentoo
 mount -o subvol=root /dev/mapper/luks-$partuuid /mnt/gentoo
 mkdir /mnt/gentoo/boot
 mkdir /mnt/gentoo/home
@@ -25,52 +27,26 @@ mkdir /mnt/gentoo/boot/efi
 mount /dev/$efipart /mnt/gentoo/boot/efi
 cd /mnt/gentoo
  
-echo -n 1 'enter stage 3 tar url'
+echo -n 'Enter stage 3 tar url: '
 read tarurl
 wget $tarurl
 tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
-#nano /mnt/gentoo/etc/portage/make.conf
-
-# These settings were set by the catalyst build script that automatically
-# built this stage.
-# Please consult /usr/share/portage/config/make.conf.example for a more
-# detailed example.
-
-echo -e 'COMMON_FLAGS=\"-O2 -march=native -pipe\"\nCFLAGS=\"${COMMON_FLAGS}\"\nCXXFLAGS=\"${COMMON_FLAGS}\"\nFCFLAGS=\"${COMMON_FLAGS}\"\nFFLAGS=\"${COMMON_FLAGS}\"\nMAKEOPTS=\"-j8\"\nACCEPT_KEYWORDS=\"~amd64\"\nACCEPT_LICENSE=\"*\"\n' >> /mnt/gentoo/etc/portage/make.conf
-# COMMON_FLAGS="-O2 -march=native -pipe"
-# CFLAGS="${COMMON_FLAGS}"
-# CXXFLAGS="${COMMON_FLAGS}"
-# FCFLAGS="${COMMON_FLAGS}"
-# FFLAGS="${COMMON_FLAGS}"
-# MAKEOPTS="-j8"
-# ACCEPT_KEYWORDS="~amd64"
-# ACCEPT_LICENSE="*"
-echo -n 1 'Video Cards? (ex. \"nvidia\" \"nvidia intel\"): '
+echo -e 'COMMON_FLAGS="-O2 -march=native -pipe"\nCFLAGS="${COMMON_FLAGS}"\nCXXFLAGS="${COMMON_FLAGS}"\nFCFLAGS="${COMMON_FLAGS}"\nFFLAGS="${COMMON_FLAGS}"\nMAKEOPTS="-j8"\nACCEPT_KEYWORDS="~amd64"\nACCEPT_LICENSE="*"' >> /mnt/gentoo/etc/portage/make.conf
+echo -n 'Video Cards? (e.g. "nvidia" "nvidia intel"): '
 read VID_CARDS
-echo -e 'Video_Cards=\"$VID_CARDS\"\n' >> /mnt/gentoo/etc/portage/make.conf
-#VIDEO_CARDS="nvidia intel"
-echo -e '\"-ldap acl alsa bluetooth chroot cryptsetup dbus elogind fuse gecko pulseaudio secure_delete strict vulkan udisks webrsync-gpg wifi' >> /mnt/gentoo/etc/portage/make.conf
-echo -n 1 'Use hardened? [y/n]: '
+echo -e "VIDEO_CARDS=\"$VID_CARDS\"\n" >> /mnt/gentoo/etc/portage/make.conf
+echo -e 'USE="-ldap acl alsa bluetooth chroot cryptsetup dbus elogind fuse gecko pulseaudio secure_delete strict vulkan udisks webrsync-gpg wifi"' >> /mnt/gentoo/etc/portage/make.conf
+echo -n 'Use hardened? [y/n]: '
 read HARD
-if [[ "$HARD" == 'y' ]]; then echo -e ' hardened' >> /mnt/gentoo/etc/portage/make.conf; fi
-echo -n 1 'Use Gnome? [y/n]: '
+if [[ "$HARD" == 'y' ]]; then echo -e 'hardened' >> /mnt/gentoo/etc/portage/make.conf; fi
+echo -n 'Use Gnome? [y/n]: '
 read gninp
-if [[ "$gninp" == 'y' ]]; then echo -e ' -qt5 -kde X xinerama gtk gnome -systemd' >> /mnt/gentoo/etc/portage/make.conf; fi
-echo -n 1 'Use X? [y/n]: '
+if [[ "$gninp" == 'y' ]]; then echo -e 'gnome' >> /mnt/gentoo/etc/portage/make.conf; fi
+echo -n 'Use X? [y/n]: '
 read Xinp
-if [[ "$Xinp" == 'y' && "$gninp" != 'y']]; then echo -e ' X xinerama' >> /mnt/gentoo/etc/portage/make.conf; fi
-echo -e '\"\nPORTDIR=\"/var/db/repos/gentoo\"\nDISTDIR=\"/var/cache/distfiles\"\nPKGDIR=\"/var/cache/binpkgs\"\nLC_MESSAGES=C\nGENTOO_MIRRORS=\"https://mirror.leaseweb.com/gentoo/ http://mirror.leaseweb.com/gentoo/ rsync://mirror.leaseweb.com/gentoo/\"' >> /mnt/gentoo/etc/portage/make.conf
-#USE="-ldap acl alsa chroot cryptsetup dbus elogind gecko hardened pulseaudio secure_delete strict vulkan webrsync-gpg wifi X xinerama"
-# NOTE: This stage was built with the bindist Use flag enabled
-#PORTDIR="/var/db/repos/gentoo"
-#DISTDIR="/var/cache/distfiles"
-#PKGDIR="/var/cache/binpkgs"
+if [[ "$Xinp" == 'y' && "$gninp" != 'y' ]]; then echo -e 'X xinerama' >> /mnt/gentoo/etc/portage/make.conf; fi
 
-# This sets the language of build output to English.
-# Please keep this setting intact when reporting bugs.
-
-#LC_MESSAGES=C
-#GENTOO_MIRRORS="https://mirror.leaseweb.com/gentoo/ http://mirror.leaseweb.com/gentoo/ rsync://mirror.leaseweb.com/gentoo/"
+echo -e 'PORTDIR=\"/var/db/repos/gentoo\"\nDISTDIR=\"/var/cache/distfiles\"\nPKGDIR=\"/var/cache/binpkgs\"\nLC_MESSAGES=C\nGENTOO_MIRRORS=\"https://mirror.leaseweb.com/gentoo/ http://mirror.leaseweb.com/gentoo/ rsync://mirror.leaseweb.com/gentoo/\"' >> /mnt/gentoo/etc/portage/make.conf
 mkdir /mnt/gentoo/etc/portage/repos.conf 
 cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf 
-cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf 
+cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf
