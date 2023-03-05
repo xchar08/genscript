@@ -6,13 +6,13 @@ Then proceed with the following commands.
 1. sudo su
 2. enter root password
 3. git clone https://github.com/jpx32/genscript/ ~/.genscript
-4. ~/.genscript/assets/mint-partitioning.sh  
+4. chmod +x ~/.genscript/assets/mint-partitioning.sh && ~/.genscript/assets/mint-partitioning.sh  
 5. git clone https://github.com/jpx32/genscript/ ~/.genscript
-6. ~/.genscript/assets/mint-crypt.sh
-7. ~/.genscript/assets/mint-chroot.sh
+6. chmod +x ~/.genscript/assets/mint-crypt.sh && ~/.genscript/assets/mint-crypt.sh
+7. chmod +x ~/.genscript/assets/mint-chroot.sh && ~/.genscript/assets/mint-chroot.sh
 8. git clone https://github.com/jpx32/genscript/ ~/.genscript
-9. ~/.genscript/assets/gentoo.sh
-10. ~/.genscript/assets/gentoo-desktop.sh
+9. chmod +x ~/.genscript/assets/gentoo.sh && ~/.genscript/assets/gentoo.sh
+10. chmod +x ~/.genscript/assets/gentoo-desktop.sh && ~/.genscript/assets/gentoo-desktop.sh
 11. useradd -m -G users,wheel,audio,plugdev -s /bin/bash <username>
 12. configure sudo or doas
 ## Usage
