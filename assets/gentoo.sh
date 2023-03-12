@@ -57,7 +57,7 @@ emerge -a sys-boot/os-prober --ask-new-use
 emerge -av grub --ask-new-use
 
 # Configure GRUB
-partuuid=$(blkid | sed 's/.*PARTUUID="//' | sed 's/.$//')
+partuuid=$(blkid | grep "crypto_LUKS" | sed -n 's/.*PARTUUID=\"\([^\"]*\)\".*/\1/p')
 echo -e "GRUB_CMDLINE_LINUX=\"rd.luks.partuuid=${partuuid}\"\nGRUB_DISABLE_OS_PROBER=false\nGRUB_DISABLE_LINUX_UUID=true" >> /etc/default/grub
 grub-install --target=x86_64-efi --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg 
