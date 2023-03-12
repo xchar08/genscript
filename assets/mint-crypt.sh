@@ -1,6 +1,6 @@
 #!/bin/bash
 
-partuuid=$(blkid | sed 's/.*PARTUUID="//' | sed 's/.$//')
+partuuid=$(blkid | grep "crypto_LUKS" | sed -n 's/.*PARTUUID=\"\([^\"]*\)\".*/\1/p')
 echo -n 'Enter device label (e.g. nvme0n1): '
 read primpart
 echo -n 'Enter efi partition (e.g. nvme0n1p1): '
