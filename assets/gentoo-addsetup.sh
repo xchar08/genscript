@@ -59,6 +59,7 @@ sudo rsync -av /boot/grub/themes/catppuccin-mocha-grub-theme/ ~/dotfiles/boot/gr
 sudo rsync -av /etc/ ~/dotfiles/etc/
 
 # add programming stuff
+
 less /var/db/repos/gentoo/licenses/Microsoft-vscode
 echo "app-editors/vscode Microsoft-vscode" >> /etc/portage/package.license
 sudo emerge app-editors/vscode --autounmask{,-write,-continue}
