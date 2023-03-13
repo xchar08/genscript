@@ -1,2 +1,62 @@
 #!/bin/bash
 
+# add bashrc and source
+
+curl -o ~/.bashrc https://raw.githubusercontent.com/jpx32/dotfiles-space/master/~/.bashrc
+
+# add eselect repositories
+
+sudo emerge app-eselect/eselect-repository --autounmask{,-write,-continue}
+
+sudo eselect repository add torbrowser git https://gitweb.torproject.org/torbrowser-overlay.git
+sudo eselect repository enable torbrowser
+sudo eselect repository add steam-overlay git https://github.com/anyc/steam-overlay.git
+sudo eselect repository enable steam-overlay
+sudo eselect repository add librewolf git https://github.com/gentoo-mozilla/librewolf-bin.git
+sudo eselect repository enable librewolf
+sudo eselect repository add guru git https://github.com/gentoo/guru.git
+sudo eselect repository enable guru
+sudo eselect repository add gentoo-zh git https://github.com/gentoo-zh/gentoo-zh.git
+sudo eselect repository enable gentoo-zh
+
+# add nitch and neofetch
+
+wget https://raw.githubusercontent.com/unxsh/nitch/main/setup.sh && sh setup.sh
+sudo emerge app-misc/neofetch --autounmask{,-write,-continue}
+
+# get nvim thingy
+
+sudo emerge dev-vcs/lazygit --autounmask{,-write,-continue}
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+
+# add wm packages 
+
+sudo emerge x11-wm/dwm --autounmask{,-write,-continue}
+sudo emerge x11-misc/rofi --autounmask{,-write,-continue}
+sudo emerge x11-misc/wmname --autounmask{,-write,-continue}
+
+# add dwm_bar
+
+sudo emerge x11-apps/xsetroot --autounmask{,-write,-continue}
+sudo emerge net-misc/networkmanager net-misc/curl sys-devel/bc sys-power/acpi x11-misc/wmname --autounmask{,-write,-continue}
+USE="alsa" sudo emerge media-sound/pulseaudio --autounmask{,-write,-continue}
+dispatch-conf
+USE="alsa" sudo emerge media-sound/pulseaudio --autounmask{,-write,-continue}
+git clone https://github.com/jpx32/dwm_bar.git ~/.scripts && cd ~/.scripts && git checkout master dwm_bar.sh
+chmod +x ~/.scripts/dwm_bar.sh
+
+# add configurations
+
+#dots
+git clone https://github.com/jpx32/dotfiles-space.git ~/dotfiles
+cd ~/dotfiles
+git submodule update --init --recursive
+sudo rsync -av --exclude '.git' . ~/
+#grub
+sudo mkdir -p /boot/grub/themes/catppuccin-mocha-grub-theme
+sudo rsync -av /boot/grub/themes/catppuccin-mocha-grub-theme/ ~/dotfiles/boot/grub/themes/catppuccin-mocha-grub-theme/
+#etc
+sudo rsync -av /etc/ ~/dotfiles/etc/
+
+
+

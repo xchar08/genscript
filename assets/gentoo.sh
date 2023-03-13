@@ -17,16 +17,16 @@ read -rp "Select profile (e.g. 1): " profile
 eselect profile set "$profile"
 
 # Enable required USE flags
-emerge --ask app-portage/flaggie --ask-new-use
+emerge app-portage/flaggie --autounmask{,-write,-continue}
 flaggie sys-kernel/installkernel-gentoo +grub
-emerge --ask app-shells/bash-completion --ask-new-use
-emerge --ask app-portage/gentoolkit --ask-new-use
-emerge --ask app-portage/eix --ask-new-use
+emerge app-shells/bash-completion --autounmask{,-write,-continue}
+emerge app-portage/gentoolkit --autounmask{,-write,-continue}
+emerge app-portage/eix --autounmask{,-write,-continue}
 
 # Set the timezone
 read -rp "Select timezone (e.g. America/Eastern): " timezone
 echo "${timezone}" > /etc/timezone
-emerge --config sys-libs/timezone-data --ask-new-use
+emerge --config sys-libs/timezone-data --autounmask{,-write,-continue}
 
 # Generate the locale
 nano -w /etc/locale.gen
@@ -37,24 +37,24 @@ eselect locale set "$locale"
 env-update && source /etc/profile
 
 # Generate fstab
-emerge --ask sys-fs/genfstab --ask-new-use
+emerge sys-fs/genfstab --autounmask{,-write,-continue}
 genfstab -U / > /etc/fstab
 
 # Install required packages
-emerge --ask sys-kernel/linux-firmware --ask-new-use
-emerge --ask sys-fs/btrfs-progs --ask-new-use
-emerge --ask sys-apps/pciutils --ask-new-use
-emerge --ask sys-apps/lm-sensors --ask-new-use
+emerge sys-kernel/linux-firmware --autounmask{,-write,-continue}
+emerge sys-fs/btrfs-progs --autounmask{,-write,-continue}
+emerge sys-apps/pciutils --autounmask{,-write,-continue}
+emerge sys-apps/lm-sensors --autounmask{,-write,-continue}
 rc-update add lm_sensors default
 rc-service lm_sensors start
 rc-update add elogind boot
 euse -E networkmanager
-emerge --ask sys-kernel/gentoo-kernel-bin --ask-new-use
-emerge sys-fs/cryptsetup --ask-new-use
-emerge --config gentoo-kernel-bin --ask-new-use
+emerge sys-kernel/gentoo-kernel-bin --autounmask{,-write,-continue}
+emerge sys-fs/cryptsetup --autounmask{,-write,-continue}
+emerge --config gentoo-kernel-bin --autounmask{,-write,-continue}
 echo 'sys-boot/grub:2 device-mapper' >> /etc/portage/package.use/sys-boot
-emerge -a sys-boot/os-prober --ask-new-use
-emerge -av grub --ask-new-use
+emerge -a sys-boot/os-prober --autounmask{,-write,-continue}
+emerge -av grub --autounmask{,-write,-continue}
 
 # Configure GRUB
 partuuid=$(blkid | grep "crypto_LUKS" | sed -n 's/.*PARTUUID=\"\([^\"]*\)\".*/\1/p')
@@ -72,6 +72,6 @@ GRUB_DISABLE_OS_PROBER=false' | sudo tee -a /etc/default/grub
 grub-install --target=x86_64-efi --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 passwd
-emerge --ask app-editors/neovim --ask-new-use
+emerge app-editors/neovim --autounmask{,-write,-continue}
 emerge -auDN world
 emerge --depclean
