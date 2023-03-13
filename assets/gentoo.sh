@@ -58,10 +58,20 @@ emerge -av grub --ask-new-use
 
 # Configure GRUB
 partuuid=$(blkid | grep "crypto_LUKS" | sed -n 's/.*PARTUUID=\"\([^\"]*\)\".*/\1/p')
-echo -e "GRUB_CMDLINE_LINUX=\"rd.luks.partuuid=${partuuid}\"\nGRUB_DISABLE_OS_PROBER=false\nGRUB_DISABLE_LINUX_UUID=true" >> /etc/default/grub
+
+echo 'GRUB_CMDLINE_LINUX="rd.luks.partuuid='$partuuid'"
+GRUB_TIMEOUT_STYLE=hidden
+GRUB_GFXPAYLOAD_LINUX="keep"
+GRUB_THEME="/boot/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
+GRUB_DISABLE_LINUX_UUID=false
+GRUB_DISABLE_LINUX_PARTUUID=true
+GRUB_DISABLE_OS_PROBER=false' | sudo tee -a /etc/default/grub
+
+#install grub to proper location
+
 grub-install --target=x86_64-efi --efi-directory=/boot/efi
-grub-mkconfig -o /boot/grub/grub.cfg 
-passwd 
+grub-mkconfig -o /boot/grub/grub.cfg
+passwd
 emerge --ask app-editors/neovim --ask-new-use
 emerge -auDN world
 emerge --depclean
