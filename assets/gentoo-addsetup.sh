@@ -69,4 +69,19 @@ sudo emerge virtual/jre --autounmask{,-write,-continue}
 sudo emerge dev-java/ant-core --autounmask{,-write,-continue}
 sudo emerge dev-util/valgrind --autounmask{,-write,-continue}
 
+# fonts 
+
+sudo emerge media-gfx/fontforge --autounmask{,-write,-continue}
+
+# tor 
+
+sudo emerge net-vpn/tor --autounmask{,-write,-continue}
+sudo rc-service tor start
+sudo rc-update add tor default 
+
+# web browsers
+
+sudo emerge www-client/torbrowser-launcher --autounmask{,-write,-continue}
+sudo emerge www-client/librewolf --autounmask{,-write,-continue}
+
 source ~/.bashrc
