@@ -38,13 +38,55 @@ case "$term" in
 "xterm") emerge --ask x11-terms/xterm --autounmask{,-write,-continue} ;;
 esac
 
-#set up zram
+#!/bin/bash
+
+read -p "Do you want to set up regular zram or encrypted zram? (r/e)" choice
+
+case "$choice" in 
+  r|R )
+    # Set up regular zram
+    modprobe zram
+    echo $((6144*1024*1024)) > /sys/block/zram0/disksize
+    mkswap /dev/zram0
+    swapon /dev/zram0 -p 10
+    touch /etc/local.d/zram.start
+    touch /etc/local.d/zram.stop
+    chmod +x /etc/local.d/zram.start
+    chmod +x /etc/local.d/zram.stop
+    rc-update add local default 
+    ;;
+  e|E )
+    # Set up encrypted zram
+    modprobe zram
+    echo $((6144*1024*1024)) > /sys/block/zram0/disksize
+    echo 1 > /sys/block/zram0/reset
+    cryptsetup -c aes-xts-plain64 -s 256 luksFormat /dev/zram0
+    cryptsetup open /dev/zram0 zram0_crypt
+    mkswap /dev/mapper/zram0_crypt
+    swapon /dev/mapper/zram0_crypt -p 10
+    cat << EOF > /etc/local.d/zram.start
+#!/bin/sh
 modprobe zram
 echo $((6144*1024*1024)) > /sys/block/zram0/disksize
-mkswap /dev/zram0
-swapon /dev/zram0 -p 10
-touch /etc/local.d/zram.start
-touch /etc/local.d/zram.stop
-chmod +x /etc/local.d/zram.start
-chmod +x /etc/local.d/zram.stop
-rc-update add local default
+echo 1 > /sys/block/zram0/reset
+cryptsetup open /dev/zram0 zram0_crypt
+mkswap /dev/mapper/zram0_crypt
+swapon /dev/mapper/zram0_crypt -p 10
+EOF
+    cat << EOF > /etc/local.d/zram.stop
+#!/bin/sh
+swapoff /dev/mapper/zram0_crypt
+cryptsetup close zram0_crypt
+echo 1 > /sys/block/zram0/reset
+echo 0 > /sys/block/zram0/disksize
+modprobe -r zram
+EOF
+    chmod +x /etc/local.d/zram.start
+    chmod +x /etc/local.d/zram.stop
+    rc-update add local default 
+    ;;
+  * )
+    echo "Invalid choice. Please choose 'r' or 'e'."
+    ;;
+esac
+

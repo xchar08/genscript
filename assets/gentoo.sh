@@ -67,7 +67,7 @@ GRUB_DISABLE_LINUX_UUID=false
 GRUB_DISABLE_LINUX_PARTUUID=true
 GRUB_DISABLE_OS_PROBER=false' | sudo tee -a /etc/default/grub
 
-#install grub to proper location
+#install GRUB to proper location
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
