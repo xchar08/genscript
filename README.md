@@ -1,6 +1,7 @@
 ## Genscript
 
-Minimal encrypted/hardened gentoo installation script w/ xorg, bspwm, and polybar
+Encrypted/hardened gentoo installation script w/ xorg, bspwm, and polybar.
+Minimal code was written with assistance from ChatGPT.
 
 ## Installation
 
