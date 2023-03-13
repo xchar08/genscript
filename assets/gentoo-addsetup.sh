@@ -58,5 +58,15 @@ sudo rsync -av /boot/grub/themes/catppuccin-mocha-grub-theme/ ~/dotfiles/boot/gr
 #etc
 sudo rsync -av /etc/ ~/dotfiles/etc/
 
+# add programming stuff
+less /var/db/repos/gentoo/licenses/Microsoft-vscode
+echo "app-editors/vscode Microsoft-vscode" >> /etc/portage/package.license
+sudo emerge app-editors/vscode --autounmask{,-write,-continue}
+curl https://raw.githubusercontent.com/jpx32/vscode-extensionpack/main/package.json | sudo tee ~/.vscode/extensions/package.json >/dev/null
 
+sudo emerge virtual/jdk --autounmask{,-write,-continue}
+sudo emerge virtual/jre --autounmask{,-write,-continue}
+sudo emerge dev-java/ant-core --autounmask{,-write,-continue}
+sudo emerge dev-util/valgrind --autounmask{,-write,-continue}
 
+source ~/.bashrc
