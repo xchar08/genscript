@@ -85,4 +85,10 @@ sudo rc-update add tor default
 sudo emerge www-client/torbrowser-launcher --autounmask{,-write,-continue}
 sudo emerge www-client/librewolf --autounmask{,-write,-continue}
 
+# cpu optimization
+
+sudo emerge sys-power/auto-cpufreq
+sudo rc-update add auto-cpufreq
+sudo rc-service auto-cpufreq start
+
 source ~/.bashrc
