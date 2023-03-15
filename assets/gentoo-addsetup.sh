@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# add fish
+
+sudo emerge app-shells/fish --autounmask{,-write,-continue}
+
 # add bashrc and source
 
 curl -o ~/.bashrc https://raw.githubusercontent.com/jpx32/dotfiles-space/master/~/.bashrc
@@ -170,3 +174,7 @@ sudo emerge net-firewall/ufw
 sudo rc-update add ufw default
 sudo rc-service ufw start
 sudo ufw deny ssh
+
+#Virt-manager
+
+
