@@ -145,6 +145,20 @@ turbo = auto' | sudo tee /etc/auto-cpufreq.conf >/dev/null
 
 sudo auto-cpufreq --install
 
+sudo emerge sys-power/cpupower --autounmask{,-write,-continue}
+
+# Checks for pstate and applies required patch
+
+if cpupower frequency-info | grep -q "driver: intel_pstate"; then
+    sudo sed -i '0,/^GRUB_CMDLINE_LINUX/{s/\("[^"]*"\)/"quiet splash intel_pstate=disable \1/}' /etc/default/grub
+elif cpupower frequency-info | grep -q "driver: amd_cpufreq"; then
+    sudo sed -i '0,/^GRUB_CMDLINE_LINUX/{s/\("[^"]*"\)/"quiet splash initcall_blacklist=amd_pstate_init amd_pstate.enable=0 \1/}' /etc/default/grub
+fi
+
+if cpupower frequency-info | grep -q "driver: intel_pstate" && cpupower frequency-info | grep -q "driver: amd_cpufreq"; then
+    sudo sed -i '0,/^GRUB_CMDLINE_LINUX/{s/\("[^"]*"\)/"quiet splash intel_pstate=disable initcall_blacklist=amd_pstate_init amd_pstate.enable=0 \1/}' /etc/default/grub
+fi
+
 sudo emerge app-laptop/laptop-mode-tools --autounmask{,-write,-continue}
 sudo touch /etc/laptop-mode/conf.d/cpufreq.conf
 echo "CONTROL_CPU_FREQUENCY=0" | sudo tee /etc/laptop-mode/conf.d/cpufreq.conf
@@ -157,6 +171,5 @@ sudo emerge net-firewall/ufw
 sudo rc-update add ufw default
 sudo rc-service ufw start
 sudo ufw deny ssh
-
 
 source ~/.bashrc
