@@ -151,6 +151,12 @@ echo "CONTROL_CPU_FREQUENCY=0" | sudo tee /etc/laptop-mode/conf.d/cpufreq.conf
 sudo rc-service laptop_mode start 
 sudo rc-update add laptop_mode default 
 
+# Firewall
+
+sudo emerge net-firewall/ufw
+sudo rc-update add ufw default
+sudo rc-service ufw start
+sudo ufw deny ssh
 
 
 source ~/.bashrc
