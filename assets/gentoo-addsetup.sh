@@ -73,6 +73,7 @@ sudo emerge dev-util/valgrind --autounmask{,-write,-continue}
 # fonts 
 
 sudo emerge media-gfx/fontforge --autounmask{,-write,-continue}
+sudo emerge media-fonts/alee-fonts media-fonts/cantarell media-fonts/corefonts media-fonts/courier-prime media-fonts/arphicfonts media-fonts/dejavu media-fonts/droid media-fonts/encodings media-fonts/farsi-fonts media-fonts/fira-code media-fonts/fira-mono media-fonts/fira-sans media-fonts/font-alias media-fonts/font-bh-ttf media-fonts/font-cursor-misc media-fonts/font-misc-misc media-fonts/font-util media-fonts/fonts-meta media-fonts/kochi-substitute media-fonts/liberation-fonts media-fonts/lohit-bengali media-fonts/lohit-tamil media-fonts/mikachan-font-ttf media-fonts/nerd-fonts media-fonts/noto media-fonts/noto-emoji media-fonts/oldstandard media-fonts/open-sans media-fonts/powerline-symbols media-fonts/quivira media-fonts/roboto media-fonts/signika media-fonts/source-code-pro media-fonts/terminus-font media-fonts/tex-gyre media-fonts/thaifonts-scalable media-fonts/ttf-bitstream-vera media-fonts/ubuntu-font-family media-fonts/urw-fonts --autounmask{,-write,-continue}
 
 # tor 
 
