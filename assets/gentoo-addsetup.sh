@@ -40,7 +40,7 @@ sudo emerge x11-misc/wmname --autounmask{,-write,-continue}
 sudo emerge x11-apps/xsetroot --autounmask{,-write,-continue}
 sudo emerge net-misc/networkmanager net-misc/curl sys-devel/bc sys-power/acpi x11-misc/wmname --autounmask{,-write,-continue}
 USE="alsa" sudo emerge media-sound/pulseaudio --autounmask{,-write,-continue}
-dispatch-conf
+sudo dispatch-conf
 USE="alsa" sudo emerge media-sound/pulseaudio --autounmask{,-write,-continue}
 git clone https://github.com/jpx32/dwm_bar.git ~/.scripts && cd ~/.scripts && git checkout master dwm_bar.sh
 chmod +x ~/.scripts/dwm_bar.sh
