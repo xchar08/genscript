@@ -93,10 +93,57 @@ sudo emerge dev-python/pip --autounmask{,-write,-continue}
 sudo emerge sys-power/auto-cpufreq --autounmask{,-write,-continue}
 sudo rc-update add auto-cpufreq
 sudo rc-service auto-cpufreq start
-sudo python3 -m pip install psutil
-wget https://github.com/AdnanHodzic/auto-cpufreq/blob/master/auto_cpufreq/power_helper.py
-sudo python3 power_helper.py --gnome_power_disable
-rm power_helper.py
+cd
+
+git clone https://github.com/AdnanHodzic/auto-cpufreq
+
+sudo emerge psutil --autounmask{,-write,-continue}
+
+sudo python3 ./auto-cpufreq/auto_cpufreq/power_helper.py --gnome_power_disable
+
+echo '# settings for when connected to a power source
+[charger]
+# see available governors by running: cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+# preferred governor.
+governor = performance
+
+# minimum cpu frequency (in kHz)
+# example: for 800 MHz = 800000 kHz --> scaling_min_freq = 800000
+# see conversion info: https://www.rapidtables.com/convert/frequency/mhz-to-hz.html
+# to use this feature, uncomment the following line and set the value accordingly
+# scaling_min_freq = 800000
+
+# maximum cpu frequency (in kHz)
+# example: for 1GHz = 1000 MHz = 1000000 kHz -> scaling_max_freq = 1000000
+# see conversion info: https://www.rapidtables.com/convert/frequency/mhz-to-hz.html
+# to use this feature, uncomment the following line and set the value accordingly
+# scaling_max_freq = 1000000
+
+# turbo boost setting. possible values: always, auto, never
+turbo = auto
+
+# settings for when using battery power
+[battery]
+# see available governors by running: cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors
+# preferred governor
+governor = powersave
+
+# minimum cpu frequency (in kHz)
+# example: for 800 MHz = 800000 kHz --> scaling_min_freq = 800000
+# see conversion info: https://www.rapidtables.com/convert/frequency/mhz-to-hz.html
+# to use this feature, uncomment the following line and set the value accordingly
+# scaling_min_freq = 800000
+
+# maximum cpu frequency (in kHz)
+# see conversion info: https://www.rapidtables.com/convert/frequency/mhz-to-hz.html
+# example: for 1GHz = 1000 MHz = 1000000 kHz -> scaling_max_freq = 1000000
+# to use this feature, uncomment the following line and set the value accordingly
+# scaling_max_freq = 1000000
+
+# turbo boost setting. possible values: always, auto, never
+turbo = auto' | sudo tee /etc/auto-cpufreq.conf >/dev/null
+
+sudo auto-cpufreq --install
 
 sudo emerge app-laptop/laptop-mode-tools --autounmask{,-write,-continue}
 sudo touch /etc/laptop-mode/conf.d/cpufreq.conf
