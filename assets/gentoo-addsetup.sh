@@ -3,6 +3,7 @@
 # add bashrc and source
 
 curl -o ~/.bashrc https://raw.githubusercontent.com/jpx32/dotfiles-space/master/~/.bashrc
+source ~/.bashrc
 
 # add eselect repositories
 
@@ -169,5 +170,3 @@ sudo emerge net-firewall/ufw
 sudo rc-update add ufw default
 sudo rc-service ufw start
 sudo ufw deny ssh
-
-source ~/.bashrc
