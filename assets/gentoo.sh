@@ -75,3 +75,5 @@ passwd
 emerge app-editors/neovim --autounmask{,-write,-continue}
 emerge -auDN world
 emerge --depclean
+
+echo "Reboot your computer."
