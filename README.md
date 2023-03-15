@@ -20,7 +20,7 @@ Then proceed with the following commands.
 10. chmod +x ~/.genscript/assets/gentoo-desktop.sh && ~/.genscript/assets/gentoo-desktop.sh
 11. useradd -m -G users,wheel,audio,plugdev -s /bin/bash `<username>`
 12. configure sudo or doas
-13. If you'd like, run the script `gentoo-addsetup` as your new user in order to copy my personal configuration!
+13. If you'd like, run the script `gentoo-addsetup.sh` and `gentoo-addsetup-avirt.sh` as your new user in order to copy my personal configuration!
 
 ## Usage
 
