@@ -157,8 +157,6 @@ elif cpupower frequency-info | grep -q "driver: amd_cpufreq"; then
     sudo sed -i '0,/^GRUB_CMDLINE_LINUX/{s/\("[^"]*"\)/"quiet splash initcall_blacklist=amd_pstate_init amd_pstate.enable=0 \1/}' /etc/default/grub
 fi
 
-
-
 sudo emerge app-laptop/laptop-mode-tools --autounmask{,-write,-continue}
 sudo touch /etc/laptop-mode/conf.d/cpufreq.conf
 echo "CONTROL_CPU_FREQUENCY=0" | sudo tee /etc/laptop-mode/conf.d/cpufreq.conf
