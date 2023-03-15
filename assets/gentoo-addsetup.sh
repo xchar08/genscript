@@ -88,8 +88,22 @@ sudo emerge www-client/librewolf --autounmask{,-write,-continue}
 
 # cpu optimization
 
-sudo emerge sys-power/auto-cpufreq
+sudo emerge dev-lang/python --autounmask{,-write,-continue}
+sudo emerge dev-python/pip --autounmask{,-write,-continue}
+sudo emerge sys-power/auto-cpufreq --autounmask{,-write,-continue}
 sudo rc-update add auto-cpufreq
 sudo rc-service auto-cpufreq start
+sudo python3 -m pip install psutil
+wget https://github.com/AdnanHodzic/auto-cpufreq/blob/master/auto_cpufreq/power_helper.py
+sudo python3 power_helper.py --gnome_power_disable
+rm power_helper.py
+
+sudo emerge app-laptop/laptop-mode-tools --autounmask{,-write,-continue}
+sudo touch /etc/laptop-mode/conf.d/cpufreq.conf
+echo "CONTROL_CPU_FREQUENCY=0" | sudo tee /etc/laptop-mode/conf.d/cpufreq.conf
+sudo rc-service laptop_mode start 
+sudo rc-update add laptop_mode default 
+
+
 
 source ~/.bashrc
