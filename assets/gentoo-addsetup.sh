@@ -177,7 +177,6 @@ sudo rc-update add laptop_mode default
 sudo emerge net-firewall/ufw
 sudo rc-update add ufw default
 sudo rc-service ufw start
-sudo ufw deny ssh
 
 #Virt-manager
 

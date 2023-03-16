@@ -75,3 +75,18 @@ sudo touch /etc/local.d/macchanger.stop
 echo -e '#!/bin/bash\nmacchanger -r $(ip a | grep enp | awk '\''{print $2}'\'' | tr -d :)' | sudo tee /etc/local.d/macchanger.start >/dev/null && sudo chmod +x /etc/local.d/macchanger.start
 echo -e '#!/bin/bash\nkillall macchanger' | sudo tee /etc/local.d/macchanger.stop >/dev/null && sudo chmod +x /etc/local.d/macchanger.stop
 sudo rc-update add local default 
+
+#super strict ufw
+sudo ufw limit 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
+
+#fail2ban
+sudo emerge net-analyzer/fail2ban --autounmask{,-write,-continue}
+sudo emerge dev-python/pyinotify --autounmask{,-write,-continue}
+
+sudo rc-update add fail2ban default
+sudo rc-service fail2ban start
