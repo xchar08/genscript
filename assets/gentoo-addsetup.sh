@@ -1,6 +1,6 @@
 #!/bin/bash
 
-su username
+su $username
 
 # add fish
 
