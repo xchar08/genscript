@@ -1,10 +1,15 @@
 #!/bin/bash
 
-#create user 
+#create user and configure sudo
+
+emerge app-admin/sudo --autounmask{,-write,-continue}
 
 echo "Please enter the username you would like to create in Gentoo:"
 read username
-sudo usermod -aG wheel,video,audio,user,portage "$username"
+usermod -aG wheel,video,audio,user,portage "$username"
+echo "%wheel ALL=(ALL:ALL) ALL" | sudo tee -a /etc/sudoers
+echo -e "Defaults rootpw\nDefaults !tty_tickets" | sudo tee -a /etc/sudoers
+
 
 if lspci | grep -i VGA | grep -c Intel > 0
 then
