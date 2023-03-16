@@ -46,3 +46,32 @@ rm -r WHONIX*
  
 echo 'Follow these steps for a bit more info: https://yewtu.be/watch?v=-dWEcBQZBXw'
 echo 'See the wiki for more info: https://www.whonix.org/wiki/Post_Install_Advice'
+
+# security patches
+
+#antivirus
+sudo emerge app-antivirus/clamav --autounmask{,-write,-continue}
+sudo freshclam
+sudo rc-service freshclam start 
+sudo rc-service clamd start 
+sudo rc-update add clamd default 
+sudo emerge app-antivirus/clamtk --autounmask{,-write,-continue}
+
+#password manager
+sudo emerge app-admin/keepassxc --autounmask{,-write,-continue}
+
+#ssh
+sudo emerge net-misc/sshrc --autounmask{,-write,-continue}
+
+#ssh hardening 
+sudo sh -c 'echo "PermitRootLogin no" >> /etc/ssh/sshd_config'
+sudo sh -c 'echo "AllowUsers $(whoami)" >> /etc/ssh/sshd_config'
+
+#mac changer
+sudo emerge net-analyzer/macchanger --autounmask{,-write,-continue}
+
+sudo touch /etc/local.d/macchanger.start
+sudo touch /etc/local.d/macchanger.stop
+echo -e '#!/bin/bash\nmacchanger -r $(ip a | grep enp | awk '\''{print $2}'\'' | tr -d :)' | sudo tee /etc/local.d/macchanger.start >/dev/null && sudo chmod +x /etc/local.d/macchanger.start
+echo -e '#!/bin/bash\nkillall macchanger' | sudo tee /etc/local.d/macchanger.stop >/dev/null && sudo chmod +x /etc/local.d/macchanger.stop
+sudo rc-update add local default 

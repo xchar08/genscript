@@ -10,6 +10,7 @@ sudo emerge app-shells/fish --autounmask{,-write,-continue}
 
 curl -o ~/.bashrc https://raw.githubusercontent.com/jpx32/dotfiles-space/master/~/.bashrc
 source ~/.bashrc
+exit
 source ~/.config/fish/config.fish
 
 # add eselect repositories
