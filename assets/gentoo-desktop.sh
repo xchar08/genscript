@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#create user 
+
+echo "Please enter the username you would like to create in Gentoo:"
+read username
+sudo usermod -aG wheel,video,audio,user,portage "$username"
+
 if lspci | grep -i VGA | grep -c Intel > 0
 then
 emerge sys-firmware/intel-microcode --autounmask{,-write,-continue}

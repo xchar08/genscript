@@ -1,5 +1,7 @@
 #!/bin/bash
 
+su username
+
 # add fish
 
 sudo emerge app-shells/fish --autounmask{,-write,-continue}
