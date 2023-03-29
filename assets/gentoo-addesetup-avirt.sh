@@ -117,6 +117,11 @@ sudo bash -c 'echo -e "# Config file for /etc/init.d/sysklogd\n\nSYSLOGD=\"-m 0 
 
 sudo rc-service sysklogd start
 
-#add a password to bash 
+#add a password to grub
 
 #sudo bash -c 'read -p "Enter a superuser username: " username && echo "set superusers=\"$username\"" >> /etc/grub.d/40_custom; read -s -p "Enter a superuser password: " password && echo -e "\npassword_pbkdf2 $username $(grub-mkpasswd-pbkdf2 <<< "$password")" >> /etc/grub.d/40_custom && grub-mkconfig -o /boot/grub/grub.cfg'
+
+#disable core dumps
+
+echo '* soft core 0' | sudo tee -a /etc/security/limits.conf > /dev/null && echo "Added line '* soft core 0' to /etc/security/limits.conf"
+
