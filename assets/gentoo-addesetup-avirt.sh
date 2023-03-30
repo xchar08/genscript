@@ -141,3 +141,7 @@ UMASK 027" | sudo tee -a /etc/login.defs
 
 #update clamav daily
 echo "UpdateDatabase daily" | sudo tee -a /etc/clamav/freshclam.conf
+
+#resolve hosts
+
+echo "$(ip route get 1.1.1.1 | awk '{print $7; exit}') $(hostname) $(hostname -f)" | sudo tee -a /etc/hosts
