@@ -187,3 +187,5 @@ sudo emerge -av app-forensics/tripwire
 sudo twsetup.sh
 sudo mktwpol.sh -u
 sudo twadmin --create-polfile /etc/tripwire/twpol.txt
+sudo tripwire --init
+sudo tripwire --check
