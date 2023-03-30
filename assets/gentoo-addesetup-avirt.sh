@@ -125,3 +125,19 @@ sudo rc-service sysklogd start
 
 echo '* soft core 0' | sudo tee -a /etc/security/limits.conf > /dev/null && echo "Added line '* soft core 0' to /etc/security/limits.conf"
 
+#add PAM hashing algo
+sudo sed -i '$s/.*/password        sufficient      pam_unix.so sha512 rounds=1000/' /etc/pam.d/system-auth
+
+#set the password to expire every 30 days
+echo "password        required        pam_pwquality.so enforce_for_root try_first_pass retry=3 type=" | sudo tee -a /etc/pam.d/system-auth > /dev/null
+
+#configure the hashing rounds
+echo -e "ENCRYPT_METHOD SHA512\nSHA_CRYPT_MIN_ROUNDS 1000" | sudo tee -a /etc/login.defs > /dev/null
+
+#max and min passwd age + umask
+echo "PASS_MIN_DAYS 1
+PASS_MAX_DAYS 90
+UMASK 027" | sudo tee -a /etc/login.defs
+
+#update clamav daily
+echo "UpdateDatabase daily" | sudo tee -a /etc/clamav/freshclam.conf
