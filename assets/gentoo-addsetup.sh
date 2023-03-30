@@ -37,6 +37,7 @@ sudo emerge app-misc/neofetch --autounmask{,-write,-continue}
 
 sudo emerge dev-vcs/lazygit --autounmask{,-write,-continue}
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+sudo emerge dev-util/bash-language-server --autounmask{,-write,-continue}
 
 # add wm packages 
 
