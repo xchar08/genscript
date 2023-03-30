@@ -143,5 +143,17 @@ UMASK 027" | sudo tee -a /etc/login.defs
 echo "UpdateDatabase daily" | sudo tee -a /etc/clamav/freshclam.conf
 
 #resolve hosts
-
 echo "$(ip route get 1.1.1.1 | awk '{print $7; exit}') $(hostname) $(hostname -f)" | sudo tee -a /etc/hosts
+
+#legal warning
+echo "Authorized Access Only. Disconnect IMMEDIATELY if you are not an authorized user!" | sudo tee /etc/issue
+
+#acct
+sudo emerge sys-process/acct --autounmask{,-write,-continue}
+echo 'rc_sys="acct"' | sudo tee -a /etc/rc.conf
+sudo rc-update add acct default
+sudo /etc/init.d/acct start
+sudo emerge app-admin/sysstat --autounmask{,-write,-continue}
+echo 'rc_sys="sysstatd"' | sudo tee -a /etc/rc.conf
+sudo rc-update add sysstat default
+sudo /etc/init.d/sysstat start
