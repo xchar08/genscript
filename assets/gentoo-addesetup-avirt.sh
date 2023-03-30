@@ -168,3 +168,9 @@ sudo chmod 0700 /usr/bin/gcc
 sudo chmod 0700 /usr/bin/g++
 sudo chmod 0700 /usr/bin/cc
 sudo chmod 0700 /usr/bin/c++
+
+#ca certs
+sudo emerge app-misc/ca-certificates --autounmask{,-write,-continue}
+sudo emerge dev-libs/openssl --autounmask{,-write,-continue}
+
+openssl crl2pkcs7 -nocrl -certfile /etc/ssl/certs/ca-certificates.crt | openssl pkcs7 -print_certs -noout | while read line; do if echo $line | grep -q "notAfter="; then expire=$(date -d "$(echo $line | sed 's/notAfter=//')" +%s); now=$(date +%s); exp=2592000; if [ $(($expire-$now)) -le $exp ]; then echo $line; fi; fi; done
