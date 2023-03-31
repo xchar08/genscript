@@ -66,7 +66,9 @@ sudo rsync -av --exclude '.git' . ~/
 sudo mkdir -p /boot/grub/themes/catppuccin-mocha-grub-theme
 sudo rsync -av /boot/grub/themes/catppuccin-mocha-grub-theme/ ~/dotfiles/boot/grub/themes/catppuccin-mocha-grub-theme/
 #etc
-sudo rsync -av /etc/ ~/dotfiles/etc/
+sudo rsync -av /etc/ ~/dotfiles/etc/\
+
+sudo emerge x11-wm/dwm --autounmask{,-write,-continue}
 
 # add programming stuff
 
