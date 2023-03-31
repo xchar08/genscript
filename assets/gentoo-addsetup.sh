@@ -6,6 +6,21 @@ su $username
 
 sudo emerge app-shells/fish --autounmask{,-write,-continue}
 
+# tripwire
+sudo eselect repository enable dm-overlay
+sudo emerge --sync
+sudo mkdir -p /var/db/repos/dm-overlay/metadata && echo "masters = gentoo" | sudo tee /var/db/repos/dm-overlay/metadata/layout.conf
+sudo eix-update
+sudo mkdir -p /var/db/repos/dm-overlay/profiles/
+sudo sh -c "echo 'dm-overlay' > /var/db/repos/dm-overlay/profiles/repo_name"
+sudo eix-update
+sudo emerge -av app-forensics/tripwire
+sudo twsetup.sh
+sudo mktwpol.sh -u
+sudo twadmin --create-polfile /etc/tripwire/twpol.txt
+sudo tripwire --init
+sudo tripwire --check
+
 # add bashrc and source
 
 curl -o ~/.bashrc https://raw.githubusercontent.com/jpx32/dotfiles-space/master/~/.bashrc

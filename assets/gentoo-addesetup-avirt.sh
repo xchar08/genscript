@@ -175,20 +175,7 @@ sudo emerge dev-libs/openssl --autounmask{,-write,-continue}
 
 openssl crl2pkcs7 -nocrl -certfile /etc/ssl/certs/ca-certificates.crt | openssl pkcs7 -print_certs -noout | while read line; do if echo $line | grep -q "notAfter="; then expire=$(date -d "$(echo $line | sed 's/notAfter=//')" +%s); now=$(date +%s); exp=2592000; if [ $(($expire-$now)) -le $exp ]; then echo $line; fi; fi; done
 
-sudo eselect repository add dm-overlay git https://github.com/damex-overlay/dm-overlay.git
-sudo eselect repository enable dm-overlay
-sudo emerge --sync
-sudo mkdir -p /var/db/repos/dm-overlay/metadata && echo "masters = gentoo" | sudo tee /var/db/repos/dm-overlay/metadata/layout.conf
-sudo eix-update
-sudo mkdir -p /var/db/repos/dm-overlay/profiles/
-sudo sh -c "echo 'dm-overlay' > /var/db/repos/dm-overlay/profiles/repo_name"
-sudo eix-update
-sudo emerge -av app-forensics/tripwire
-sudo twsetup.sh
-sudo mktwpol.sh -u
-sudo twadmin --create-polfile /etc/tripwire/twpol.txt
-sudo tripwire --init
-sudo tripwire --check
+#sudo eselect repository add dm-overlay git https://github.com/damex-overlay/dm-overlay.git
 
 #modprobe binfmt-misc
 sudo modprobe binfmt-misc
