@@ -7,6 +7,19 @@ su $username
 sudo emerge app-shells/fish --autounmask{,-write,-continue}
 
 # tripwire
+
+sudo mkdir -p /usr/local/portage/dm-overlay
+sudo git clone https://github.com/DrMosquito/dm-overlay.git /usr/local/portage/dm-overlay
+
+sudo sh -c "echo '[dm-overlay]
+location = /usr/local/portage/dm-overlay
+masters = gentoo
+auto-sync = no' > /etc/portage/repos.conf/dm-overlay.conf"
+
+sudo emerge --sync dm-overlay
+sudo emerge -auDN world
+
+
 sudo eselect repository enable dm-overlay
 sudo emerge --sync
 sudo mkdir -p /var/db/repos/dm-overlay/metadata && echo "masters = gentoo" | sudo tee /var/db/repos/dm-overlay/metadata/layout.conf

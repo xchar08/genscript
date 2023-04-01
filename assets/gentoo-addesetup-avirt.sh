@@ -158,17 +158,6 @@ echo 'rc_sys="sysstatd"' | sudo tee -a /etc/rc.conf
 sudo rc-update add sysstat default
 sudo /etc/init.d/sysstat start
 
-#harden compilers
-sudo chown root:root /usr/bin/gcc
-sudo chown root:root /usr/bin/g++
-sudo chown root:root /usr/bin/cc
-sudo chown root:root /usr/bin/c++
-
-sudo chmod 0700 /usr/bin/gcc
-sudo chmod 0700 /usr/bin/g++
-sudo chmod 0700 /usr/bin/cc
-sudo chmod 0700 /usr/bin/c++
-
 #ca certs
 sudo emerge app-misc/ca-certificates --autounmask{,-write,-continue}
 sudo emerge dev-libs/openssl --autounmask{,-write,-continue}
