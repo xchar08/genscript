@@ -64,7 +64,9 @@ sudo emerge app-misc/neofetch --autounmask{,-write,-continue}
 # get nvim thingy
 
 sudo emerge dev-vcs/lazygit --autounmask{,-write,-continue}
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 
+git clone https://github.com/nvim-treesitter/nvim-treesitter ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter
+nvim
 sudo emerge dev-util/bash-language-server --autounmask{,-write,-continue}
 
 # add wm packages 
