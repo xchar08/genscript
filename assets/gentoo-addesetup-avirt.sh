@@ -3,8 +3,6 @@
 sudo virsh -c qemu:///system net-autostart default
 sudo virsh -c qemu:///system net-start default
 
-#!/bin/bash
-
 read -p "Enter the URL: " whonixlink
 
 echo "The URL you entered is: $whonixlink"
