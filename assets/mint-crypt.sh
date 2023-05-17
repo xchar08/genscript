@@ -27,7 +27,7 @@ mount -o subvol=home /dev/mapper/luks-"$partuuid" /mnt/gentoo/home
 mount -o subvol=var /dev/mapper/luks-"$partuuid" /mnt/gentoo/var
 mount -o subvol=tmp /dev/mapper/luks-"$partuuid" /mnt/gentoo/tmp
 
-mount /dev/"$bootpart" /mnt/gentoo/boot
+mount /dev/"$bootpart" /mnt/gentoo/boot-ldap acl alsa bluetooth chroot cryptsetup cups dbus elogind gecko -kde man pulseaudio secure_delete strict -systemd valgrind vulkan webrsync-gpg wifi X xinerama networkmanager
 mkdir /mnt/gentoo/boot/efi
 mount /dev/"$efipart" /mnt/gentoo/boot/efi
 
@@ -39,31 +39,6 @@ echo -n "Enter stage 3 tar url: "
 read -r tarurl
 wget "$tarurl"
 tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
-
-#create the makefile
-
-echo 'COMMON_FLAGS="-O2 -march=native -pipe"
-CFLAGS="${COMMON_FLAGS}"
-CXXFLAGS="${COMMON_FLAGS}"
-FCFLAGS="${COMMON_FLAGS}"
-FFLAGS="${COMMON_FLAGS}"
-MAKEOPTS="-j8"
-ACCEPT_KEYWORDS="~amd64"
-ACCEPT_LICENSE="*"' | sudo tee /etc/portage/make.conf
-echo -n "Enter the video cards string: (ex. nvidia intel i915)"
-read video_cards
-echo 'VIDEO_CARDS="'$video_cards'"' | sudo tee -a /etc/portage/make.conf
-echo -n "Enter the USE flags: (ex. -ldap acl alsa bluetooth chroot cryptsetup cups dbus elogind gecko -kde man pulseaudio secure_delete strict -systemd valgrind vulkan webrsync-gpg wifi X xinerama networkmanager)"
-read use_flags
-echo 'USE="'$use_flags'"' | sudo tee -a /etc/portage/make.conf
-echo 'PORTDIR="/var/db/repos/gentoo"
-DISTDIR="/var/cache/distfiles"
-PKGDIR="/var/cache/binpkgs"
-
-# This sets the language of build output to English.
-# Please keep this setting intact when reporting bugs.
-LC_MESSAGES=C
-GENTOO_MIRRORS="https://mirror.leaseweb.com/gentoo/ http://mirror.leaseweb.com/gentoo/ rsync://mirror.leaseweb.com/gentoo/"' | sudo tee /etc/portage/make.conf
 
 # prepare for chroot
 
