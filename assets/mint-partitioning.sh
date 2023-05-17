@@ -17,8 +17,8 @@ parted -a optimal /dev/"$primpart" -- mklabel gpt
 parted -a optimal /dev/"$primpart" -- mkpart ESP fat32 0% 512MiB
 parted -a optimal /dev/"$primpart" -- mkpart swap linux-swap 512MiB 8.75GiB
 parted -a optimal /dev/"$primpart" -- mkpart rootfs btrfs 8.75GiB 70%
-parted -a optimal /dev/"$primpart" -- mkpart var btrfs 70% 85%
-parted -a optimal /dev/"$primpart" -- mkpart tmp btrfs 85% 100%
+parted -a optimal /dev/"$primpart" -- mkpart var btrfs 70% 90%
+parted -a optimal /dev/"$primpart" -- mkpart tmp btrfs 90% 100%
 parted -a optimal /dev/"$primpart" -- set 1 boot on
 
 # Format partitions
