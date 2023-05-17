@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # read in all volumes 
-partuuid=$(blkid | grep "crypto_LUKS" | sed -n 's/.*PARTUUID=\"\([^\"]*\)\".*/\1/p')
 
 echo -n 'Enter device label (e.x. nvme0n1): '
 read -r primpart
@@ -11,9 +10,6 @@ echo -n 'Enter boot partition (e.x. nvme0n1p2): '
 read -r bootpart
 echo -n 'Enter root partition (e.x. nvme0n1p3): '
 read -r rootpart
-
-echo "Type out xzyY"
-gdisk /dev/"$primpart"
 
 # Create partitions taking up 40% of the total device drive
 parted -a optimal /dev/"$primpart" -- mklabel gpt
@@ -32,4 +28,7 @@ mkfs.ext4 /dev/"$bootpart"
 cryptsetup luksFormat --type luks2 /dev/"$rootpart"
 cryptsetup luksDump /dev/"$rootpart"
 blkid
+
+partuuid=$(blkid | grep "crypto_LUKS" | sed -n 's/.*PARTUUID=\"\([^\"]*\)\".*/\1/p')
+
 cryptsetup open /dev/"$rootpart" luks-"$partuuid"
