@@ -8,23 +8,29 @@ read -r efipart
 echo -n 'Enter boot partition (e.g. nvme0n1p2): '
 read -r bootpart
 
-# mount necessary volumes 
-
-cd /dev/mapper || exit
+# Create Btrfs filesystem and subvolumes
 mkfs.btrfs /dev/mapper/luks-"$partuuid"
-mkdir /mnt/btrfs
-mount /dev/mapper/luks-"$partuuid" /mnt/btrfs
-cd /mnt/btrfs || exit
+mount /dev/mapper/luks-"$partuuid" /mnt
+
+cd /mnt || exit
 btrfs subvolume create ./root
+btrfs subvolume create ./var
+btrfs subvolume create ./tmp
 btrfs subvolume create ./home
-mkdir -p /mnt/gentoo
+
+# Mount partitions
+mkdir /mnt/gentoo
 mount -o subvol=root /dev/mapper/luks-"$partuuid" /mnt/gentoo
-mkdir /mnt/gentoo/boot
-mkdir /mnt/gentoo/home
+
+mkdir /mnt/gentoo/{boot,home,var,tmp}
 mount -o subvol=home /dev/mapper/luks-"$partuuid" /mnt/gentoo/home
+mount -o subvol=var /dev/mapper/luks-"$partuuid" /mnt/gentoo/var
+mount -o subvol=tmp /dev/mapper/luks-"$partuuid" /mnt/gentoo/tmp
+
 mount /dev/"$bootpart" /mnt/gentoo/boot
 mkdir /mnt/gentoo/boot/efi
 mount /dev/"$efipart" /mnt/gentoo/boot/efi
+
 cd /mnt/gentoo || exit
 
 # read in and unzip the stage 3 tar
