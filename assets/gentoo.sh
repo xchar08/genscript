@@ -16,6 +16,12 @@ eselect profile list
 read -rp "Select profile (e.g. 1): " profile
 eselect profile set "$profile"
 
+echo "Enter the video cards string: (ex. nvidia intel i915): "
+read -r video_cards
+
+echo "Enter the USE flags: (ex. -ldap acl alsa bluetooth chroot cryptsetup cups dbus elogind gecko -kde man pulseaudio secure_delete selinux strict -systemd valgrind vulkan webrsync-gpg wifi X xinerama networkmanager) "
+read -r use_flags
+
 cat <<EOF > /etc/portage/make.conf
 COMMON_FLAGS="-O2 -march=native -pipe"
 CFLAGS="\${COMMON_FLAGS}"
@@ -26,10 +32,7 @@ MAKEOPTS="-j8"
 ACCEPT_KEYWORDS="~amd64"
 ACCEPT_LICENSE="*"
 
-# Enter the video cards string: (ex. nvidia intel i915)
 VIDEO_CARDS="$video_cards"
-
-# Enter the USE flags: (ex. -ldap acl alsa bluetooth chroot cryptsetup cups dbus elogind gecko -kde man pulseaudio secure_delete selinux strict -systemd valgrind vulkan webrsync-gpg wifi X xinerama networkmanager)
 USE="$use_flags"
 
 PORTDIR="/var/db/repos/gentoo"
