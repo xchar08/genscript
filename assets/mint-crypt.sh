@@ -27,7 +27,7 @@ mount -o subvol=home /dev/mapper/luks-"$partuuid" /mnt/gentoo/home
 mount -o subvol=var /dev/mapper/luks-"$partuuid" /mnt/gentoo/var
 mount -o subvol=tmp /dev/mapper/luks-"$partuuid" /mnt/gentoo/tmp
 
-mount /dev/"$bootpart" /mnt/gentoo/boot-ldap acl alsa bluetooth chroot cryptsetup cups dbus elogind gecko -kde man pulseaudio secure_delete strict -systemd valgrind vulkan webrsync-gpg wifi X xinerama networkmanager
+mount /dev/"$bootpart" /mnt/gentoo/boot
 mkdir /mnt/gentoo/boot/efi
 mount /dev/"$efipart" /mnt/gentoo/boot/efi
 
