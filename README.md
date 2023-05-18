@@ -10,8 +10,8 @@ Then proceed with the following commands.
 
 1. sudo su
 2. enter root password
-3. git clone https://github.com/jpx32/genscript/ ~/.genscript
-4. cd ./genscript/assets 
+3. git clone https://github.com/jpx32/genscript/ ~/genscript
+4. cd ~/genscript/assets 
 5. chmod +x *
 6. ./mint-partitioning.sh
 7. ./mint-crypt.sh
