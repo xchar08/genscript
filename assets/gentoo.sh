@@ -90,6 +90,9 @@ GRUB_DISABLE_LINUX_UUID=false
 GRUB_DISABLE_LINUX_PARTUUID=true
 GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub
 
+sudo sed -i '0,/^GRUB_DISABLE_LINUX_PARTUUID=false/{s/^GRUB_DISABLE_LINUX_PARTUUID=false/#&/}' /etc/default/grub
+
+
 #install GRUB to proper location
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi
