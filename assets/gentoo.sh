@@ -28,7 +28,7 @@ ACCEPT_LICENSE="*"' | tee /etc/portage/make.conf
 echo -n "Enter the video cards string: (ex. nvidia intel i915)"
 read video_cards
 echo 'VIDEO_CARDS="'$video_cards'"' | tee -a /etc/portage/make.conf
-echo -n "Enter the USE flags: (ex. -ldap acl alsa bluetooth chroot cryptsetup cups dbus elogind gecko -kde man pulseaudio secure_delete strict -systemd valgrind vulkan webrsync-gpg wifi X xinerama networkmanager)"
+echo -n "Enter the USE flags: (ex. -ldap acl alsa bluetooth chroot cryptsetup cups dbus elogind gecko -kde man pulseaudio secure_delete selinux strict -systemd valgrind vulkan webrsync-gpg wifi X xinerama networkmanager)"
 read use_flags
 echo 'USE="'$use_flags'"' | tee -a /etc/portage/make.conf
 echo 'PORTDIR="/var/db/repos/gentoo"
