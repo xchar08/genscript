@@ -2,22 +2,7 @@
 
 set -e
 
-# Source the system profile
-source /etc/profile
-
-# Set the chroot prompt
-export PS1="(chroot) $PS1"
-
-# Sync the portage tree
-emerge-webrsync
-
-# Select the profile
-eselect profile list
-read -rp "Select profile (e.g. 1): " profile
-eselect profile set "$profile"
-
 #create the makefile
-
 echo 'COMMON_FLAGS="-O2 -march=native -pipe"
 CFLAGS="${COMMON_FLAGS}"
 CXXFLAGS="${COMMON_FLAGS}"
@@ -39,6 +24,20 @@ PKGDIR="/var/cache/binpkgs"
 # Please keep this setting intact when reporting bugs.
 LC_MESSAGES=C
 GENTOO_MIRRORS="https://mirror.leaseweb.com/gentoo/ http://mirror.leaseweb.com/gentoo/ rsync://mirror.leaseweb.com/gentoo/"' | tee /etc/portage/make.conf
+
+# Source the system profile
+source /etc/profile
+
+# Set the chroot prompt
+export PS1="(chroot) $PS1"
+
+# Sync the portage tree
+emerge-webrsync
+
+# Select the profile
+eselect profile list
+read -rp "Select profile (e.g. 1): " profile
+eselect profile set "$profile"
 
 # Enable required USE flags
 emerge app-portage/flaggie --autounmask{,-write,-continue}
