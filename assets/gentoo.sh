@@ -47,7 +47,7 @@ emerge app-portage/gentoolkit --autounmask{,-write,-continue}
 emerge app-portage/eix --autounmask{,-write,-continue}
 
 # Set the timezone
-read -rp "Select timezone (e.g. America/Eastern): " timezone
+read -rp "Select timezone (e.g. America/Chicago): " timezone
 echo "${timezone}" > /etc/timezone
 emerge --config sys-libs/timezone-data --autounmask{,-write,-continue}
 
