@@ -88,7 +88,7 @@ GRUB_GFXPAYLOAD_LINUX="keep"
 GRUB_THEME="/boot/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
 GRUB_DISABLE_LINUX_UUID=false
 GRUB_DISABLE_LINUX_PARTUUID=true
-GRUB_DISABLE_OS_PROBER=false' | sudo tee -a /etc/default/grub
+GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub
 
 #install GRUB to proper location
 
