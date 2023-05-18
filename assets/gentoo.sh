@@ -103,6 +103,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 passwd
 emerge app-editors/neovim --autounmask{,-write,-continue}
 emerge -auDN world
+dispatch-conf
+emerge -auDN world
 emerge --depclean
 
 echo "Reboot your computer."
