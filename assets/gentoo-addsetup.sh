@@ -112,21 +112,21 @@ git clone https://github.com/jpx32/dotfiles-space/ ~/dotfiles-space
 cp -r ~/dotfiles-space/~/* ~/
 
 # Copy the specified grub theme file to /boot/grub/themes/
-cp ~/dotfiles-space/boot/grub/themes/catppuccin-mocha-grub-theme /boot/grub/themes/
+sudo cp ~/dotfiles-space/boot/grub/themes/catppuccin-mocha-grub-theme /boot/grub/themes/
 
 # Copy files from dotfiles-space/etc/portage to /etc/portage (excluding make.conf)
-cp -r ~/dotfiles-space/etc/portage/env /etc/portage/
-cp -r ~/dotfiles-space/etc/portage/repos.conf /etc/portage/
-cp -r ~/dotfiles-space/etc/portage/savedconfig /etc/portage
-cp -r ~/dotfiles-space/etc/portage/sets /etc/portage/
-rm -rf /etc/portage/package.accept_keywords
-cp -r ~/dotfiles-space/etc/portage/package.accept_keywords /etc/portage/
-rm -rf /etc/portage/package.env
-cp -r ~/dotfiles-space/etc/portage/package.env /etc/portage/
-rm -rf /etc/portage/package.mask
-cp -r ~/dotfiles-space/etc/portage/package.mask /etc/portage/
-rm -rf /etc/portage/package.use
-cp -r ~/dotfiles-space/etc/portage/package.use /etc/portage/
+sudo cp -r ~/dotfiles-space/etc/portage/env /etc/portage/
+sudo cp -r ~/dotfiles-space/etc/portage/repos.conf /etc/portage/
+sudo cp -r ~/dotfiles-space/etc/portage/savedconfig /etc/portage
+sudo cp -r ~/dotfiles-space/etc/portage/sets /etc/portage/
+sudo rm -rf /etc/portage/package.accept_keywords
+sudo cp -r ~/dotfiles-space/etc/portage/package.accept_keywords /etc/portage/
+sudo rm -rf /etc/portage/package.env
+sudo cp -r ~/dotfiles-space/etc/portage/package.env /etc/portage/
+sudo rm -rf /etc/portage/package.mask
+sudo cp -r ~/dotfiles-space/etc/portage/package.mask /etc/portage/
+sudo rm -rf /etc/portage/package.use
+sudo cp -r ~/dotfiles-space/etc/portage/package.use /etc/portage/
 
 echo "Dotfiles copied successfully!"
 
