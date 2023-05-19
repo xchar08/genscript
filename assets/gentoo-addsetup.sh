@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "Enter your other username: "
-read -r us
-su $us
+#echo "Enter your other username: "
+#read -r us
+#su $us
 
 # add fish
 
