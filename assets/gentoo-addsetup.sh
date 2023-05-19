@@ -14,6 +14,8 @@ sudo emerge app-shells/fish --autounmask{,-write,-continue}
 #sudo mkdir -p /usr/local/portage/dm-overlay
 #sudo git clone https://github.com/DrMosquito/dm-overlay.git /usr/local/portage/dm-overlay
 
+sudo emerge --ask eselect-repository
+
 sudo sh -c "echo '[dm-overlay]
 location = /usr/local/portage/dm-overlay
 masters = gentoo
