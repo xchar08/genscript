@@ -5,8 +5,8 @@
 emerge app-admin/sudo --autounmask{,-write,-continue}
 
 echo "Please enter the username you would like to create in Gentoo:"
-read username
-usermod -aG wheel,video,audio,user,portage "$username"
+read -r us
+usermod -aG wheel,video,audio,user,portage "$us"
 echo "%wheel ALL=(ALL:ALL) ALL" | sudo tee -a /etc/sudoers
 echo -e "Defaults rootpw\nDefaults !tty_tickets" | sudo tee -a /etc/sudoers
 
