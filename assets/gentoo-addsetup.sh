@@ -19,21 +19,14 @@ location = /usr/local/portage/dm-overlay
 masters = gentoo
 auto-sync = no' > /etc/portage/repos.conf/dm-overlay.conf"
 
+sudo mkdir -p /var/db/repos/dm-overlay/metadata && echo "masters = gentoo" | sudo tee /var/db/repos/dm-overlay/metadata/layout.conf
+sudo mkdir -p /var/db/repos/dm-overlay/profiles/
+sudo sh -c "echo 'dm-overlay' > /var/db/repos/dm-overlay/profiles/repo_name"
+
 sudo eselect repository enable dm-overlay
 sudo emerge --sync
 sudo eix-update
 
-#sudo emerge --sync dm-overlay
-#sudo emerge -auDN world
-
-sudo mkdir -p /var/db/repos/dm-overlay/metadata && echo "masters = gentoo" | sudo tee /var/db/repos/dm-overlay/metadata/layout.conf
-sudo eix-update
-sudo mkdir -p /var/db/repos/dm-overlay/profiles/
-sudo sh -c "echo 'dm-overlay' > /var/db/repos/dm-overlay/profiles/repo_name"
-
-#sudo eselect repository enable dm-overlay
-sudo emerge --sync
-sudo eix-update
 sudo emerge -av app-forensics/tripwire
 sudo twsetup.sh
 sudo mktwpol.sh -u
