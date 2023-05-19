@@ -97,7 +97,7 @@ GRUB_DISABLE_LINUX_UUID=false
 GRUB_DISABLE_LINUX_PARTUUID=true
 GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub
 
-sudo sed -i '0,/^GRUB_DISABLE_LINUX_PARTUUID=false/{s/^GRUB_DISABLE_LINUX_PARTUUID=false/#&/}' /etc/default/grub
+sed -i '0,/^GRUB_DISABLE_LINUX_PARTUUID=false/{s/^GRUB_DISABLE_LINUX_PARTUUID=false/#&/}' /etc/default/grub
 
 grub-mkconfig -o /boot/grub/grub.cfg
 passwd
