@@ -14,7 +14,7 @@ sudo emerge app-shells/fish --autounmask{,-write,-continue}
 #sudo mkdir -p /usr/local/portage/dm-overlay
 #sudo git clone https://github.com/DrMosquito/dm-overlay.git /usr/local/portage/dm-overlay
 
-sudo emerge --ask eselect-repository
+sudo emerge app-eselect/eselect-repository --autounmask{,-write,-continue}
 
 sudo sh -c "echo '[dm-overlay]
 location = /usr/local/portage/dm-overlay
@@ -40,13 +40,11 @@ sudo tripwire --check
 # add bashrc and source
 
 curl -o ~/.bashrc https://raw.githubusercontent.com/jpx32/dotfiles-space/master/~/.bashrc
-source ~/.bashrc
-exit
-source ~/.config/fish/config.fish
+#source ~/.bashrc
+#exit
+#source ~/.config/fish/config.fish
 
 # add eselect repositories
-
-sudo emerge app-eselect/eselect-repository --autounmask{,-write,-continue}
 
 sudo eselect repository add torbrowser git https://gitweb.torproject.org/torbrowser-overlay.git
 sudo eselect repository enable torbrowser
