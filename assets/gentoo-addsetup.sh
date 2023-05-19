@@ -57,6 +57,9 @@ sudo eselect repository enable guru
 sudo eselect repository add gentoo-zh git https://github.com/gentoo-zh/gentoo-zh.git
 sudo eselect repository enable gentoo-zh
 
+sudo emerge --sync
+sudo eix-update
+
 # add nitch and neofetch
 
 wget https://raw.githubusercontent.com/unxsh/nitch/main/setup.sh && sh setup.sh
