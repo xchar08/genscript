@@ -49,8 +49,6 @@ case "$term" in
 "xterm") emerge x11-terms/xterm --autounmask{,-write,-continue} ;;
 esac
 
-#!/bin/bash
-
 read -p "Do you want to set up regular zram or encrypted zram? (r/e)" choice
 
 case "$choice" in 
