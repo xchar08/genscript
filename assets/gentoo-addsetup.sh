@@ -105,16 +105,30 @@ chmod +x ~/.scripts/dwm_bar.sh
 
 # add configurations
 
-#dots
-git clone https://github.com/jpx32/dotfiles-space.git ~/dotfiles
-cd ~/dotfiles
-git submodule update --init --recursive
-sudo rsync -av --exclude '.git' . ~/
-#grub
-sudo mkdir -p /boot/grub/themes/catppuccin-mocha-grub-theme
-sudo rsync -av /boot/grub/themes/catppuccin-mocha-grub-theme/ ~/dotfiles/boot/grub/themes/catppuccin-mocha-grub-theme/
-#etc
-sudo rsync -av /etc/ ~/dotfiles/etc/\
+# Clone the git repository into the home directory
+git clone https://github.com/jpx32/dotfiles-space/ ~/dotfiles-space
+
+# Copy files from dotfiles-space/~ to the ~ directory of the current user
+cp -r ~/dotfiles-space/~/* ~/
+
+# Copy the specified grub theme file to /boot/grub/themes/
+cp ~/dotfiles-space/boot/grub/themes/catppuccin-mocha-grub-theme /boot/grub/themes/
+
+# Copy files from dotfiles-space/etc/portage to /etc/portage (excluding make.conf)
+cp -r ~/dotfiles-space/etc/portage/env /etc/portage/
+cp -r ~/dotfiles-space/etc/portage/repos.conf /etc/portage/
+cp -r ~/dotfiles-space/etc/portage/savedconfig /etc/portage
+cp -r ~/dotfiles-space/etc/portage/sets /etc/portage/
+rm -rf /etc/portage/package.accept_keywords
+cp -r ~/dotfiles-space/etc/portage/package.accept_keywords /etc/portage/
+rm -rf /etc/portage/package.env
+cp -r ~/dotfiles-space/etc/portage/package.env /etc/portage/
+rm -rf /etc/portage/package.mask
+cp -r ~/dotfiles-space/etc/portage/package.mask /etc/portage/
+rm -rf /etc/portage/package.use
+cp -r ~/dotfiles-space/etc/portage/package.use /etc/portage/
+
+echo "Dotfiles copied successfully!"
 
 sudo emerge x11-wm/dwm --autounmask{,-write,-continue}
 
