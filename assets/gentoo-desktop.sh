@@ -68,17 +68,17 @@ case "$choice" in
     # Set up encrypted zram
     modprobe zram
     echo $((6144*1024*1024)) > /sys/block/zram0/disksize
-    echo 1 > /sys/block/zram0/reset
-    cryptsetup -c aes-xts-plain64 -s 256 luksFormat /dev/zram0
-    cryptsetup open /dev/zram0 zram0_crypt
+    losetup /dev/loop0 /dev/zram0
+    cryptsetup -c aes-xts-plain64 -s 256 luksFormat /dev/loop0
+    cryptsetup open /dev/loop0 zram0_crypt
     mkswap /dev/mapper/zram0_crypt
     swapon /dev/mapper/zram0_crypt -p 10
     cat << EOF > /etc/local.d/zram.start
 #!/bin/sh
 modprobe zram
 echo $((6144*1024*1024)) > /sys/block/zram0/disksize
-echo 1 > /sys/block/zram0/reset
-cryptsetup open /dev/zram0 zram0_crypt
+losetup /dev/loop0 /dev/zram0
+cryptsetup open /dev/loop0 zram0_crypt
 mkswap /dev/mapper/zram0_crypt
 swapon /dev/mapper/zram0_crypt -p 10
 EOF
@@ -86,6 +86,7 @@ EOF
 #!/bin/sh
 swapoff /dev/mapper/zram0_crypt
 cryptsetup close zram0_crypt
+losetup -d /dev/loop0
 echo 1 > /sys/block/zram0/reset
 echo 0 > /sys/block/zram0/disksize
 modprobe -r zram
@@ -98,4 +99,5 @@ EOF
     echo "Invalid choice. Please choose 'r' or 'e'."
     ;;
 esac
+
 
