@@ -44,18 +44,23 @@ curl -o ~/.bashrc https://raw.githubusercontent.com/jpx32/dotfiles-space/master/
 #exit
 #source ~/.config/fish/config.fish
 
-# add eselect repositories
-
-sudo eselect repository add torbrowser git https://gitweb.torproject.org/torbrowser-overlay.git
+# Add and enable eselect repositories
+sudo eselect repository add torbrowser git git://gitweb.torproject.org/torbrowser-overlay.git
 sudo eselect repository enable torbrowser
-sudo eselect repository add steam-overlay git https://github.com/anyc/steam-overlay.git
+
+sudo eselect repository add steam-overlay git git://github.com/anyc/steam-overlay.git
 sudo eselect repository enable steam-overlay
-sudo eselect repository add librewolf git https://github.com/gentoo-mozilla/librewolf-bin.git
+
+sudo eselect repository add librewolf git git://github.com/gentoo-mozilla/librewolf-bin.git
 sudo eselect repository enable librewolf
-sudo eselect repository add guru git https://github.com/gentoo/guru.git
+
+sudo eselect repository add guru git git://github.com/gentoo/guru.git
 sudo eselect repository enable guru
-sudo eselect repository add gentoo-zh git https://github.com/gentoo-zh/gentoo-zh.git
+
+sudo eselect repository add gentoo-zh git git://github.com/gentoo-zh/gentoo-zh.git
 sudo eselect repository enable gentoo-zh
+
+echo "Eselect repositories added and enabled successfully!"
 
 sudo emerge --sync
 sudo eix-update
