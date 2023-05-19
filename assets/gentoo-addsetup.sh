@@ -23,6 +23,7 @@ sudo mkdir -p /var/db/repos/dm-overlay/metadata && echo "masters = gentoo" | sud
 sudo mkdir -p /var/db/repos/dm-overlay/profiles/
 sudo sh -c "echo 'dm-overlay' > /var/db/repos/dm-overlay/profiles/repo_name"
 
+sudo eix-update
 sudo eselect repository enable dm-overlay
 sudo emerge --sync
 sudo eix-update
