@@ -22,12 +22,14 @@ sudo emerge app-shells/fish --autounmask{,-write,-continue}
 #sudo emerge --sync dm-overlay
 #sudo emerge -auDN world
 
-sudo eselect repository enable dm-overlay
-sudo emerge --sync
+
 sudo mkdir -p /var/db/repos/dm-overlay/metadata && echo "masters = gentoo" | sudo tee /var/db/repos/dm-overlay/metadata/layout.conf
 sudo eix-update
 sudo mkdir -p /var/db/repos/dm-overlay/profiles/
 sudo sh -c "echo 'dm-overlay' > /var/db/repos/dm-overlay/profiles/repo_name"
+
+sudo eselect repository enable dm-overlay
+sudo emerge --sync
 sudo eix-update
 sudo emerge -av app-forensics/tripwire
 sudo twsetup.sh
