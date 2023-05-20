@@ -1,9 +1,9 @@
 #!/bin/bash
 
 echo "Please enter your username:"
-read username
+read us
 
-chown "$username":"$username" /home/user/
+chown "$us":"$us" /home/user/
 
 #harden compilers
 sudo chown root:root /usr/bin/gcc
