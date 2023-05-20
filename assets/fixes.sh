@@ -21,4 +21,5 @@ cp .xinirc~
 chmod +x /home/"$USER"/.xinitrc
 chmod +x /home/"$USER"/.scripts/*
 
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 curl -sS https://starship.rs/install.sh | sh
