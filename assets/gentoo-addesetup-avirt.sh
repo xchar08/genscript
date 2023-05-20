@@ -177,3 +177,6 @@ sudo rc-service ntpd start && sleep 1 && sudo ntpq -p | awk 'NR>2 && $3=="-" {pr
 #restart system
 
 mkdir "/home/$USER/Desktop"
+sudo mkdir -p /usr/local/portage/dm-overlay/metadata
+sudo touch /usr/local/portage/dm-overlay/metadata/layout.conf
+echo "masters = gentoo" | sudo tee /usr/local/portage/dm-overlay/metadata/layout.conf
