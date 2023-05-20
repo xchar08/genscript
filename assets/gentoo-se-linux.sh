@@ -1,30 +1,46 @@
 #!/bin/bash
 
-echo "Do you want to enable SELinux? [y/N]"
-read answer
-if [[ "$answer" != "${answer#[Yy]}" ]]; then
-    sudo emerge selinux-base-policy selinux-policykit sec-policy/selinux-mozilla policycoreutils
-
-    # Check if the audit log file exists and has the correct permissions
-    audit_log="/var/log/audit/audit.log"
-    if [[ -f "$audit_log" && -r "$audit_log" ]]; then
-        sudo semodule -DB # Disable SELinux policies
-        sudo setenforce 0 # Set SELinux to permissive mode temporarily
-
-        # Generate SELinux policy modules from audit log
-        sudo ausearch -c 'firefox' --raw | sudo audit2allow -M ${USER}_firefox
-
-        # Load the generated policy module
-        sudo semodule -i ${USER}_firefox.pp
-
-        # Re-enable SELinux and restore the correct permissions
-        sudo setenforce 1
-        sudo semodule -B # Re-enable SELinux policies
-        sudo restorecon -R -v /home/$USER
-    else
-        echo "Audit log file not found or inaccessible."
-        echo "Please ensure that SELinux is properly configured and the audit log is available."
-    fi
+# Check if SELinux is enabled
+if [[ $(getenforce) == "Enforcing" ]]; then
+    echo "SELinux is enabled."
 else
-    echo "SELinux is not enabled."
+    echo "SELinux is not enabled. Enabling SELinux..."
+
+    # Install SELinux packages
+    sudo emerge selinux-base-policy selinux-policykit sec-policy/selinux-mozilla
+
+    # Enable SELinux in rc.conf
+    echo 'rc_security="YES"' | sudo tee -a /etc/rc.conf
+
+    # Reboot the system to enable SELinux
+    sudo reboot
 fi
+
+# Wait for the system to reboot and run the rest of the configuration
+sleep 60
+
+# Set SELinux to enforcing mode
+sudo setenforce 1
+
+# Check if the audit log directory exists and has the correct permissions
+audit_log_dir="/var/log/audit"
+if [[ -d "$audit_log_dir" && -r "$audit_log_dir" ]]; then
+    echo "Audit log directory exists and is accessible."
+else
+    echo "Audit log directory not found or inaccessible. Creating..."
+    sudo mkdir -p "$audit_log_dir"
+    sudo chmod 750 "$audit_log_dir"
+fi
+
+# Check if the audit log file exists and has the correct permissions
+audit_log="/var/log/audit/audit.log"
+if [[ -f "$audit_log" && -r "$audit_log" ]]; then
+    echo "Audit log file exists and is accessible."
+else
+    echo "Audit log file not found or inaccessible. Creating..."
+    sudo touch "$audit_log"
+    sudo chmod 640 "$audit_log"
+    sudo chown root:root "$audit_log"
+fi
+
+# Additional configuration steps can be added here
