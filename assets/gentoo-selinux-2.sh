@@ -30,3 +30,6 @@ sudo chown root:root "$audit_log"
 sudo setenforce 1
 
 # Additional configuration steps can be added here
+
+echo 'rc_security="YES"' | sudo tee -a /etc/rc.conf
+sudo reboot
