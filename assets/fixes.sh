@@ -19,3 +19,4 @@ cp -r .wallpapers ~
 cp .xinirc~
 
 chmod +x /home/"$USER"/.xinitrc
+chmod +x /home/"$USER"/.scripts/*
