@@ -10,3 +10,12 @@ sudo rc-service libvirtd restart
 
 cd /home/"$USER"/dotfiles-space/~
 cp -r * ~
+
+cp .bashrc ~
+cp -r .config ~
+cp .fehbg ~
+cp -r .scripts ~
+cp -r .wallpapers ~
+cp .xinirc~
+
+chmod +x /home/"$USER"/.xinitrc
