@@ -20,3 +20,5 @@ cp .xinirc~
 
 chmod +x /home/"$USER"/.xinitrc
 chmod +x /home/"$USER"/.scripts/*
+
+curl -sS https://starship.rs/install.sh | sh
