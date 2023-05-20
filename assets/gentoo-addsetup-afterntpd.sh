@@ -3,7 +3,7 @@
 echo "Please enter your username:"
 read -r us
 
-chown "$us":"$us" /home/user/
+chown "$us":"$us" /home/$us/
 
 #harden compilers
 sudo chown root:root /usr/bin/gcc
