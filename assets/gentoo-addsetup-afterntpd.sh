@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Please enter your username:"
-read us
+read -r us
 
 chown "$us":"$us" /home/user/
 
