@@ -2,8 +2,8 @@
 
 echo "Do you want to enable SELinux? [y/N]"
 read answer
-if [ "$answer" != "${answer#[Yy]}" ]; then
-    sudo emerge selinux-base-policy selinux-policykit selinux-policy-targeted sec-policy/selinux-mozilla
+if [[ "$answer" != "${answer#[Yy]}" ]]; then
+    sudo emerge selinux-base-policy selinux-policykit sec-policy/selinux-mozilla
     echo 'rc_security="YES"' | sudo tee -a /etc/rc.conf
     sudo setenforce 1
     sudo genpol -v -r /etc -o /etc/selinux/strict/policy.kern
