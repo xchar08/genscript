@@ -27,6 +27,8 @@ curl -sS https://starship.rs/install.sh | sh
 
 sudo emerge kitty
 sudo emerge feh
+sudo emerge picom
+sudo emerge xrandr
 
 sudo emerge alsa-utils
 sudo rc-update add alsasound boot
