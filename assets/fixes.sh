@@ -26,6 +26,10 @@ curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install 
 curl -sS https://starship.rs/install.sh | sh
 
 sudo emerge kitty
-sudo emerge feh\
+sudo emerge feh
+
+sudo emerge alsa-utils
+sudo rc-update add alsasound boot
+sudo rc-service alsasound start
 
 echo "fix grub entires"
