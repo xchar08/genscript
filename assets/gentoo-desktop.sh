@@ -43,7 +43,7 @@ emerge media-fonts/noto --autounmask{,-write,-continue}
 
 #terminal
 echo -n "Select terminal (alacritty, kitty, xterm): "
-read term
+read -r term
 case "$term" in
 "alacritty") emerge x11-terms/alacritty --autounmask{,-write,-continue} ;;
 "kitty") emerge x11-terms/kitty --autounmask{,-write,-continue} ;;
