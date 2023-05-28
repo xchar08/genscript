@@ -52,7 +52,7 @@ esac
 
 read -p "Do you want to set up regular zram or encrypted zram? (r/e)" choice
 
-case "$choice" in 
+case "$choice" in
   r|R )
     # Set up regular zram
     modprobe zram
@@ -63,27 +63,33 @@ case "$choice" in
     touch /etc/local.d/zram.stop
     chmod +x /etc/local.d/zram.start
     chmod +x /etc/local.d/zram.stop
-    rc-update add local default 
+    rc-update add local default
     ;;
   e|E )
     # Set up encrypted zram
     modprobe zram
     echo $((6144*1024*1024)) > /sys/block/zram0/disksize
     losetup /dev/loop0 /dev/zram0
-    cryptsetup -c aes-xts-plain64 -s 256 luksFormat /dev/loop0
-    cryptsetup open /dev/loop0 zram0_crypt
-    mkswap /dev/mapper/zram0_crypt
-    swapon /dev/mapper/zram0_crypt -p 10
-    cat << EOF > /etc/local.d/zram.start
+
+    if cryptsetup isLuks /dev/loop0; then
+      cryptsetup open /dev/loop0 zram0_crypt
+      mkswap /dev/mapper/zram0_crypt
+      swapon /dev/mapper/zram0_crypt -p 10
+
+      cat << EOF > /etc/local.d/zram.start
 #!/bin/sh
 modprobe zram
 echo $((6144*1024*1024)) > /sys/block/zram0/disksize
 losetup /dev/loop0 /dev/zram0
-cryptsetup open /dev/loop0 zram0_crypt
-mkswap /dev/mapper/zram0_crypt
-swapon /dev/mapper/zram0_crypt -p 10
+
+if cryptsetup isLuks /dev/loop0; then
+  cryptsetup open /dev/loop0 zram0_crypt
+  mkswap /dev/mapper/zram0_crypt
+  swapon /dev/mapper/zram0_crypt -p 10
+fi
 EOF
-    cat << EOF > /etc/local.d/zram.stop
+
+      cat << EOF > /etc/local.d/zram.stop
 #!/bin/sh
 swapoff /dev/mapper/zram0_crypt
 cryptsetup close zram0_crypt
@@ -92,13 +98,31 @@ echo 1 > /sys/block/zram0/reset
 echo 0 > /sys/block/zram0/disksize
 modprobe -r zram
 EOF
-    chmod +x /etc/local.d/zram.start
-    chmod +x /etc/local.d/zram.stop
-    rc-update add local default 
-    ;;
-  * )
-    echo "Invalid choice. Please choose 'r' or 'e'."
-    ;;
-esac
+
+      chmod +x /etc/local.d/zram.start
+      chmod +x /etc/local.d/zram.stop
+      rc-update add local default
+    else
+      echo "Creating LUKS container on /dev/loop0..."
+      cryptsetup -c aes-xts-plain64 -s 256 luksFormat /dev/loop0
+      cryptsetup open /dev/loop0 zram0_crypt
+      mkswap /dev/mapper/zram0_crypt
+      swapon /dev/mapper/zram0_crypt -p 10
+
+      cat << EOF > /etc/local.d/zram.start
+#!/bin/sh
+modprobe zram
+echo $((6144*1024*1024)) > /sys/block/zram0/disksize
+losetup /dev/loop0 /dev/zram0
+
+if cryptsetup isLuks /dev/loop0; then
+  cryptsetup open /dev/loop0 zram0_crypt
+  mkswap /dev/mapper/zram0_crypt
+  swapon /dev/mapper/zram0_crypt -p 10
+fi
+EOF
+
+      cat << EOF > /etc/local.d/zram.stop
+
 
 
