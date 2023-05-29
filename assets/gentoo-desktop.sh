@@ -50,6 +50,8 @@ case "$term" in
 "xterm") emerge x11-terms/xterm --autounmask{,-write,-continue} ;;
 esac
 
+#!/bin/bash
+
 read -p "Do you want to set up regular zram or encrypted zram? (r/e)" choice
 
 case "$choice" in
@@ -81,7 +83,6 @@ case "$choice" in
 modprobe zram
 echo $((6144*1024*1024)) > /sys/block/zram0/disksize
 losetup /dev/loop0 /dev/zram0
-
 if cryptsetup isLuks /dev/loop0; then
   cryptsetup open /dev/loop0 zram0_crypt
   mkswap /dev/mapper/zram0_crypt
@@ -114,7 +115,6 @@ EOF
 modprobe zram
 echo $((6144*1024*1024)) > /sys/block/zram0/disksize
 losetup /dev/loop0 /dev/zram0
-
 if cryptsetup isLuks /dev/loop0; then
   cryptsetup open /dev/loop0 zram0_crypt
   mkswap /dev/mapper/zram0_crypt
@@ -123,6 +123,25 @@ fi
 EOF
 
       cat << EOF > /etc/local.d/zram.stop
+#!/bin/sh
+swapoff /dev/mapper/zram0_crypt
+cryptsetup close zram0_crypt
+losetup -d /dev/loop0
+echo 1 > /sys/block/zram0/reset
+echo 0 > /sys/block/zram0/disksize
+modprobe -r zram
+EOF
+
+      chmod +x /etc/local.d/zram.start
+      chmod +x /etc/local.d/zram.stop
+      rc-update add local default
+    fi
+    ;;
+  * )
+    echo "Invalid choice. Exiting..."
+    ;;
+esac
+
 
 
 
