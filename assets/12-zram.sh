@@ -1,55 +1,5 @@
 #!/bin/bash
 
-#create user and configure sudo
-
-emerge app-admin/sudo --autounmask{,-write,-continue}
-
-echo "Please enter the username you would like to create in Gentoo:"
-read -r us
-usermod -aG wheel,video,audio,user,portage "$us"
-echo "$us" | sudo tee /etc/hostname
-echo "%wheel ALL=(ALL:ALL) ALL" | sudo tee -a /etc/sudoers
-echo -e "Defaults rootpw\nDefaults !tty_tickets" | sudo tee -a /etc/sudoers
-
-
-if lspci | grep -i VGA | grep -c Intel > 0
-then
-emerge sys-firmware/intel-microcode --autounmask{,-write,-continue}
-emerge x11-drivers/xf86-video-intel --autounmask{,-write,-continue}
-fi
-
-if lspci -nnkv | sed -n '/Network/,/^$/p' | grep -c iwlwifi > 0
-then
-modprobe iwlwifi
-fi
-
-if lspci | grep -c nvidia > 0
-then
-emerge x11-drivers/nvidia-drivers --autounmask{,-write,-continue}
-emerge sys-firmware/nvidia-firmware --autounmask{,-write,-continue}
-modprobe nvidia
-fi
-
-#utility
-emerge x11-misc/wmname --autounmask{,-write,-continue}
-emerge sys-fs/ntfs3g --autounmask{,-write,-continue}
-emerge sys-apps/usbutils --autounmask{,-write,-continue}
-emerge app-portage/eix --autounmask{,-write,-continue}
-
-#fonts
-emerge media-fonts/source-pro --autounmask{,-write,-continue}
-emerge media-fonts/noto-emoji --autounmask{,-write,-continue}
-emerge media-fonts/noto --autounmask{,-write,-continue}
-
-#terminal
-echo -n "Select terminal (alacritty, kitty, xterm): "
-read -r term
-case "$term" in
-"alacritty") emerge x11-terms/alacritty --autounmask{,-write,-continue} ;;
-"kitty") emerge x11-terms/kitty --autounmask{,-write,-continue} ;;
-"xterm") emerge x11-terms/xterm --autounmask{,-write,-continue} ;;
-esac
-
 #setting up ram
 
 # Function to check if a device is busy
