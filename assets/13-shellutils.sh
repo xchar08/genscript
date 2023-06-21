@@ -1,9 +1,15 @@
 #!/bin/bash
 
+echo "Please enter your username:"
+read -r us
+
+su "$us"
+
 sudo emerge app-shells/fish --autounmask{,-write,-continue}
 
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 curl -sS https://starship.rs/install.sh | sh
+eval "$(starship init zsh)"
 
 # add nitch and neofetch
 

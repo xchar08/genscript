@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo su 
+
 #setting up ram
 
 # Function to check if a device is busy

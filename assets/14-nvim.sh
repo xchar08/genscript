@@ -4,6 +4,10 @@
 
 sudo emerge media-gfx/fontforge --autounmask{,-write,-continue}
 
+sudo eselect repository add guru git git://github.com/gentoo/guru.git
+sudo eselect repository enable guru
+
+sudo emerge --sync 
 
 #nvchad
 

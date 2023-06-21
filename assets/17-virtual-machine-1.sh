@@ -17,8 +17,8 @@ sudo emerge --ask virt-manager qemu xf86-video-qxl app-emulation/spice spice-gtk
 sudo groupadd kvm
 sudo groupadd libvirt
 
-sudo gpasswd -a "$USER" kvm
-sudo gpasswd -a "$USER" libvirt
+sudo usermod -aG kvm "$USER"
+sudo usermod -aG libvirt "$USER"
 
 sudo /etc/init.d/libvirtd start
 sudo rc-update add libvirtd default
