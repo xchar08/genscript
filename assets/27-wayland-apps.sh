@@ -107,3 +107,7 @@ sudo emerge app-editors/vscodium --autounmask{,-write,-continue}
 # user input
 
 sudo emerge x11-misc/ydotool --autounmask{,-write,-continue}
+
+# email client 
+
+sudo emerge mail-client/mutt-wizard --autounmask{,-write,-continue}
