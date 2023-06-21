@@ -12,4 +12,4 @@ case "$term" in
 "alacritty") emerge x11-terms/alacritty --autounmask{,-write,-continue} ;;
 "kitty") emerge x11-terms/kitty --autounmask{,-write,-continue} ;;
 "xterm") emerge x11-terms/xterm --autounmask{,-write,-continue} ;;
-esac
+esac    
