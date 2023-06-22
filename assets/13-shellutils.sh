@@ -15,5 +15,3 @@ eval "$(starship init zsh)"
 
 wget https://raw.githubusercontent.com/unxsh/nitch/main/setup.sh && sh setup.sh
 sudo emerge app-misc/neofetch --autounmask{,-write,-continue}
-
-curl -o ~/.bashrc https://raw.githubusercontent.com/jpx32/dotfiles-space/master/~/.bashrc

@@ -3,6 +3,56 @@
 #fonts
 
 sudo emerge media-gfx/fontforge --autounmask{,-write,-continue}
+sudo emerge media-fonts/alee-fonts --autounmask{,-write,-continue}
+sudo emerge media-fonts/cantarell --autounmask{.-write,-continue}
+sudo emerge media-fonts/corefonts --autounmask{.-write,-continue}
+sudo emerge media-fonts/courier-prime --autounmask{.-write,-continue}
+sudo emerge media-fonts/arphicfonts --autounmask{.-write,-continue}
+sudo emerge media-fonts/dejavu --autounmask{.-write,-continue}
+sudo emerge media-fonts/droid --autounmask{.-write,-continue}
+sudo emerge media-fonts/encodings --autounmask{.-write,-continue}
+sudo emerge media-fonts/farsi-fonts --autounmask{.-write,-continue}
+sudo emerge media-fonts/fira-code --autounmask{.-write,-continue}
+sudo emerge media-fonts/fira-mono --autounmask{.-write,-continue}
+sudo emerge media-fonts/fira-sans --autounmask{.-write,-continue}
+sudo emerge media-fonts/font-alias --autounmask{.-write,-continue}
+sudo emerge media-fonts/font-bh-ttf --autounmask{.-write,-continue}
+sudo emerge media-fonts/font-cursor-misc --autounmask{.-write,-continue}
+sudo emerge media-fonts/font-misc-misc --autounmask{.-write,-continue}
+sudo emerge media-fonts/font-util --autounmask{.-write,-continue}
+sudo emerge media-fonts/fonts-meta --autounmask{.-write,-continue}
+sudo emerge media-fonts/kochi-substitute --autounmask{.-write,-continue}
+sudo emerge media-fonts/liberation-fonts --autounmask{.-write,-continue}
+sudo emerge media-fonts/lohit-bengali --autounmask{.-write,-continue}
+sudo emerge media-fonts/lohit-tamil --autounmask{.-write,-continue}
+sudo emerge media-fonts/mikachan-font-ttf --autounmask{.-write,-continue}
+sudo emerge media-fonts/noto --autounmask{.-write,-continue}
+sudo emerge media-fonts/noto-emoji --autounmask{.-write,-continue}
+sudo emerge media-fonts/oldstandard --autounmask{.-write,-continue}
+sudo emerge media-fonts/open-sans --autounmask{.-write,-continue}
+sudo emerge media-fonts/powerline-symbols --autounmask{.-write,-continue}
+sudo emerge media-fonts/quivira --autounmask{.-write,-continue}
+sudo emerge media-fonts/roboto --autounmask{.-write,-continue}
+sudo emerge media-fonts/signika --autounmask{.-write,-continue}
+sudo emerge media-fonts/source-code-pro --autounmask{.-write,-continue}
+sudo emerge media-fonts/terminus-font --autounmask{.-write,-continue}
+sudo emerge media-fonts/tex-gyre --autounmask{.-write,-continue}
+sudo emerge media-fonts/thaifonts-scalable --autounmask{.-write,-continue}
+sudo emerge media-fonts/ttf-bitstream-vera --autounmask{.-write,-continue}
+sudo emerge media-fonts/ubuntu-font-family --autounmask{.-write,-continue}
+sudo emerge media-fonts/urw-fonts --autounmask{.-write,-continue}
+
+mkdir -p ~/.local/share/fonts
+
+cd ~/.local/share/fonts
+
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip #firacode nerd font
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FantasqueSansMono.zip #fantasque nerd font
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/NerdFontsSymbolsOnly.zip #nerd font symbols
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SourceCodePro.zip #source code pro nerd font
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Ubuntu.zip #ubuntu nerd font
+
+sudo fc-cache -f -v
 
 sudo eselect repository add guru git git://github.com/gentoo/guru.git
 sudo eselect repository enable guru
@@ -12,21 +62,8 @@ sudo emerge --sync
 #nvchad
 
 sudo emerge dev-vcs/lazygit --autounmask{,-write,-continue}
-git clone https://github.com/NvChad/NvChad ~/.config/nvim_temp --depth 1 && rsync -av ~/.config/nvim_temp/ ~/.config/nvim/ --exclude .git && rm -rf ~/.config/nvim_temp
 sudo emerge -av nodejs
 sudo npm install -g yarn
 sudo npm install -g npm@9.6.4 --force
 sudo npm fund
-cd ~/.config/nvim
-yarn install --frozen-lockfile
-echo -e '\n-- Load packer.nvim\nvim.cmd [[packadd packer.nvim]]\n\n-- Auto-compile and auto-install plugins when you save your plugins.lua file\nvim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]\nvim.cmd [[autocmd BufWritePost plugins.lua PackerInstall]]\nvim.cmd [[autocmd BufWritePost plugins.lua PackerSync]]' | tee -a ~/.config/nvim/init.lua
-rm -rf ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-git clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-mkdir -p ~/.local/share/nvim/nvchad/base46
-touch ~/.local/share/nvim/nvchad/base46/defaults
-echo "vim.o.packpath = vim.o.packpath .. ',~/.local/share/nvim/site/pack'" | tee -a ~/.config/nvim/init.lua
-
-nvim
-git clone https://github.com/nvim-treesitter/nvim-treesitter ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter
-nvim
-sudo emerge dev-util/bash-language-server --autounmask{,-write,-continue}
+git clone https://github.com/CordlessCoder/SomewhatOtiose ~/.config/nvim/
