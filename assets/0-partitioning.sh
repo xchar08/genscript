@@ -35,7 +35,7 @@ tmp_end=$(echo "${tmp_start} + ${tmp_size}" | bc)
 
 # Create partitions based on calculated sizes
 parted -a optimal "/dev/$primpart" mklabel gpt
-parted -a optimal "/dev/$primpart" mkpart ESP fat32 "${efi_start}MiB" "${efi_end}MiB"
+parted -a optimal "/dev/$primpart" mkpart ESP fat32 "${efi_start}%" "${efi_end}MiB"
 parted -a optimal "/dev/$primpart" mkpart boot ext4 "${boot_start}MiB" "${boot_end}MiB"
 parted -a optimal "/dev/$primpart" mkpart swap linux-swap "${swap_start}MiB" "${swap_end}MiB"
 parted -a optimal "/dev/$primpart" mkpart rootfs btrfs "${root_start}MiB" "${root_end}MiB"
