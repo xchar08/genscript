@@ -35,12 +35,12 @@ tmp_end=$(echo "${tmp_start} + ${tmp_size}" | bc)
 
 # Create partitions based on calculated sizes
 parted -a optimal "/dev/$primpart" mklabel gpt
-parted -a optimal "/dev/$primpart" mkpart ESP fat32 "${efi_start}" "${efi_end}"
-parted -a optimal "/dev/$primpart" mkpart boot ext4 "${boot_start}" "${boot_end}"
-parted -a optimal "/dev/$primpart" mkpart swap linux-swap "${swap_start}" "${swap_end}"
-parted -a optimal "/dev/$primpart" mkpart rootfs btrfs "${root_start}" "${root_end}"
-parted -a optimal "/dev/$primpart" mkpart var btrfs "${var_start}" "${var_end}"
-parted -a optimal "/dev/$primpart" mkpart tmp btrfs "${tmp_start}" "${tmp_end}"
+parted -a optimal "/dev/$primpart" mkpart ESP fat32 "${efi_start}MiB" "${efi_end}MiB"
+parted -a optimal "/dev/$primpart" mkpart boot ext4 "${boot_start}MiB" "${boot_end}MiB"
+parted -a optimal "/dev/$primpart" mkpart swap linux-swap "${swap_start}MiB" "${swap_end}MiB"
+parted -a optimal "/dev/$primpart" mkpart rootfs btrfs "${root_start}MiB" "${root_end}MiB"
+parted -a optimal "/dev/$primpart" mkpart var btrfs "${var_start}MiB" "${var_end}MiB"
+parted -a optimal "/dev/$primpart" mkpart tmp btrfs "${tmp_start}MiB" "${tmp_end}MiB"
 parted -a optimal "/dev/$primpart" set 2 boot on
 
 # Format partitions
