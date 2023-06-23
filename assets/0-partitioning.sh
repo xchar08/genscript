@@ -41,7 +41,7 @@ parted -a optimal "/dev/$primpart" mkpart swap linux-swap "${swap_start}MiB" "${
 parted -a optimal "/dev/$primpart" mkpart rootfs btrfs "${root_start}MiB" "${root_end}MiB"
 parted -a optimal "/dev/$primpart" mkpart var btrfs "${var_start}MiB" "${var_end}MiB"
 parted -a optimal "/dev/$primpart" mkpart tmp btrfs "${tmp_start}MiB" "${tmp_end}MiB"
-parted -a optimal "/dev/$primpart" set 2 boot on
+parted -a optimal "/dev/$primpart" set 1 boot on
 
 # Format partitions
 mkfs.fat -F32 "/dev/$efipart"
