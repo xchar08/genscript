@@ -7,7 +7,7 @@ read -p 'Enter boot partition (e.g., nvme0n1p2): ' bootpart
 read -p 'Enter root partition (e.g., nvme0n1p3): ' rootpart
 
 # Prompt user for total size in GB
-read -p 'Enter total size for partitions (e.g., 100G): ' totalsize_gb
+read -p 'Enter total size for partitions (e.g., 100GB): ' totalsize_gb
 
 # Convert total size to MiB
 totalsize_mib=$(echo "${totalsize_gb%GB} * 1024" | bc)
