@@ -15,7 +15,7 @@ boot_size="1GiB"
 swap_size="8.75GiB"
 var_size=$(echo "0.13 * $totalsize" | bc)   # 13% of the total size
 tmp_size=$(echo "0.06 * $totalsize" | bc)   # 6% of the total size
-root_size=$(echo "$totalsize - ${efi_size%GiB} - ${boot_size%GiB} - ${swap_size%GiB} - $var_size - $tmp_size" | bc)
+root_size=$(echo "$totalsize - ${efi_size%MiB} - ${boot_size%GiB} - ${swap_size%GiB} - $var_size - $tmp_size" | bc)
 
 # Create partitions based on calculated sizes
 parted -a optimal "/dev/$primpart" mklabel gpt
