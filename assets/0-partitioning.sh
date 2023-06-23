@@ -10,24 +10,24 @@ read -p 'Enter root partition (e.g., nvme0n1p3): ' rootpart
 read -p 'Enter total size for partitions (e.g., 100G): ' totalsize_gb
 
 # Convert total size to MiB
-totalsize_mib=$(echo "$totalsize_gb * 1024" | bc)
+totalsize_mib=$(echo "${totalsize_gb%GB} * 1024" | bc)
 
 # Calculate partition sizes
 efi_size="512MiB"
-boot_size="1GiB"
-swap_size="8.75GiB"
+boot_size="1024MiB"
+swap_size="8344.65MiB"
 var_size=$(echo "0.13 * $totalsize_mib" | bc)   # 13% of the total size
 tmp_size=$(echo "0.06 * $totalsize_mib" | bc)   # 6% of the total size
 
 # Calculate partition start and end points
 efi_start=0
-efi_end="${efi_size}"
+efi_end="${efi_size%MiB}"
 boot_start="${efi_end}"
-boot_end=$(echo "${boot_start} + ${boot_size}" | bc)
+boot_end=$(echo "${boot_start} + ${boot_size%MiB}" | bc)
 swap_start="${boot_end}"
-swap_end=$(echo "${swap_start} + ${swap_size}" | bc)
+swap_end=$(echo "${swap_start} + ${swap_size%MiB}" | bc)
 root_start="${swap_end}"
-root_end=$(echo "${root_start} + ${totalsize_mib}" | bc)
+root_end=$(echo "${totalsize_mib} - ${var_size} - ${tmp_size}" | bc)
 var_start="${root_end}"
 var_end=$(echo "${var_start} + ${var_size}" | bc)
 tmp_start="${var_end}"
