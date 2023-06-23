@@ -10,7 +10,7 @@ read -p 'Enter root partition (e.g., nvme0n1p3): ' rootpart
 read -p 'Enter total size for partitions (e.g., 100G): ' totalsize_gb
 
 # Convert total size to MiB
-totalsize_mib=$(echo "$totalsize_gb * 953.674" | bc)
+totalsize_mib=$(echo "$totalsize_gb * 1024" | bc)
 
 # Calculate partition sizes
 efi_size="512MiB"
@@ -27,21 +27,20 @@ boot_end=$(echo "${boot_start} + ${boot_size}" | bc)
 swap_start="${boot_end}"
 swap_end=$(echo "${swap_start} + ${swap_size}" | bc)
 root_start="${swap_end}"
-root_end=$(echo "${root_start} + ${root_size}" | bc)
+root_end=$(echo "${root_start} + ${totalsize_mib}" | bc)
 var_start="${root_end}"
 var_end=$(echo "${var_start} + ${var_size}" | bc)
 tmp_start="${var_end}"
-#tmp_end=$(echo "${tmp_start} + ${tmp_size}" | bc)
-tmp_end="${totalsize_mib}"
+tmp_end=$(echo "${tmp_start} + ${tmp_size}" | bc)
 
 # Create partitions based on calculated sizes
 parted -a optimal "/dev/$primpart" mklabel gpt
-parted -a optimal "/dev/$primpart" mkpart ESP fat32 "${efi_start}MiB" "${efi_end}MiB"
-parted -a optimal "/dev/$primpart" mkpart boot ext4 "${boot_start}MiB" "${boot_end}MiB"
-parted -a optimal "/dev/$primpart" mkpart swap linux-swap "${swap_start}MiB" "${swap_end}MiB"
-parted -a optimal "/dev/$primpart" mkpart rootfs btrfs "${root_start}MiB" "${root_end}MiB"
-parted -a optimal "/dev/$primpart" mkpart var btrfs "${var_start}MiB" "${var_end}MiB"
-parted -a optimal "/dev/$primpart" mkpart tmp btrfs "${tmp_start}MiB" "${tmp_end}MiB"
+parted -a optimal "/dev/$primpart" mkpart ESP fat32 "${efi_start}" "${efi_end}"
+parted -a optimal "/dev/$primpart" mkpart boot ext4 "${boot_start}" "${boot_end}"
+parted -a optimal "/dev/$primpart" mkpart swap linux-swap "${swap_start}" "${swap_end}"
+parted -a optimal "/dev/$primpart" mkpart rootfs btrfs "${root_start}" "${root_end}"
+parted -a optimal "/dev/$primpart" mkpart var btrfs "${var_start}" "${var_end}"
+parted -a optimal "/dev/$primpart" mkpart tmp btrfs "${tmp_start}" "${tmp_end}"
 parted -a optimal "/dev/$primpart" set 2 boot on
 
 # Format partitions
