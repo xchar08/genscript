@@ -15,21 +15,21 @@ echo -n 'Enter total size for partitions (e.g., 100G): '
 read -r totalsize
 
 # Calculate partition sizes
-efi_size="512MiB"
-boot_size="1GiB"
-swap_size="8.75GiB"
+efi_size="512"
+boot_size="1"
+swap_size="8.75"
 var_size=$(echo "0.13 * $totalsize" | bc)   # 13% of the total size
 tmp_size=$(echo "0.06 * $totalsize" | bc)   # 6% of the total size
 root_size=$(echo "$totalsize - $efi_size - $boot_size - $swap_size - $var_size - $tmp_size" | bc)
 
 # Create partitions based on calculated sizes
 parted -a optimal "/dev/$primpart" -- mklabel gpt
-parted -a optimal "/dev/$primpart" -- mkpart ESP fat32 0% "$efi_size"
-parted -a optimal "/dev/$primpart" -- mkpart boot ext4 "$efi_size" "$boot_size"
-parted -a optimal "/dev/$primpart" -- mkpart swap linux-swap "$boot_size" +"$swap_size"
-parted -a optimal "/dev/$primpart" -- mkpart rootfs btrfs +"$swap_size" +"$root_size"
-parted -a optimal "/dev/$primpart" -- mkpart var btrfs +"$root_size" +"$var_size"
-parted -a optimal "/dev/$primpart" -- mkpart tmp btrfs +"$var_size" +"$tmp_size"
+parted -a optimal "/dev/$primpart" -- mkpart ESP fat32 0% "${efi_size}GiB"
+parted -a optimal "/dev/$primpart" -- mkpart boot ext4 "${efi_size}GiB" "${boot_size}GiB"
+parted -a optimal "/dev/$primpart" -- mkpart swap linux-swap "${boot_size}GiB" +"${swap_size}GiB"
+parted -a optimal "/dev/$primpart" -- mkpart rootfs btrfs +"${swap_size}GiB" +"${root_size}GiB"
+parted -a optimal "/dev/$primpart" -- mkpart var btrfs +"${root_size}GiB" +"${var_size}GiB"
+parted -a optimal "/dev/$primpart" -- mkpart tmp btrfs +"${var_size}GiB" +"${tmp_size}GiB"
 parted -a optimal "/dev/$primpart" -- set 1 boot on
 
 # Format partitions
