@@ -12,25 +12,11 @@ read -p 'Enter total size for partitions (e.g., 100GB): ' totalsize_gb
 # Convert total size to MiB
 totalsize_mib=$(echo "${totalsize_gb%GB} * 953.674" | bc)
 
-# Calculate partition sizes
-#var_size=$(echo "0.13 * $totalsize_mib" | bc)   # 13% of the total size
-#tmp_size=$(echo "0.06 * $totalsize_mib" | bc)   # 6% of the total size
-
-# Calculate partition start and end points
-#efi_end="${efi_size%MiB}"
-#swap_start="${efi_end}"
-#swap_end=$(echo "${swap_start} + ${swap_size%MiB}" | bc)
-#root_start="${swap_end}"
-#var_start="${root_end}"
-#var_end=$(echo "${var_start} + ${var_size}" | bc)
-#tmp_start="${var_end}"
-#tmp_end=$(echo "${tmp_start} + ${tmp_size}" | bc)
-
 # Create partitions based on calculated sizes
 parted -a optimal "/dev/$primpart" -- mklabel gpt
 parted -a optimal "/dev/$primpart" -- mkpart ESP fat32 0% 512MiB
 parted -a optimal "/dev/$primpart" -- mkpart swap linux-swap 512MiB 8.75GiB
-parted -a optimal "/dev/$primpart" -- mkpart rootfs btrfs 8.75MiB "${totalsize_mib}MiB"
+parted -a optimal "/dev/$primpart" -- mkpart rootfs btrfs 8.75GiB "${totalsize_mib}MiB"
 parted -a optimal "/dev/$primpart" -- set 1 boot on
 
 # Format partitions
