@@ -8,7 +8,6 @@ read -p 'Enter root partition (e.g., nvme0n1p3): ' rootpart
 
 # Prompt user for total size in GB
 read -p 'Enter total size for partitions (e.g., 100GB): ' totalsize_gb
-read -p 'Enter partition atart: ' efi_start
 
 # Convert total size to MiB
 totalsize_mib=$(echo "${totalsize_gb%GB} * 1024" | bc)
