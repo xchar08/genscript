@@ -1,5 +1,13 @@
 #!/bin/bash
 
+sudo emerge app-eselect/eselect-repository --autounmask{,-write,-continue}
+
+sudo eselect repository add guru git git://github.com/gentoo/guru.git
+
+sudo eselect repository enable guru
+
+sudo emerge --sync
+
 #fonts
 
 sudo emerge media-gfx/fontforge --autounmask{,-write,-continue}
@@ -53,11 +61,6 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SourceCode
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Ubuntu.zip #ubuntu nerd font
 
 sudo fc-cache -f -v
-
-sudo eselect repository add guru git git://github.com/gentoo/guru.git
-sudo eselect repository enable guru
-
-sudo emerge --sync 
 
 #nvchad
 
