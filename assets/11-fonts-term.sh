@@ -6,7 +6,7 @@ sudo emerge media-fonts/noto-emoji --autounmask{,-write,-continue}
 sudo emerge media-fonts/noto --autounmask{,-write,-continue}
 
 #terminal
-echo -n "Select terminal (alacritty, kitty, xterm): "
+echo -n "Select terminal (alacritty, kitty, xterm, st): "
 read -r term
 case "$term" in
 "alacritty") sudo emerge x11-terms/alacritty --autounmask{,-write,-continue} ;;
