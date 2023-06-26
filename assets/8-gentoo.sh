@@ -14,4 +14,8 @@ dispatch-conf
 emerge -auDN world
 emerge --depclean
 
+emerge net-wireless/networkmanager
+rc-service networkmanager start
+rc-update add networkmanager default
+
 echo "Reboot your computer..."
