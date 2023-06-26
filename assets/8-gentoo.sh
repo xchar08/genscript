@@ -14,7 +14,7 @@ dispatch-conf
 emerge -auDN world
 emerge --depclean
 
-emerge net-wireless/networkmanager
+emerge net-misc/networkmanager
 rc-service networkmanager start
 rc-update add networkmanager default
 
