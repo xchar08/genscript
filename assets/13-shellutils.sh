@@ -7,9 +7,9 @@ su "$us"
 
 sudo emerge app-shells/fish --autounmask{,-write,-continue}
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-curl -sS https://starship.rs/install.sh | sh
-eval "$(starship init zsh)"
+sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo curl -sS https://starship.rs/install.sh | sh
+sudo eval "$(starship init zsh)"
 
 # add nitch and neofetch
 
