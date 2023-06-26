@@ -18,3 +18,5 @@ GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub
 sed -i '0,/^GRUB_DISABLE_LINUX_PARTUUID=false/{s/^GRUB_DISABLE_LINUX_PARTUUID=false/#&/}' /etc/default/grub
 
 grub-mkconfig -o /boot/grub/grub.cfg
+
+touch /grub/locale/C.gmo
