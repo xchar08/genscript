@@ -2,7 +2,13 @@
 
 sudo emerge app-eselect/eselect-repository --autounmask{,-write,-continue}
 
-#sudo eselect repository add guru git git://github.com/gentoo/guru.git
+sudo eselect repository add guru git git://github.com/gentoo/guru.git
+
+sudo mkdir -p /var/db/repos/guru/profiles/
+
+sudo touch /var/db/repos/guru/profiles/repo_name
+
+sudo echo guru > /var/db/repos/guru/profiles/repo_name
 
 sudo eselect repository enable guru
 
