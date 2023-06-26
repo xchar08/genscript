@@ -15,7 +15,7 @@ emerge -auDN world
 emerge --depclean
 
 emerge net-misc/networkmanager
-rc-service networkmanager start
-rc-update add networkmanager default
+rc-service NetworkManager start
+rc-update add NetworkManager default
 
 echo "Reboot your computer..."
