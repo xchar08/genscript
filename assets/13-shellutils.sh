@@ -5,6 +5,8 @@ read -r us
 
 su "$us"
 
+cd
+
 sudo emerge app-shells/fish --autounmask{,-write,-continue}
 
 sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
