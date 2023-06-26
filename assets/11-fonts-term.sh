@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #fonts
-sudo emerge media-fonts/source-pro --autounmask{,-write,-continue}
+sudo emerge media-fonts/source-code-pro --autounmask{,-write,-continue}
 sudo emerge media-fonts/noto-emoji --autounmask{,-write,-continue}
 sudo emerge media-fonts/noto --autounmask{,-write,-continue}
 
