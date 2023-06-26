@@ -12,4 +12,5 @@ usermod -aG wheel,video,audio,user,portage,plugdev "$us"
 echo "$us" | sudo tee /etc/hostname
 echo "%wheel ALL=(ALL:ALL) ALL" | sudo tee -a /etc/sudoers
 echo -e "Defaults rootpw\nDefaults !tty_tickets" | sudo tee -a /etc/sudoers
+passwd "$us"
 mkdir -p /root/Desktop
