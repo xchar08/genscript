@@ -4,6 +4,7 @@ sudo emerge app-eselect/eselect-repository --autounmask{,-write,-continue}
 
 sudo eselect repository add torbrowser git git://gitweb.torproject.org/torbrowser-overlay.git
 sudo emerge --sync
+sudo eix-update
 
 # tripwire 
 sudo emerge -av app-forensics/tripwire
@@ -12,9 +13,6 @@ sudo mktwpol.sh -u
 sudo twadmin --create-polfile /etc/tripwire/twpol.txt
 sudo tripwire --init
 sudo tripwire --check
-
-sudo emerge --sync
-sudo eix-update
 
 # tor 
 sudo emerge net-vpn/tor --autounmask{,-write,-continue}
