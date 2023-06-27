@@ -3,7 +3,7 @@
 sudo emerge app-eselect/eselect-repository --autounmask{,-write,-continue}
 
 sudo eselect repository add torbrowser git git://gitweb.torproject.org/torbrowser-overlay.git
-sudo eselect repository enable torbrowser
+sudo emerge --sync
 
 # tripwire 
 sudo emerge -av app-forensics/tripwire
