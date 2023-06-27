@@ -4,6 +4,7 @@ echo "Enter your username: "
 read -r us
 
 sudo eselect repository add torbrowser git https://gitweb.torproject.org/torbrowser/torbrowser-overlay.git
+echo -e "[torbrowser]\nlocation = /var/db/repos/torbrowser\nsync-type = git\nsync-uri = https://gitweb.torproject.org/torbrowser/torbrowser-overlay.git\nauto-sync = yes\nmasters = gentoo" | sudo tee -a /etc/portage/repos.conf/overlay.conf
 sudo emerge --sync
 sudo eix-update
 
