@@ -5,12 +5,7 @@ read -r us
 
 sudo eselect repository add torbrowser git https://gitweb.torproject.org/torbrowser/torbrowser-overlay.git
 sudo emerge --sync
-echo -e "[torbrowser]
-location = /var/db/repos/torbrowser
-sync-type = git
-sync-uri = https://gitweb.torproject.org/torbrowser/torbrowser-overlay.git
-auto-sync = yes
-masters = gentoo" | sudo tee -a /etc/portage/repos.conf/overlay.conf
+echo "auto-sync = yes" | sudo tee -a /etc/eselect-repo.conf && echo "masters = gentoo" | sudo tee -a /etc/eselect-repo.conf
 sudo eix-update
 
 # tripwire 
