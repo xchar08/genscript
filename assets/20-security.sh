@@ -10,7 +10,14 @@ echo "masters = gentoo" | sudo tee -a /etc/portage/repos.conf/eselect-repo.conf
 
 sudo mkdir -p /var/db/repos/torbrowser/metadata/
 sudo touch /var/db/repos/torbrowser/metadata/layout.conf
-echo "masters = gentoo" | sudo tee -a /var/db/repos/torbrowser/metadata/layout.conf
+
+echo -e "[torbrowser]
+location = /var/db/repos/torbrowser
+sync-type = git
+sync-uri = https://gitweb.torproject.org/torbrowser/torbrowser-overlay.git
+auto-sync = yes
+masters = gentoo" | sudo tee -a /var/db/repos/torbrowser/metadata/layout.conf
+
 sudo eix-update
 
 # tripwire 
