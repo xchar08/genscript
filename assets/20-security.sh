@@ -19,8 +19,8 @@ auto-sync = yes
 masters = gentoo" | sudo tee -a /var/db/repos/torbrowser/metadata/layout.conf
 
 sudo mkdir -p /var/db/repos/torbrowser/profiles
-sudo touch /var/db/repos/torbrowser/profiles
-echo "torbrowser" | sudo tee -a /var/db/repos/torbrowser/profiles
+sudo touch /var/db/repos/torbrowser/profiles/repo_name
+cat /var/db/repos/torbrowser/metadata/layout.conf | sudo tee /var/db/repos/torbrowser/profiles/repo_name
 
 sudo eix-update
 
