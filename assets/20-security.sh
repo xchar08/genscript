@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo emerge app-eselect/eselect-repository --autounmask{,-write,-continue}
+echo "Enter your username: "
+read -r us
 
 sudo eselect repository add torbrowser git git://gitweb.torproject.org/torbrowser-overlay.git
 sudo emerge --sync
@@ -43,7 +44,7 @@ sudo emerge net-misc/sshrc --autounmask{,-write,-continue}
 
 #ssh hardening 
 sudo sh -c 'echo "PermitRootLogin no" >> /etc/ssh/sshd_config'
-sudo sh -c 'echo "AllowUsers $(whoami)" >> /etc/ssh/sshd_config'
+sudo sh -c 'echo "AllowUsers $(us)" >> /etc/ssh/sshd_config'
 
 #mac changer
 sudo emerge net-analyzer/macchanger --autounmask{,-write,-continue}
