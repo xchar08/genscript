@@ -3,7 +3,7 @@
 echo "Enter your username: "
 read -r us
 
-sudo eselect repository add torbrowser git git://gitweb.torproject.org/torbrowser-overlay.git
+sudo eselect repository add torbrowser git https://gitweb.torproject.org/torbrowser/torbrowser-overlay.git
 sudo emerge --sync
 sudo eix-update
 
