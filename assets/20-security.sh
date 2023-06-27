@@ -18,6 +18,10 @@ sync-uri = https://gitweb.torproject.org/torbrowser/torbrowser-overlay.git
 auto-sync = yes
 masters = gentoo" | sudo tee -a /var/db/repos/torbrowser/metadata/layout.conf
 
+sudo mkdir -p /var/db/repos/torbrowser/profiles
+sudo touch /var/db/repos/torbrowser/profiles
+echo "torbrowser" | sudo tee -a /var/db/repos/torbrowser/profiles
+
 sudo eix-update
 
 # tripwire 
