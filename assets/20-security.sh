@@ -4,13 +4,13 @@ echo "Enter your username: "
 read -r us
 
 sudo eselect repository add torbrowser git https://gitweb.torproject.org/torbrowser/torbrowser-overlay.git
+sudo emerge --sync
 echo -e "[torbrowser]
 location = /var/db/repos/torbrowser
 sync-type = git
 sync-uri = https://gitweb.torproject.org/torbrowser/torbrowser-overlay.git
 auto-sync = yes
 masters = gentoo" | sudo tee -a /etc/portage/repos.conf/overlay.conf
-sudo emerge --sync
 sudo eix-update
 
 # tripwire 
