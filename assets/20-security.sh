@@ -7,6 +7,10 @@ sudo eselect repository add torbrowser git https://gitweb.torproject.org/torbrow
 sudo emerge --sync
 echo "auto-sync = yes" | sudo tee -a /etc/portage/repos.conf/eselect-repo.conf 
 echo "masters = gentoo" | sudo tee -a /etc/portage/repos.conf/eselect-repo.conf
+
+sudo mkdir -p /var/db/repos/torbrowser/metadata/
+sudo touch /var/db/repos/torbrowser/metadata/layout.conf
+echo "masters = gentoo" | sudo tee -a /var/db/repos/torbrowser/metadata/layout.conf
 sudo eix-update
 
 # tripwire 
