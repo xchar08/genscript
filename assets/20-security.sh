@@ -1,7 +1,6 @@
 #!/bin/bash
 
-echo "Enter your username: "
-read -r us
+read -p "Please enter your username: " us
 
 sudo eselect repository add torbrowser git https://gitweb.torproject.org/torbrowser/torbrowser-overlay.git
 sudo emerge --sync
