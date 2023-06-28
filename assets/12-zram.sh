@@ -82,64 +82,28 @@ EOF
     rc-update add local default
     ;;
   e|E )
-    # Set up encrypted zram
-    modprobe zram
+   
+    # Generate a random passphrase for encryption
+    passphrase=$(sudo openssl rand -hex 32)
     
-    # Unmount and detach zram0 and loop0 if they are in use
-    unmount_device "/dev/zram0"
-    unmount_device "/dev/loop0"
+    # Update /etc/crypttab
+    echo "swap      <device>    /dev/urandom   swap,cipher=aes-xts-plain64,size=8192" | sudo tee -a /etc/crypttab > /dev/null
     
-    echo $((6144*1024*1024)) > /sys/block/zram0/disksize
-
-    losetup /dev/loop0 /dev/zram0
+    # Replace <device> with the actual device name or path for your swap partition
     
-    # Check if /dev/loop0 is already in use
-    if is_device_busy "/dev/loop0"; then
-      echo "Error: /dev/loop0 is already in use. Exiting..."
-      losetup -d /dev/loop0
-      exit 1
-    fi
-
-    if cryptsetup isLuks /dev/loop0; then
-      cryptsetup open /dev/loop0 zram0_crypt
-      mkswap /dev/mapper/zram0_crypt
-      swapon /dev/mapper/zram0_crypt -p 10
-    else
-      echo "Creating LUKS container on /dev/loop0..."
-      cryptsetup -c aes-xts-plain64 -s 256 luksFormat /dev/loop0
-      cryptsetup open /dev/loop0 zram0_crypt
-      mkswap /dev/mapper/zram0_crypt
-      swapon /dev/mapper/zram0_crypt -p 10
-    fi
-
-    cat << EOF > /etc/local.d/zram.start
-#!/bin/sh
-modprobe zram
-echo $((6144*1024*1024)) > /sys/block/zram0/disksize
-losetup /dev/loop0 /dev/zram0
-if cryptsetup isLuks /dev/loop0; then
-  cryptsetup open /dev/loop0 zram0_crypt
-  mkswap /dev/mapper/zram0_crypt
-  swapon /dev/mapper/zram0_crypt -p 10
-fi
-EOF
-
-    cat << EOF > /etc/local.d/zram.stop
-#!/bin/sh
-swapoff /dev/mapper/zram0_crypt
-cryptsetup close zram0_crypt
-losetup -d /dev/loop0
-echo 1 > /sys/block/zram0/reset
-echo 0 > /sys/block/zram0/disksize
-modprobe -r zram
-EOF
-
-    chmod +x /etc/local.d/zram.start
-    chmod +x /etc/local.d/zram.stop
-
-    rc-update add local default
-    ;;
-  * )
-    echo "Invalid choice. Exiting..."
-    ;;
+    # Update /etc/fstab
+    echo "/dev/mapper/swap  none   swap    defaults   0       0" | sudo tee -a /etc/fstab > /dev/null
+    
+    # Enable encrypted swap on boot
+    sudo rc-update add swap boot
+    
+    # Set the passphrase for the swap partition
+    echo "swap_crypt UUID=$(sudo blkid -s UUID -o value <device>) none luks,keyscript=decrypt_keyctl" | sudo tee /etc/conf.d/dmcrypt_swap_passphrase > /dev/null
+    echo "passphrase=$passphrase" | sudo tee -a /etc/conf.d/dmcrypt_swap_passphrase > /dev/null
+    
+    # Set the correct permissions for the passphrase file
+    sudo chmod 0600 /etc/conf.d/dmcrypt_swap_passphrase
+    
+    # Update the initramfs
+    sudo dracut --force --regenerate-all
 esac
