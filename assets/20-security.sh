@@ -24,7 +24,7 @@ cat /var/db/repos/torbrowser/metadata/layout.conf | sudo tee /var/db/repos/torbr
 sudo eix-update
 
 # tripwire 
-sudo emerge -av app-admin/tripwire
+sudo emerge app-admin/tripwire --autounmask{,-write,-continue}
 sudo twsetup.sh
 sudo mktwpol.sh -u
 sudo twadmin --create-polfile /etc/tripwire/twpol.txt
