@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo echo 'POLICY_TYPES="strict targeted"' >> /etc/portage/make.conf
+echo 'POLICY_TYPES="strict targeted"' | sudo tee -a /etc/portage/make.conf
 
 # Check if SELinux is enabled
 if [[ $(getenforce) == "Enforcing" ]]; then
