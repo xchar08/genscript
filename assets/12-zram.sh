@@ -82,3 +82,4 @@ EOF'
     sudo dracut --force --regenerate-all
     ;;
 esac
+echo "Reboot your computer..."
