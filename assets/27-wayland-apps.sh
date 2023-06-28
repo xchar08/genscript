@@ -39,7 +39,7 @@ sudo emerge gui-apps/waybar --autounmask{,-write,-continue}
 
 # wallpaper manager
 
-sudo emerge gui-apps/azote --autounmask{,-write,-continue}
+sudo emerge gui-apps/wbg --autounmask{,-write,-continue}
 
 # display configuration
 
