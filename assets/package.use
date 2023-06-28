@@ -5,3 +5,15 @@ media-libs/libsndfile minimal
 # obs
 media-video/ffmpeg x264
 dev-qt/qtgui egl eglfs linuxfb vnc X
+# other
+media-libs/libglvnd X
+media-libs/mesa X
+media-libs/libepoxy X
+media-libs/libpcre2 pcre32
+x11-libs/libxkbcommon X
+dev-libs/xmlsec nss
+media-libs/harfbuzz icu
+x11-libs/cairo X
+x11-libs/gtk+ X
+app-text/xmlto text
+nedua
