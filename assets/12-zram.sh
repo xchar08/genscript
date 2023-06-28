@@ -106,4 +106,5 @@ EOF
     
     # Update the initramfs
     sudo dracut --force --regenerate-all
+    ;;
 esac
