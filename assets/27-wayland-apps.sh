@@ -10,6 +10,8 @@ sudo emerge media-video/obs-studio --autounmask{,-write,-continue}
 
 sudo emerge gui-apps/waypipe --autounmask{,-write,-continue}
 
+sudo dispatch-conf
+
 # screenshare
 
 sudo emerge sys-apps/xdg-desktop-portal --autounmask{,-write,-continue}
