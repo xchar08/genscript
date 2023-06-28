@@ -1,9 +1,10 @@
 #!/bin/bash
 
 #installation
-sudo emerge --ask media-sound/pulseaudio --autounmask{,-write,-continue}
-sudo emerge --ask media-libs/libpulse --autounmask{,-write,-continue}
-sudo emerge --ask media-video/wireplumber --autounmask{,-write,-continue}
+sudo emerge sys-firmware/sof-firmware --autounmask{,-write,-continue}
+sudo emerge media-sound/pulseaudio --autounmask{,-write,-continue}
+sudo emerge media-libs/libpulse --autounmask{,-write,-continue}
+sudo emerge media-video/wireplumber --autounmask{,-write,-continue}
 
 #configuration
 sudo cp /usr/share/pipewire/pipewire.conf /etc/pipewire/pipewire.conf
