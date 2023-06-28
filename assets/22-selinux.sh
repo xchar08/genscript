@@ -15,6 +15,6 @@ else
     echo 'rc_security="YES"' | sudo tee -a /etc/rc.conf
 
     # Reboot the system to enable SELinux
-    sudo reboot
+    echo "Reboot your system..."
 fi
 
