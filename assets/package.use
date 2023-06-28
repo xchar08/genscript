@@ -1,4 +1,7 @@
-
+# sound server
 media-sound/pulseaudio -daemon
 media-video/wireplumber elogind
-media-libs/libsndfile minimal 
+media-libs/libsndfile minimal
+# obs
+media-video/ffmpeg x264
+dev-qt/qtgui egl eglfs linuxfb vnc X
