@@ -1,4 +1,4 @@
 
 media-sound/pulseaudio -daemon
 media-video/wireplumber elogind
-media-libs/libsndfile minimal
+media-libs/libsndfile minimal 
