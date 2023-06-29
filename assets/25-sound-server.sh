@@ -9,6 +9,7 @@ sudo emerge media-video/wireplumber --autounmask{,-write,-continue}
 #configuration
 sudo mkdir -p /etc/pipewire
 sudo cp /usr/share/pipewire/pipewire.conf /etc/pipewire/pipewire.conf
+mkdir -p ~/.config/pipewire
 cp /usr/share/pipewire/pipewire.conf ~/.config/pipewire/pipewire.conf
 
 #groupadd
