@@ -58,3 +58,7 @@ media-libs/gst-plugins-base theora
 media-libs/cogl gles2
 media-libs/clutter-gtk X
 media-libs/clutter-gst X
+
+# virt-manager
+app-emulation/virt-manager gtk policykit
+app-emulation/qemu spice
