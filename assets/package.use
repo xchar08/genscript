@@ -8,6 +8,7 @@ dev-qt/qtgui egl eglfs linuxfb vnc X
 
 # obs
 media-libs/libglvnd X
+media-video/ffmpeg x264
 
 # multiple packages
 media-libs/mesa X
@@ -35,9 +36,16 @@ media-libs/imlib2 X
 media-libs/mlt qt5 xml sdl frei0r ffmpeg
 media-video/ffmpeg libass sdl X
 media-libs/libsdl gles2
+media-libs/opencv contrib contribdnn
+kde-frameworks/kwindowsystem X
+dev-qt/qtcore icu
 
-# obs
-media-video/ffmpeg x264
+# kdenlive, nyxt
+media-libs/libsdl2 gles2 X opengl
 
-# nyxt
-media-libs/libsdl2 gles2
+# mpv 
+media-video/mpv X
+media-libs/vulkan-loader X
+
+# wbg
+gui-apps/wbg png jpeg webp
