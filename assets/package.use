@@ -19,7 +19,7 @@ media-libs/libepoxy X
 dev-libs/xmlsec nss
 media-libs/harfbuzz icu
 x11-libs/cairo X
-x11-libs/gtk+ X
+x11-libs/gtk+ X aqua
 app-text/xmlto text
 
 # waybar
