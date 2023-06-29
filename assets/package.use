@@ -38,3 +38,6 @@ media-libs/libsdl gles2
 
 # obs
 media-video/ffmpeg x264
+
+# nyxt
+media-libs/libsdl2 gles2
