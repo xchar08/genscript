@@ -11,8 +11,8 @@ media-libs/libepoxy X
 x11-libs/libxkbcommon X
 dev-libs/xmlsec nss
 media-libs/harfbuzz icu
-x11-libs/cairo -X
-x11-libs/gtk+ -X
+x11-libs/cairo X
+x11-libs/gtk+ X
 app-text/xmlto text
 # pass
 media-gfx/qrencode png
