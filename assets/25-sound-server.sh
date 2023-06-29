@@ -12,8 +12,11 @@ sudo cp /usr/share/pipewire/pipewire.conf /etc/pipewire/pipewire.conf
 mkdir -p ~/.config/pipewire
 cp /usr/share/pipewire/pipewire.conf ~/.config/pipewire/pipewire.conf
 
+echo "Enter your username:"
+read -r us
+
 #groupadd
-sudo usermod -aG audio "$USER"
+sudo usermod -aG audio "$us"
 
 #profile
 echo '
