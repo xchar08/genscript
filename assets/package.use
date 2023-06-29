@@ -2,18 +2,21 @@
 media-sound/pulseaudio -daemon
 media-video/wireplumber elogind
 media-libs/libsndfile minimal
-# other
-media-video/ffmpeg x264
+# multiple packages
 dev-qt/qtgui egl eglfs linuxfb vnc X
 media-libs/libglvnd X
 media-libs/mesa X
 media-libs/libepoxy X
 x11-libs/libxkbcommon X
+# libreoffice
 dev-libs/xmlsec nss
 media-libs/harfbuzz icu
 x11-libs/cairo X
 x11-libs/gtk+ X
 app-text/xmlto text
+# waybar
+dev-cpp/cairomm X
+dev-cpp/gtkmm X
 # pass
 media-gfx/qrencode png
 # sxiv
@@ -22,3 +25,5 @@ media-libs/imlib2 X
 media-libs/mlt qt5 xml sdl frei0r ffmpeg
 media-video/ffmpeg libass sdl X
 media-libs/libsdl gles2
+# obs
+media-video/ffmpeg x264
