@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Please enter the username you would like to create in Gentoo:"
+read -r us
+
 #Virt-manager
 
 if ! grep -q "QEMU_SOFTMMU_TARGETS=\"arm x86_64 sparc\"" /etc/portage/make.conf; then
@@ -17,8 +20,8 @@ sudo emerge --ask virt-manager qemu xf86-video-qxl app-emulation/spice spice-gtk
 sudo groupadd kvm
 sudo groupadd libvirt
 
-sudo usermod -aG kvm "$USER"
-sudo usermod -aG libvirt "$USER"
+sudo usermod -aG kvm "$us"
+sudo usermod -aG libvirt "$us"
 
 sudo /etc/init.d/libvirtd start
 sudo rc-update add libvirtd default
