@@ -1,3 +1,4 @@
+
 # sound server
 media-sound/pulseaudio -daemon
 media-video/wireplumber elogind
@@ -49,3 +50,11 @@ media-libs/vulkan-loader X
 
 # wbg
 gui-apps/wbg png jpeg webp
+
+# cheese
+media-libs/clutter egl X
+x11-libs/gdk-pixbuf jpeg
+media-libs/gst-plugins-base theora
+media-libs/cogl gles2
+media-libs/clutter-gtk X
+media-libs/clutter-gst X
