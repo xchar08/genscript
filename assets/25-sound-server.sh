@@ -7,8 +7,9 @@ sudo emerge media-libs/libpulse --autounmask{,-write,-continue}
 sudo emerge media-video/wireplumber --autounmask{,-write,-continue}
 
 #configuration
+sudo mkdir -p /etc/pipewire
 sudo cp /usr/share/pipewire/pipewire.conf /etc/pipewire/pipewire.conf
-cp /usr/share/pipewire/pipewire.conf /etc/pipewire/pipewire.conf
+cp /usr/share/pipewire/pipewire.conf ~/.config/pipewire/pipewire.conf
 
 #groupadd
 sudo usermod -aG audio "$USER"
