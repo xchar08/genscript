@@ -9,15 +9,15 @@ sudo virsh -c qemu:///system net-autostart default
 sudo virsh -c qemu:///system net-start default
 mkdir -p /home/"$us"/Whonix
 cd /home/"$us"/Whonix
-wget $whonixlink
+wget $whonixlink /home/"$us"/Whonix/"$whonixlink"
 
-tar -xvf Whonix*.libvirt.xz
+tar -xvf /home/"$us"/Whonix/Whonix*.libvirt.xz
 
-touch WHONIX_BINARY_LICENSE_AGREEMENT_accepted
+touch /home/"$us"/Whonix/WHONIX_BINARY_LICENSE_AGREEMENT_accepted
 
 # Add the virtual networks
-sudo virsh -c qemu:///system net-define Whonix_external*.xml
-sudo virsh -c qemu:///system net-define Whonix_internal*.xml
+sudo virsh -c qemu:///system net-define /home/"$us"/Whonix/Whonix_external*.xml
+sudo virsh -c qemu:///system net-define /home/"$us"/Whonix/Whonix_internal*.xml
 
 # Activate the virtual networks. 
 sudo virsh -c qemu:///system net-autostart Whonix-External
@@ -26,8 +26,8 @@ sudo virsh -c qemu:///system net-autostart Whonix-Internal
 sudo virsh -c qemu:///system net-start Whonix-Internal
 
 # Import the Whonix ™ Gateway and Workstation images.
-sudo virsh -c qemu:///system define Whonix-Gateway*.xml
-sudo virsh -c qemu:///system define Whonix-Workstation*.xml
+sudo virsh -c qemu:///system define /home/"$us"/Whonix/Whonix-Gateway*.xml
+sudo virsh -c qemu:///system define /home/"$us"/Whonix/Whonix-Workstation*.xml
 
 # Moving Whonix ™ Image Files
 sudo mv Whonix-Gateway*.qcow2 /var/lib/libvirt/images/Whonix-Gateway.qcow2
