@@ -43,6 +43,7 @@ dev-qt/qtcore icu
 
 # kdenlive, nyxt
 media-libs/libsdl2 gles2 X opengl
+media-libs/libsdl X opengl
 
 # mpv 
 media-video/mpv X
@@ -67,3 +68,18 @@ net-libs/gnutls pkcs11 tools
 
 # dwl
 gui-wm/dwl savedconfig
+
+# wine
+dev-libs/gmp abi_x86_32
+app-crypt/p11-kit abi_x86_32
+net-dns/libidn2 abi_x86_32
+x11-libs/libxkbcommon abi_x86_32
+x11-libs/libXcursor abi_x86_32
+dev-libs/libxml2 abi_x86_32
+virtual/libintl abi_x86_32
+virtual/libiconv abi_x86_32
+virtual/opengl abi_x86_32
+virtual/glu abi_x86_32
+media-libs/glu abi_x86_32
+sys-apps/dbus abi_x86_32
+net-print/cups -abi_x86_32
