@@ -1,16 +1,13 @@
 #!/bin/bash
 
-rsh -c qemu:///system net-start default
-
+read -p "Enter your username: " us
 read -p "Enter the URL: " whonixlink
 
 echo "The URL you entered is: $whonixlink"
 
-mkdir#!/bin/bash
-
 sudo virsh -c qemu:///system net-autostart default
-sudo vi ~/Whonix
-cd ~/Whonix
+sudo virsh -c qemu:///system net-start default
+cd /home/"$us"/Whonix
 wget $whonixlink
 
 tar -xvf Whonix*.libvirt.xz
@@ -43,6 +40,8 @@ sudo sed -i '0,/"",/s//"/run/media/private/user/Whonix-Gateway.qcow2"/' /run/med
 
 rm Whonix*
 rm -r WHONIX*
+cd /home/"$us"
+rm -rf Whonix
  
 echo 'Follow these steps for a bit more info: https://yewtu.be/watch?v=-dWEcBQZBXw'
 echo 'See the wiki for more info: https://www.whonix.org/wiki/Post_Install_Advice'
