@@ -30,12 +30,13 @@ sudo virsh -c qemu:///system define /home/"$us"/Whonix/Whonix-Gateway*.xml
 sudo virsh -c qemu:///system define /home/"$us"/Whonix/Whonix-Workstation*.xml
 
 # Moving Whonix ™ Image Files
+sudo mkdir -p /var/lib/libvirt/images/
 sudo mv Whonix-Gateway*.qcow2 /var/lib/libvirt/images/Whonix-Gateway.qcow2
 sudo mv Whonix-Workstation*.qcow2 /var/lib/libvirt/images/Whonix-Workstation.qcow2
 
 # Encrypt container
-sudo chmod og+xr /run/media/private/user/$container_name
-sudo sed -i '0,/"",/s//"/run/media/private/user/Whonix-Gateway.qcow2"/' /run/media/private/user/$container_name
+#sudo chmod og+xr /run/media/private/user/$container_name
+#sudo sed -i '0,/"",/s//"/run/media/private/user/Whonix-Gateway.qcow2"/' /run/media/private/user/$container_name
 
 # Cleanup
 
