@@ -83,3 +83,8 @@ virtual/glu abi_x86_32
 media-libs/glu abi_x86_32
 sys-apps/dbus abi_x86_32
 net-print/cups -abi_x86_32
+sys-apps/util_linux abi_x86_32
+dev-libs/libtasn1 abi_x86_32
+dev-libs/libunistring abi_x86_32
+dev-libs/nettle abi_x86_32
+x11-libs/libXi abi_x86_32
