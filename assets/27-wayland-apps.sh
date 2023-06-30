@@ -101,6 +101,7 @@ sudo emerge net-misc/yt-dlp --autounmask{,-write,-continue}
 # video editor
 
 sudo emerge kde-apps/kdenlive --autounmask{,-write,-continue}
+sudo emerge media-libs/libsdl --autounmask{,-write,-continue}
 
 # coding
 
