@@ -13,9 +13,9 @@ if ! grep -q "QEMU_USER_TARGETS=\"x86_64\"" /etc/portage/make.conf; then
     echo 'QEMU_USER_TARGETS="x86_64"' | sudo tee -a /etc/portage/make.conf > /dev/null
 fi
 
-sudo emerge --ask virt-manager qemu xf86-video-qxl app-emulation/spice spice-gtk spice-protocol net-firewall/iptables
+sudo emerge virt-manager qemu xf86-video-qxl app-emulation/spice spice-gtk spice-protocol net-firewall/iptables --autounmask{,-write,-continue}
 sudo dispatch-conf
-sudo emerge --ask virt-manager qemu xf86-video-qxl app-emulation/spice spice-gtk spice-protocol net-firewall/iptables
+sudo emerge virt-manager qemu xf86-video-qxl app-emulation/spice spice-gtk spice-protocol net-firewall/iptables --autounmask{,-write,-continue}
 
 sudo groupadd kvm
 sudo groupadd libvirt
