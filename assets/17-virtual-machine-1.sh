@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Please enter the username you would like to create in Gentoo:"
+echo "Please enter your username: "
 read -r us
 
 #Virt-manager
