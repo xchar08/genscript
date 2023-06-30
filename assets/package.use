@@ -64,3 +64,6 @@ app-emulation/virt-manager gtk policykit
 app-emulation/qemu spice
 net-dns/dnsmasq script
 net-libs/gnutls pkcs11 tools
+
+# dwl
+gui-wm/dwl savedconfig
