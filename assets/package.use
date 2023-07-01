@@ -13,7 +13,9 @@ media-video/ffmpeg x264
 
 # multiple packages
 media-libs/mesa X
-x11-libs/libxkbcommon X
+
+# multiple packages, 
+x11-libs/libxkbcommon X abi_x86_32
 
 # libreoffice
 media-libs/libepoxy X
@@ -83,7 +85,6 @@ gui-wm/dwl savedconfig
 dev-libs/gmp abi_x86_32
 app-crypt/p11-kit abi_x86_32
 net-dns/libidn2 abi_x86_32
-x11-libs/libxkbcommon abi_x86_32
 x11-libs/libXcursor abi_x86_32
 dev-libs/libxml2 abi_x86_32
 virtual/libintl abi_x86_32
