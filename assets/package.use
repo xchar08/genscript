@@ -91,3 +91,7 @@ x11-libs/libXi abi_x86_32
 media-gfx/graphite2 abi_x86_32
 dev-libs/icu abi_x86_32
 sys-apps/util-linux abi_x86_32
+dev-libs/lzo abi_x86_32
+x11-libs/pixman abi_x86_32
+x11-libs/libpciaccess abi_x86_32
+dev-libs/fribidi abi_x86_32
