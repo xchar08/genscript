@@ -73,12 +73,14 @@ media-libs/clutter-gst X
 media-libs/gst-plugins-base theora abi_x86_32
 
 # virt-manager
-app-emulation/virt-manager gtk policykit
+app-emulation/virt-manager gui policykit
 app-emulation/qemu spice
+net-misc/spice-gtk usbredir
 net-dns/dnsmasq script
 
 # virt-manager, wine 
 net-libs/gnutls pkcs11 tools abi_x86_32
+sys-apps/dbus X abi_x86_32
 
 # dwl
 gui-wm/dwl savedconfig
@@ -94,7 +96,6 @@ virtual/libiconv abi_x86_32
 virtual/opengl abi_x86_32
 virtual/glu abi_x86_32
 media-libs/glu abi_x86_32
-sys-apps/dbus abi_x86_32
 net-print/cups abi_x86_32
 sys-apps/util_linux abi_x86_32
 dev-libs/libtasn1 abi_x86_32
