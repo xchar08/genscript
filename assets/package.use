@@ -140,3 +140,14 @@ media-libs/graphene abi_x86_32
 media-libs/libpng abi_x86_32
 media-libs/libjpeg-turbo abi_x86_32
 dev-libs/expat abi_x86_32
+x11-libs/libdrm abi_x86_32
+x11-libs/libX11 abi_x86_32
+x11-libs/libxshmfence abi_x86_32
+x11-libs/libXext abi_x86_32
+x11-libs/libXxf86vm abi_x86_32
+x11-libs/libxcb abi_x86_32
+x11-libs/libXfixes abi_x86_32
+app-arch/zstd abi_x86_32
+sys-devel/llvm abi_x86_32
+x11-libs/libXrandr abi_x86_32
+x11-libs/libXrender abi_x86_32
