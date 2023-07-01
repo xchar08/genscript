@@ -10,14 +10,14 @@ media-libs/libsndfile minimal abi_x86_32
 dev-qt/qtgui egl eglfs linuxfb vnc X
 
 # obs
-media-libs/libglvnd X
 media-video/ffmpeg x264
 
-# multiple packages
-media-libs/mesa X
+# obs, wine
+media-libs/libglvnd X abi_x86_32
 
 # multiple packages, wine
 x11-libs/libxkbcommon X abi_x86_32
+media-libs/mesa X abi_x86_32
 
 # libreoffice
 media-libs/libepoxy X
@@ -133,3 +133,10 @@ sys-libs/libselinux abi_x86_32
 dev-libs/libpcre2 abi_x86_32
 sys-libs/libsepol abi_x86_32
 media-libs/libogg abi_x86_32
+x11-libs/pango abi_x86_32
+media-libs/libtheora abi_x86_32
+media-libs/libvorbis abi_x86_32
+media-libs/graphene abi_x86_32
+media-libs/libpng abi_x86_32
+media-libs/libjpeg-turbo abi_x86_32
+dev-libs/expat abi_x86_32
