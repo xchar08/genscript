@@ -23,7 +23,7 @@ app-text/xmlto text
 
 # libreoffice, wine
 media-libs/harfbuzz icu abi_x86_32
-x11-libs/cairo X abi_x86_32
+x11-libs/cairo X abi_x86_32 
 
 # waybar
 dev-cpp/cairomm X
@@ -44,12 +44,16 @@ kde-frameworks/kwindowsystem X
 dev-qt/qtcore icu
 
 # kdenlive, nyxt
-media-libs/libsdl2 gles2 X opengl
 media-libs/libsdl X opengl
+
+# kdenlive, nyxt, wine
+media-libs/libsdl2 gles2 X opengl abi_x86_32
 
 # mpv 
 media-video/mpv X
-media-libs/vulkan-loader X
+
+# mpv, wine
+media-libs/vulkan-loader X abi_x86_32
 
 # wbg
 gui-apps/wbg png jpeg webp
@@ -57,16 +61,20 @@ gui-apps/wbg png jpeg webp
 # cheese
 media-libs/clutter egl X
 x11-libs/gdk-pixbuf jpeg
-media-libs/gst-plugins-base theora
 media-libs/cogl gles2
 media-libs/clutter-gtk X
 media-libs/clutter-gst X
+
+# cheese, wire
+media-libs/gst-plugins-base theora abi_x86_32
 
 # virt-manager
 app-emulation/virt-manager gtk policykit
 app-emulation/qemu spice
 net-dns/dnsmasq script
-net-libs/gnutls pkcs11 tools
+
+# virt-manager, wine 
+net-libs/gnutls pkcs11 tools abi_x86_32
 
 # dwl
 gui-wm/dwl savedconfig
@@ -84,7 +92,7 @@ virtual/opengl abi_x86_32
 virtual/glu abi_x86_32
 media-libs/glu abi_x86_32
 sys-apps/dbus abi_x86_32
-net-print/cups -abi_x86_32
+net-print/cups abi_x86_32
 sys-apps/util_linux abi_x86_32
 dev-libs/libtasn1 abi_x86_32
 dev-libs/libunistring abi_x86_32
@@ -100,3 +108,11 @@ dev-libs/fribidi abi_x86_32
 x11-libs/libXau abi_x86_32
 x11-libs/libXdmcp abi_x86_32
 sys-libs/ncurses abi_x86_32
+media-libs/fontconfig abi_x86_32
+media-libs/freetype abi_x86_32
+media-libs/alsa-lib abi_x86_32
+dev-libs/glib abi_x86_32
+media-libs/gstreamer abi_x86_32
+media-libs/libpulse abi_x86_32
+media-libs/libunwind abi_x86_32
+dev-libs/wayland abi_x86_32
