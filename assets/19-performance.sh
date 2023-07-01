@@ -70,6 +70,8 @@ fi
 sudo emerge app-laptop/laptop-mode-tools --autounmask{,-write,-continue}
 sudo touch /etc/laptop-mode/conf.d/cpufreq.conf
 echo "CONTROL_CPU_FREQUENCY=0" | sudo tee /etc/laptop-mode/conf.d/cpufreq.conf
+sudo emerge app-laptop/laptop-mode-tools --autounmask{,-write,-continue}
+sudo dispatch-conf
 sudo rc-service laptop_mode start 
 sudo rc-update add laptop_mode default 
 
