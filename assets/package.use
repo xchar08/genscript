@@ -18,10 +18,12 @@ x11-libs/libxkbcommon X
 # libreoffice
 media-libs/libepoxy X
 dev-libs/xmlsec nss
-media-libs/harfbuzz icu
-x11-libs/cairo X
 x11-libs/gtk+ X aqua
 app-text/xmlto text
+
+# libreoffice, wine
+media-libs/harfbuzz icu abi_x86_32
+x11-libs/cairo X abi_x86_32
 
 # waybar
 dev-cpp/cairomm X
@@ -95,3 +97,6 @@ dev-libs/lzo abi_x86_32
 x11-libs/pixman abi_x86_32
 x11-libs/libpciaccess abi_x86_32
 dev-libs/fribidi abi_x86_32
+x11-libs/libXau abi_x86_32
+x11-libs/libXdmcp abi_x86_32
+sys-libs/ncurses abi_x86_32
