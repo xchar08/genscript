@@ -2,7 +2,9 @@
 # sound server
 media-sound/pulseaudio -daemon
 media-video/wireplumber elogind
-media-libs/libsndfile minimal
+
+# sound server, wine
+media-libs/libsndfile minimal abi_x86_32
 
 # obs, qbittorrent
 dev-qt/qtgui egl eglfs linuxfb vnc X
@@ -14,7 +16,7 @@ media-video/ffmpeg x264
 # multiple packages
 media-libs/mesa X
 
-# multiple packages, 
+# multiple packages, wine
 x11-libs/libxkbcommon X abi_x86_32
 
 # libreoffice
@@ -117,3 +119,16 @@ media-libs/gstreamer abi_x86_32
 media-libs/libpulse abi_x86_32
 media-libs/libunwind abi_x86_32
 dev-libs/wayland abi_x86_32
+media-plugins/gst-plugins-meta abi_x86_32
+media-libs/gst-plugins-good abi_x86_32
+media-plugins/gst-plugins-pulse abi_x86_32
+app-arch/bzip2 abi_x86_32
+sys-libs/zlib abi_x86_32
+dev-libs/libffi abi_x86_32
+net-libs/libasyncns abi_x86_32
+sys-libs/libcap abi_x86_32
+sys-libs/pam abi_x86_32
+sys-process/audit abi_x86_32
+sys-libs/libselinux abi_x86_32
+dev-libs/libpcre2 abi_x86_32
+sys-libs/libsepol abi_x86_32
