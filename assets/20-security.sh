@@ -71,6 +71,13 @@ sudo sed -i 's/enabled = false/enabled = true/g' /etc/fail2ban/jail.conf
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 sudo mv filter.d/ jail.d/
 
+sudo emerge www-servers/apache --autounmask{,-write,-continue}
+sudo rc-update add apache2 defualt
+sudo rc-service apache2 start
+sudo emerge www-servers/nginx --autounmask{,-write,-continue}
+sudo rc-update add nginx default
+sudo rc-service nginx start
+
 sudo rc-update add fail2ban default
 sudo rc-service fail2ban start
 
