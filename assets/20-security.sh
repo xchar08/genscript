@@ -78,6 +78,23 @@ sudo emerge www-servers/nginx --autounmask{,-write,-continue}
 sudo rc-update add nginx default
 sudo sed -i 's/127.0.0.1/127.0.0.1:8080/g' /etc/nginx/nginx.conf
 sudo rc-service nginx start
+sudo emerge app-admin/monit --autounmask{,-write,-continue}
+sudo rc-update add monit
+sudo rc-service start start
+sudo touch /var/log/monit.log
+sudo emerge net-proxy/squid --autounmask{,-write,-continue}
+sudo rc-update add squid
+sudo rc-service squid start
+sudo touch /var/log/squid/access.log
+sudo mkdir -p /var/log/named
+sudo touch /var/log/named/security.log
+sudo emerge dev-db/mysql --autounmask{,-write,-continue}
+sudo emerge --config dev-dv/mysql
+sudo rc-update add mysql default
+sudo rc-service mysql start
+sudo emerge dev-db/mongodb --autounmask{,-write,-continue}
+sudo rc-update add mongodb default
+sudo rc-service mongodb start
 
 sudo rc-update add fail2ban default
 sudo rc-service fail2ban start
