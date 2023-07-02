@@ -3,7 +3,8 @@
 read -p "Please enter your username: " us
 
 #tor repo 
-
+sudo eselect repository enable torbrowser
+sudo emerge --sync
 
 sudo eix-update
 
