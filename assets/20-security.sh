@@ -22,7 +22,7 @@ sudo rc-service tor start
 sudo rc-update add tor default 
 
 # web browsers
-USE="gui" sudo emerge www-client/torbrowser-launcher --autounmask{,-write,-continue}
+sudo emerge www-client/torbrowser-launcher --autounmask{,-write,-continue}
 
 # firewall
 sudo emerge net-firewall/ufw
