@@ -99,9 +99,17 @@ sudo emerge --sync
 sudo eix-update
 
 sudo emerge dev-db/msodbcsql --autounmask{,-write,-continue}
+sudo mkdir -p /var/opt/mssql/log/
+sudo touch /var/opt/mssql/log/errorlog
 sudo emerge dev-db/mongodb --autounmask{,-write,-continue}
 sudo rc-update add mongodb default
 sudo rc-service mongodb start
+
+sudo touch /var/log/fail2ban.log
+
+sudo emerge net-misc/stunnel --autounmask{,-write,-continue}
+sudo rc-update add stunnel default
+sudo rc-service stunnel start ##getting error
 
 sudo rc-update add fail2ban default
 sudo rc-service fail2ban start
