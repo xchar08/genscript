@@ -76,6 +76,7 @@ sudo rc-update add apache2 defualt
 sudo rc-service apache2 start
 sudo emerge www-servers/nginx --autounmask{,-write,-continue}
 sudo rc-update add nginx default
+sudo sed -i 's/127.0.0.1/127.0.0.1:8080/g' /etc/nginx/nginx.conf
 sudo rc-service nginx start
 
 sudo rc-update add fail2ban default
