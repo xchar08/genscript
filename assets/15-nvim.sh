@@ -70,4 +70,5 @@ sudo npm fund
 git clone https://github.com/CordlessCoder/SomewhatOtiose ~/.config/nvim/
 
 # shellcheck
+
 sudo emerge dev-util/shellcheck --autounmask{,-write,-continue}
