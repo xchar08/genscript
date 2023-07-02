@@ -92,6 +92,7 @@ sudo emerge dev-db/mysql --autounmask{,-write,-continue}
 sudo emerge --config dev-dv/mysql
 sudo rc-update add mysql default
 sudo rc-service mysql start
+sudo emerge dev-db/msodbcsql --autounmask{,-write,-continue}
 sudo emerge dev-db/mongodb --autounmask{,-write,-continue}
 sudo rc-update add mongodb default
 sudo rc-service mongodb start
