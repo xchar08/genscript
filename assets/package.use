@@ -158,5 +158,4 @@ x11-libs/libXrender abi_x86_32
 
 # tor browser
 app-crypt/gpgme python
-dev-python/PyQt5 widgets
-www-client/torbrowser-launcher gui
+dev-python/PyQt5 widgets gui
