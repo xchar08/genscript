@@ -13,3 +13,5 @@ sudo rm -rf /etc/portage/package.env
 sudo touch /etc/portage/package.env
 
 echo "sys-libs/glibc debugsyms installsources" | sudo tee /etc/portage/package.env
+
+sudo mkdir -p /etc/portage/env
