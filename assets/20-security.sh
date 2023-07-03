@@ -107,9 +107,19 @@ sudo rc-service mongodb start
 
 sudo touch /var/log/fail2ban.log
 
-sudo emerge net-misc/stunnel --autounmask{,-write,-continue}
-sudo rc-update add stunnel default
-sudo rc-service stunnel start ##getting error
+#sudo emerge net-misc/stunnel --autounmask{,-write,-continue}
+#sudo rc-update add stunnel default
+#sudo rc-service stunnel start ##getting error
+
+sudo emerge dev-util/gitlab-cli --autounmask{,-write,-continue}
+sudo mkdir -p /var/log/gitlab/gitlab-rails
+sudo touch /var/log/gitlab/gitlab-rails/application.log
+
+sudo mkdir -p /var/lib/portsentry/
+sudo touch /var/lib/portsentry/portsentry.history
+
+sudo emerge www-misc/monitorix --autounmask{,-write,-continue}
+sudo touch /var/log/monitorix-httpd
 
 sudo rc-update add fail2ban default
 sudo rc-service fail2ban start
