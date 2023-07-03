@@ -162,3 +162,6 @@ dev-python/PyQt5 widgets gui
 
 # nginx
 app-misc/mime-types nginx
+
+# monitorix
+net-analyzer/rrdtool graph perl
