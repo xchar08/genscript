@@ -107,6 +107,8 @@ sudo rc-service mongodb start
 
 sudo touch /var/log/fail2ban.log
 
+sudo emerge sys-process/lsof --autounmask{,-write,-continue}
+
 #sudo emerge net-misc/stunnel --autounmask{,-write,-continue}
 #sudo rc-update add stunnel default
 #sudo rc-service stunnel start ##getting error
