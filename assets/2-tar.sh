@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /mnt/gentoo 
+
 # read in and unzip the stage 3 tar
 
 echo -n "Enter stage 3 tar url: "
