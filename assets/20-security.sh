@@ -125,7 +125,7 @@ sudo rc-service monitorix start
 
 #wget in paths-common
 
-# wget in conf
+sudo wget https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/jail.conf /etc/fail2ban/jail.conf
 cat /etc/fail2ban/jail.conf | sudo tee /etc/fail2ban/jail.local
 
 sudo rc-update add fail2ban default
