@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /mnt/gentoo 
+
 mount --bind /run /mnt/gentoo/run
 mount -t proc /proc /mnt/gentoo/proc
 mount --rbind /sys /mnt/gentoo/sys
