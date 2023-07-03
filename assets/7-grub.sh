@@ -18,4 +18,5 @@ sed -i '0,/^GRUB_DISABLE_LINUX_PARTUUID=false/{s/^GRUB_DISABLE_LINUX_PARTUUID=fa
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
+mkdir -p /grub/locale/
 touch /grub/locale/C.gmo
