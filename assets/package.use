@@ -127,7 +127,6 @@ media-plugins/gst-plugins-meta abi_x86_32
 media-libs/gst-plugins-good abi_x86_32
 media-plugins/gst-plugins-pulse abi_x86_32
 app-arch/bzip2 abi_x86_32
-sys-libs/zlib abi_x86_32
 dev-libs/libffi abi_x86_32
 net-libs/libasyncns abi_x86_32
 sys-libs/libcap abi_x86_32
@@ -165,3 +164,6 @@ app-misc/mime-types nginx
 
 # monitorix
 net-analyzer/rrdtool graph perl
+
+# wireshark, wine
+sys-libs/zlib abi_x86_32 minizip
