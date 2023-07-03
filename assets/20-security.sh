@@ -120,6 +120,13 @@ sudo touch /var/lib/portsentry/portsentry.history
 
 sudo emerge www-misc/monitorix --autounmask{,-write,-continue}
 sudo touch /var/log/monitorix-httpd
+sudo rc-update add monitorix default
+sudo rc-service monitorix start
+
+#wget in paths-common
+
+# wget in conf
+cat /etc/fail2ban/jail.conf | sudo tee /etc/fail2ban/jail.local
 
 sudo rc-update add fail2ban default
 sudo rc-service fail2ban start
