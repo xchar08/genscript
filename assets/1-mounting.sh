@@ -12,7 +12,7 @@ read -r bootpart
 mkfs.btrfs /dev/mapper/luks-"$partuuid"
 mount /dev/mapper/luks-"$partuuid" /mnt
 
-cd /mnt
+cd /mnt || exit
 btrfs subvolume create ./root
 btrfs subvolume create ./var
 btrfs subvolume create ./tmp
@@ -31,4 +31,4 @@ mount /dev/"$bootpart" /mnt/gentoo/boot
 mkdir /mnt/gentoo/boot/efi
 mount /dev/"$efipart" /mnt/gentoo/boot/efi
 
-cd /mnt/gentoo || exit
+cd /mnt/gentoo 
