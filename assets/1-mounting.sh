@@ -31,4 +31,4 @@ mount /dev/"$bootpart" /mnt/gentoo/boot
 mkdir /mnt/gentoo/boot/efi
 mount /dev/"$efipart" /mnt/gentoo/boot/efi
 
-cd /mnt/gentoo
+cd /mnt/gentoo || exit
