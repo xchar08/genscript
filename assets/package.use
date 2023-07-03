@@ -33,6 +33,7 @@ media-libs/harfbuzz icu abi_x86_32
 x11-libs/cairo X abi_x86_32 
 
 # waybar
+gui-apps/waybar savedconfig
 dev-cpp/cairomm X
 dev-cpp/gtkmm X
 
