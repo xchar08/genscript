@@ -30,5 +30,3 @@ mount -o subvol=tmp /dev/mapper/luks-"$partuuid" /mnt/gentoo/tmp
 mount /dev/"$bootpart" /mnt/gentoo/boot
 mkdir /mnt/gentoo/boot/efi
 mount /dev/"$efipart" /mnt/gentoo/boot/efi
-
-cd /mnt/gentoo 
