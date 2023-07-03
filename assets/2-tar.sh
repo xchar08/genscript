@@ -2,8 +2,6 @@
 
 # read in and unzip the stage 3 tar
 
-cd /mnt/gentoo
-
 echo -n "Enter stage 3 tar url: "
 read -r tarurl
 wget "$tarurl" /mnt/gentoo/"$tarurl"
