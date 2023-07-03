@@ -123,7 +123,7 @@ sudo touch /var/log/monitorix-httpd
 sudo rc-update add monitorix default
 sudo rc-service monitorix start
 
-#wget in paths-common
+sudo wget https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/paths-common.conf /etc/fail2ban/paths-common.conf
 
 sudo wget https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/jail.conf /etc/fail2ban/jail.conf
 cat /etc/fail2ban/jail.conf | sudo tee /etc/fail2ban/jail.local
