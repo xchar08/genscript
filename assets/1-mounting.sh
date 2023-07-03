@@ -12,7 +12,7 @@ read -r bootpart
 mkfs.btrfs /dev/mapper/luks-"$partuuid"
 mount /dev/mapper/luks-"$partuuid" /mnt
 
-cd /mnt || exit
+cd /mnt
 btrfs subvolume create ./root
 btrfs subvolume create ./var
 btrfs subvolume create ./tmp
