@@ -112,9 +112,10 @@ sudo touch /var/log/fail2ban.log
 
 sudo emerge sys-process/lsof --autounmask{,-write,-continue}
 
-#sudo emerge net-misc/stunnel --autounmask{,-write,-continue}
-#sudo rc-update add stunnel default
-#sudo rc-service stunnel start ##getting error
+sudo emerge net-misc/stunnel --autounmask{,-write,-continue}
+sudo rc-update add stunnel default
+sudo wget https://github.com/xchar08/gentoo-secured-dwl/blob/main/assets/stunnel.conf /etc/stunnel/stunnel.conf
+sudo rc-service stunnel start 
 
 sudo emerge dev-util/gitlab-cli --autounmask{,-write,-continue}
 sudo mkdir -p /var/log/gitlab/gitlab-rails
