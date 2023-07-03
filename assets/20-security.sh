@@ -202,3 +202,6 @@ openssl crl2pkcs7 -nocrl -certfile /etc/ssl/certs/ca-certificates.crt | openssl 
 
 #modprobe binfmt-misc
 sudo modprobe binfmt-misc
+
+#wireshark
+sudo emerge net-analyzer/wireshark
