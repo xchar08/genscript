@@ -2,10 +2,12 @@
 
 # read in and unzip the stage 3 tar
 
+cd /mnt/gentoo
+
 echo -n "Enter stage 3 tar url: "
 read -r tarurl
-wget "$tarurl"
-tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
+wget "$tarurl" /mnt/gentoo/"$tarurl"
+tar xvJpf /mnt/gentoo/stage3-*.tar.xz --xattrs --numeric-owner
 
 # prepare for chroot
 
