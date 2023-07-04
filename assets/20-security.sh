@@ -76,6 +76,7 @@ sudo rc-update add apache2 defualt
 sudo rc-service apache2 start
 
 sudo wget -O /etc/apache2/vhosts.d/00_default_ssl_vhost.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/00_default_ssl_vhost.conf 
+echo 'rc_need="net.FOO"' | sudo tee -a /etc/conf.d/apache2
 
 sudo emerge www-servers/nginx --autounmask{,-write,-continue}
 sudo rc-update add nginx default
@@ -207,3 +208,5 @@ sudo modprobe binfmt-misc
 
 #wireshark
 sudo emerge net-analyzer/wireshark
+
+sudo mkdir -p /lib64/security
