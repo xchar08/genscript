@@ -44,7 +44,7 @@ sudo emerge net-misc/sshrc --autounmask{,-write,-continue}
 
 #ssh hardening 
 sudo sh -c 'echo "PermitRootLogin no" >> /etc/ssh/sshd_config'
-sudo sh -c 'echo "AllowUsers $(us)" >> /etc/ssh/sshd_config'
+sudo sh -c 'echo "AllowUsers ${us}" >> /etc/ssh/sshd_config'
 
 #mac changer
 sudo emerge net-analyzer/macchanger --autounmask{,-write,-continue}
@@ -115,6 +115,8 @@ sudo emerge sys-process/lsof --autounmask{,-write,-continue}
 sudo emerge net-misc/stunnel --autounmask{,-write,-continue}
 sudo rc-update add stunnel default
 sudo wget https://github.com/xchar08/gentoo-secured-dwl/blob/main/assets/stunnel.conf /etc/stunnel/stunnel.conf
+sudo openssl req -new -x509 -days 365 -nodes -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem
+
 sudo rc-service stunnel start 
 
 sudo emerge dev-util/gitlab-cli --autounmask{,-write,-continue}
