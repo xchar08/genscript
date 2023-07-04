@@ -9,7 +9,7 @@ sudo virsh -c qemu:///system net-autostart default
 sudo virsh -c qemu:///system net-start default
 mkdir -p /home/"$us"/Whonix
 cd /home/"$us"/Whonix
-wget $whonixlink /home/"$us"/Whonix/"$whonixlink"
+wget -O /home/"$us"/Whonix/"$whonixlink" $whonixlink
 
 tar -xvf /home/"$us"/Whonix/Whonix*.libvirt.xz
 
