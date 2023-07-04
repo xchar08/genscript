@@ -115,7 +115,7 @@ sudo emerge sys-process/lsof --autounmask{,-write,-continue}
 
 sudo emerge net-misc/stunnel --autounmask{,-write,-continue}
 sudo rc-update add stunnel default
-sudo wget https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/stunnel.conf /etc/stunnel/stunnel.conf
+sudo wget -O /etc/stunnel/stunnel.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/stunnel.conf 
 sudo openssl req -new -x509 -days 365 -nodes -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem
 
 sudo rc-service stunnel start 
@@ -132,9 +132,9 @@ sudo touch /var/log/monitorix-httpd
 sudo rc-update add monitorix default
 sudo rc-service monitorix start
 
-sudo wget https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/paths-common.conf /etc/fail2ban/paths-common.conf
+sudo wget -O /etc/fail2ban/paths-common.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/paths-common.conf
 
-sudo wget https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/jail.conf /etc/fail2ban/jail.conf
+sudo wget -O /etc/fail2ban/jail.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/jail.conf 
 cat /etc/fail2ban/jail.conf | sudo tee /etc/fail2ban/jail.local
 
 sudo rc-update add fail2ban default
@@ -151,7 +151,7 @@ sudo dispatch-conf
 sudo emerge app-admin/sysklogd --autounmask{,-write,-continue}
 sudo rc-update add sysklogd default
 
-sudo wget https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/sysklog.conf -O /etc/syslog.conf
+sudo wget -O /etc/syslog.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/sysklog.conf  
 sudo bash -c 'echo -e "# Config file for /etc/init.d/sysklogd\n\nSYSLOGD=\"-m 0 -s -s -k\"" > /etc/conf.d/sysklogd'
 
 sudo rc-service sysklogd start
