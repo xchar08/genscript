@@ -75,7 +75,6 @@ sudo emerge www-servers/apache --autounmask{,-write,-continue}
 sudo rc-update add apache2 defualt
 sudo rc-service apache2 start
 
-sudo rm /etc/apache2/vhosts.d/00_default_ssl_vhost.conf
 sudo wget -O /etc/apache2/vhosts.d/00_default_ssl_vhost.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/00_default_ssl_vhost.conf 
 
 sudo emerge www-servers/nginx --autounmask{,-write,-continue}
