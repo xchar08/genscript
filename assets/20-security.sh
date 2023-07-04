@@ -92,7 +92,7 @@ sudo touch /var/log/squid/access.log
 sudo mkdir -p /var/log/named
 sudo touch /var/log/named/security.log
 sudo emerge dev-db/mysql --autounmask{,-write,-continue}
-sudo emerge --config dev-dv/mysql
+sudo emerge --config dev-db/mysql
 sudo rc-update add mysql default
 sudo rc-service mysql start
 
