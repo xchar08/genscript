@@ -1,3 +1,7 @@
+# grub
+sys-kernel/installkernel-gentoo grub
+sys-boot/grub:2 device-mapper
+sys-boot/grub mount
 
 # ghc
 dev-lang/ghc -doc
