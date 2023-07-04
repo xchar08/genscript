@@ -79,7 +79,7 @@ sudo wget -O /etc/apache2/vhosts.d/00_default_ssl_vhost.conf https://raw.githubu
 
 sudo emerge www-servers/nginx --autounmask{,-write,-continue}
 sudo rc-update add nginx default
-sudo sed -i 's/127.0.0.1/127.0.0.1:8080/g' /etc/nginx/nginx.conf
+sudo sed -i 's/127.0.0.1/127.0.0.1:8081/g' /etc/nginx/nginx.conf
 sudo rc-service nginx start
 sudo emerge app-admin/monit --autounmask{,-write,-continue}
 sudo rc-update add monit
