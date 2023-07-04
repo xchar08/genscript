@@ -150,7 +150,7 @@ sudo dispatch-conf
 sudo emerge app-admin/sysklogd --autounmask{,-write,-continue}
 sudo rc-update add sysklogd default
 
-sudo wget -O /etc/syslog.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/sysklog.conf  
+sudo wget -O /etc/sysklog.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/sysklog.conf  
 sudo bash -c 'echo -e "# Config file for /etc/init.d/sysklogd\n\nSYSLOGD=\"-m 0 -s -s -k\"" > /etc/conf.d/sysklogd'
 
 sudo rc-service sysklogd start
