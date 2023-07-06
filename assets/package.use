@@ -172,3 +172,9 @@ net-analyzer/rrdtool graph perl
 
 # wireshark, wine
 sys-libs/zlib abi_x86_32 minizip
+
+# vs codium
+app-crypt/gcr gtk
+
+# mutt-wizard 
+mail-client/neomutt sasl notmuch
