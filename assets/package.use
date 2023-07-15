@@ -9,6 +9,7 @@ dev-lang/ghc -doc
 # sound server
 media-sound/pulseaudio -daemon
 media-video/wireplumber elogind
+media-video/pipewire sound-server
 
 # sound server, wine
 media-libs/libsndfile minimal abi_x86_32
