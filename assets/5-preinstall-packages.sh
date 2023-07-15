@@ -23,3 +23,4 @@ echo 'sys-boot/grub:2 device-mapper' >> /etc/portage/package.use/sys-boot
 emerge -a sys-boot/os-prober --autounmask{,-write,-continue}
 emerge -av grub --autounmask{,-write,-continue}
 emerge app-editors/neovim --autounmask{,-write,-continue}
+emerge app-editors/nano --autounmask{,-write,-continue}
