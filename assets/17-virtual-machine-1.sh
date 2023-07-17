@@ -37,8 +37,8 @@ ResultAny=yes
 ResultInactive=yes
 ResultActive=yes' | sudo tee /etc/polkit-1/localauthority/50-local.d/org.libvirt.unix.manage.pkla > /dev/null
 
-sudo modprobe kvm kvm-intel tun
+sudo modprobe kvm kvm_intel tun
 
-echo 'modules="kvm tun kvm-intel"' | sudo tee -a /etc/conf.d/modules > /dev/null
+echo 'modules="kvm tun kvm_intel"' | sudo tee -a /etc/conf.d/modules > /dev/null
 
 echo "Reboot your computer..."
