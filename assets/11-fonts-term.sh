@@ -13,4 +13,5 @@ case "$term" in
 "kitty") sudo emerge x11-terms/kitty --autounmask{,-write,-continue} ;;
 "xterm") sudo emerge x11-terms/xterm --autounmask{,-write,-continue} ;;
 "st") sudo emerge x11-terms/st --autounmask{,-write,-continue} ;;
+"foot") sudo emerge gui-apps/foot --autounmask{,-write,-continue} ;;
 esac    
