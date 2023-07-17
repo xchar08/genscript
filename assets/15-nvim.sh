@@ -48,15 +48,14 @@ sudo emerge media-fonts/ttf-bitstream-vera --autounmask{,-write,-continue}
 sudo emerge media-fonts/ubuntu-font-family --autounmask{,-write,-continue}
 sudo emerge media-fonts/urw-fonts --autounmask{,-write,-continue}
 
-mkdir -p ~/.local/share/fonts
+sudo mkdir -p /usr/share/fonts
+cd /usr/share/fonts
 
-cd ~/.local/share/fonts
-
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip #firacode nerd font
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FantasqueSansMono.zip #fantasque nerd font
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/NerdFontsSymbolsOnly.zip #nerd font symbols
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SourceCodePro.zip #source code pro nerd font
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Ubuntu.zip #ubuntu nerd font
+sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip #firacode nerd font
+sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FantasqueSansMono.zip #fantasque nerd font
+sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/NerdFontsSymbolsOnly.zip #nerd font symbols
+sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SourceCodePro.zip #source code pro nerd font
+sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Ubuntu.zip #ubuntu nerd font
 
 sudo fc-cache -f -v
 
