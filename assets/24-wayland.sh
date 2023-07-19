@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #sudo emerge x11-apps/xlsclients --autounmask{,-write,-continue}
-sudo emerge gui-libs/wlroots --autounmask{,-write,-continue}
+#sudo emerge gui-libs/wlroots --autounmask{,-write,-continue}
 sudo emerge dev-libs/wayland-protocols --autounmask{,-write,-continue}
 
 #groupadd
