@@ -35,7 +35,7 @@ sudo emerge gui-apps/mako --autounmask{,-write,-continue}
 
 # status bar
 
-sudo emerge gui-apps/waybar --autounmask{,-write,-continue}
+#sudo emerge gui-apps/waybar --autounmask{,-write,-continue}
 
 # wallpaper manager
 
