@@ -179,3 +179,6 @@ app-crypt/gcr gtk
 
 # mutt-wizard 
 mail-client/neomutt sasl notmuch
+
+# sway
+gui-wm/sway swaybar grimshot
