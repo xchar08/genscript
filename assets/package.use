@@ -181,4 +181,4 @@ app-crypt/gcr gtk
 mail-client/neomutt sasl notmuch
 
 # sway
-gui-wm/sway swaybar grimshot
+gui-wm/sway swaybar grimshot tray
