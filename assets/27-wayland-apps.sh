@@ -20,6 +20,8 @@ sudo emerge gui-libs/xdg-desktop-portal-wlr --autounmask{,-write,-continue}
 # powermenu 
 
 sudo emerge gui-apps/wayland-logout --autounmask{,-write,-continue}
+sudo emerge gui-apps/swaylock --autounmask{,-write,-continue}
+sudo emerge gui-apps/swayidle --autounmask{,-write,-continue}
 
 # file manager
 
