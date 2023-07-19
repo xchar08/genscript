@@ -47,8 +47,8 @@ sudo emerge gui-apps/kanshi --autounmask{,-write,-continue}
 
 # screenshot
 
-sudo emerge gui-apps/grim --autounmask{,-write,-continue}
-sudo emerge gui-apps/slurp --autounmask{,-write,-continue}
+#sudo emerge gui-apps/grim --autounmask{,-write,-continue}
+#sudo emerge gui-apps/slurp --autounmask{,-write,-continue}
 
 # archive manager
 
