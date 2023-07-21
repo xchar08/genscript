@@ -41,7 +41,7 @@ sudo emerge gui-apps/mako --autounmask{,-write,-continue}
 
 # wallpaper manager
 
-sudo emerge gui-apps/wbg --autounmask{,-write,-continue}
+sudo emerge gui-apps/swaybg --autounmask{,-write,-continue}
 
 # display configuration
 
