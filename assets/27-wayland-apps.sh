@@ -78,7 +78,7 @@ sudo emerge net-news/newsboat --autounmask{,-write,-continue}
 
 # terminal-based web browser
 
-sudo emerge www-client/nyxt --autounmask{,-write,-continue}
+#sudo emerge www-client/nyxt --autounmask{,-write,-continue}
 
 # password manager
 
