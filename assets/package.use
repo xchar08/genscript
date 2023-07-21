@@ -86,6 +86,8 @@ app-emulation/virt-manager gui policykit
 app-emulation/qemu spice
 net-misc/spice-gtk usbredir
 net-dns/dnsmasq script
+x11-libs/libXft abi_x86_32
+x11-libs/libXv abi_x86_32
 
 # virt-manager, wine 
 net-libs/gnutls pkcs11 tools abi_x86_32
