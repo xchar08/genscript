@@ -16,7 +16,7 @@ echo "Enter your username:"
 read -r us
 
 #groupadd
-sudo usermod -aG audio "$us"
+sudo gpasswd -a "$us" audio
 
 #profile
 echo '
