@@ -17,6 +17,7 @@ read -r us
 
 #groupadd
 sudo gpasswd -a "$us" audio
+sudo gpasswd -a "$us" video
 
 #profile
 echo '
