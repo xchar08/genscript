@@ -184,3 +184,6 @@ mail-client/neomutt sasl notmuch
 
 # sway
 gui-wm/sway swaybar grimshot tray
+
+# python
+#dev-python/cython 
