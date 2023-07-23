@@ -189,7 +189,7 @@ gui-wm/sway swaybar grimshot tray
 media-libs/libvpx postproc
 
 # dmenu
-x11-misc/dmenu savedconfig xinerama
+x11-misc/dmenu savedconfig 
 
 # python
 #dev-python/cython 
