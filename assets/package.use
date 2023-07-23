@@ -185,5 +185,11 @@ mail-client/neomutt sasl notmuch
 # sway
 gui-wm/sway swaybar grimshot tray
 
+# firefox 
+media-libs/libvpx postproc
+
+# dmenu
+x11-misc/dmenu savedconfig xinerama
+
 # python
 #dev-python/cython 
