@@ -1,6 +1,8 @@
 #!/bin/bash
 
-sudo emerge --ask gui-wm/sway --autounmask{,-write,-continue}
+sudo emerge gui-wm/sway --autounmask{,-write,-continue}
 
 mkdir -p ~/.config/sway/
 cp /etc/sway/config ~/.config/sway/
+
+sudo emerge dev-libs/light --autounmask{,-write,-continue}
