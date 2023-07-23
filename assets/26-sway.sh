@@ -5,4 +5,3 @@ sudo emerge gui-wm/sway --autounmask{,-write,-continue}
 mkdir -p ~/.config/sway/
 cp /etc/sway/config ~/.config/sway/
 
-sudo emerge sys-power/acpilight --autounmask{,-write,-continue}
