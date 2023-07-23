@@ -41,3 +41,7 @@ sudo cp -r /usr/share/pipewire/ /etc/
 ' > ~/.zprofile
 
 source ~/.zprofile
+
+sudo cp -r /usr/share/pipewire/ /etc/ 
+sudo sed -i 's/# *\(.*"tcp:4713"\)\s*# IPv4 and IPv6 on all addresses/\1 # IPv4 and IPv6 on all addresses/' /etc/pipewire/pipewire-pulse.conf
+
