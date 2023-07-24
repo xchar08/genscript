@@ -137,6 +137,9 @@ sudo wget -O /etc/fail2ban/paths-common.conf https://raw.githubusercontent.com/x
 sudo wget -O /etc/fail2ban/jail.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/jail.conf 
 cat /etc/fail2ban/jail.conf | sudo tee /etc/fail2ban/jail.local
 
+sudo emerge www-servers/lighttpd --autounmask{,-write,-continue}
+sudo touch /var/log/suhosin.log
+
 sudo rc-update add fail2ban default
 sudo rc-service fail2ban start
 
