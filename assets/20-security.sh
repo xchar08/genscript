@@ -207,7 +207,7 @@ sudo emerge dev-libs/openssl --autounmask{,-write,-continue}
 openssl crl2pkcs7 -nocrl -certfile /etc/ssl/certs/ca-certificates.crt | openssl pkcs7 -print_certs -noout | while read line; do if echo $line | grep -q "notAfter="; then expire=$(date -d "$(echo $line | sed 's/notAfter=//')" +%s); now=$(date +%s); exp=2592000; if [ $(($expire-$now)) -le $exp ]; then echo $line; fi; fi; done
 
 #modprobe binfmt-misc
-sudo modprobe binfmt-misc
+sudo modprobe binfmt_misc
 
 #wireshark
 sudo emerge net-analyzer/wireshark
