@@ -94,6 +94,7 @@ sudo mkdir -p /var/log/named
 sudo touch /var/log/named/security.log
 sudo emerge dev-db/mysql --autounmask{,-write,-continue}
 sudo emerge --config dev-db/mysql
+sudo touch /var/log/mysqld.log
 sudo rc-update add mysql default
 sudo rc-service mysql start
 
