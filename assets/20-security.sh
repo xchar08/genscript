@@ -117,6 +117,8 @@ sudo emerge net-misc/stunnel --autounmask{,-write,-continue}
 sudo rc-update add stunnel default
 sudo wget -O /etc/stunnel/stunnel.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/stunnel.conf 
 sudo openssl req -new -x509 -days 365 -nodes -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem
+sudo mkdir /var/log/stunnel4
+sudo touch /var/log/stunnel4/stunnel.log
 
 sudo rc-service stunnel start 
 
