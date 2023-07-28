@@ -197,3 +197,4 @@ x11-misc/dmenu savedconfig
 
 # waybar
 gui-apps/waybar network pipewire tray upower mpd mpris
+dev-libs/libdbusmenu gtk3
