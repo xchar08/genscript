@@ -162,6 +162,7 @@ app-arch/zstd abi_x86_32
 sys-devel/llvm abi_x86_32
 x11-libs/libXrandr abi_x86_32
 x11-libs/libXrender abi_x86_32
+x11-libs/libXcomposite abi_x86_32
 
 # tor browser
 app-crypt/gpgme python
@@ -193,3 +194,6 @@ x11-misc/dmenu savedconfig
 
 # python
 #dev-python/cython 
+
+# waybar
+gui-apps/waybar network pipewire tray upower mpd mpris
