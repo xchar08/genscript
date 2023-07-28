@@ -196,5 +196,5 @@ x11-misc/dmenu savedconfig
 #dev-python/cython 
 
 # waybar
-gui-apps/waybar network pipewire tray upower mpris
+gui-apps/waybar network pipewire tray upower 
 dev-libs/libdbusmenu gtk3
