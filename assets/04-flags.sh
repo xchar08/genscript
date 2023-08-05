@@ -19,7 +19,7 @@ eselect profile set "$profile"
 echo "Enter the video cards string: (ex. nouveau nvidia intel i915 amdgpu): "
 read -r video_cards
 
-echo "Enter the USE flags: (ex. -ldap acl alsa bluetooth chroot cryptsetup cups dbus elogind gecko -kde man networkmanager pulseaudio screencast secure_delete selinux strict -systemd valgrind vulkan wayland webrsync-gpg wifi X ) "
+echo "Enter the USE flags: (ex. -ldap acl alsa bluetooth chroot cryptsetup cups dbus elogind gecko -kde man networkmanager pulseaudio screencast secure_delete strict -systemd valgrind vulkan webrsync-gpg wifi X xinerama ) "
 read -r use_flags
 
 echo "Enter how many parallel jobs you want to run (maybe 8)"
