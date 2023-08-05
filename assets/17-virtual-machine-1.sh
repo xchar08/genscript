@@ -39,6 +39,6 @@ ResultActive=yes' | sudo tee /etc/polkit-1/localauthority/50-local.d/org.libvirt
 
 sudo modprobe kvm kvm_intel tun
 
-echo 'modules="kvm tun kvm_intel"' | sudo tee -a /etc/conf.d/modules > /dev/null
+#echo 'modules="kvm tun kvm_intel"' | sudo tee -a /etc/conf.d/modules > /dev/null
 
 echo "Reboot your computer..."
