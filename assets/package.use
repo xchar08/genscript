@@ -1,0 +1,200 @@
+# grub
+sys-kernel/installkernel-gentoo grub
+sys-boot/grub:2 device-mapper
+sys-boot/grub mount
+
+# ghc
+dev-lang/ghc -doc
+
+# sound server
+media-sound/pulseaudio -daemon
+media-video/wireplumber elogind
+media-video/pipewire sound-server
+
+# sound server, wine
+media-libs/libsndfile minimal abi_x86_32
+
+# obs, qbittorrent
+dev-qt/qtgui egl eglfs linuxfb vnc X
+
+# obs
+media-video/ffmpeg x264
+
+# obs, wine
+media-libs/libglvnd X abi_x86_32
+
+# multiple packages, wine
+x11-libs/libxkbcommon X abi_x86_32
+media-libs/mesa X abi_x86_32
+
+# libreoffice
+media-libs/libepoxy X
+dev-libs/xmlsec nss
+x11-libs/gtk+ X aqua
+app-text/xmlto text
+
+# libreoffice, wine
+media-libs/harfbuzz icu abi_x86_32
+x11-libs/cairo X abi_x86_32 
+
+# waybar
+gui-apps/waybar savedconfig
+dev-cpp/cairomm X
+dev-cpp/gtkmm X
+
+# pass
+media-gfx/qrencode png
+
+# sxiv
+media-libs/imlib2 X
+
+# kdenlive
+media-libs/mlt qt5 xml sdl frei0r ffmpeg
+media-video/ffmpeg libass sdl X
+media-libs/libsdl gles2
+media-libs/opencv contrib contribdnn
+kde-frameworks/kwindowsystem X
+dev-qt/qtcore icu
+
+# kdenlive, nyxt
+media-libs/libsdl X opengl
+
+# kdenlive, nyxt, wine
+media-libs/libsdl2 gles2 X opengl abi_x86_32 haptic
+
+# mpv 
+media-video/mpv X
+
+# mpv, wine
+media-libs/vulkan-loader X abi_x86_32
+
+# wbg
+gui-apps/wbg png jpeg webp
+
+# cheese
+media-libs/clutter egl X
+x11-libs/gdk-pixbuf jpeg
+media-libs/cogl gles2
+media-libs/clutter-gtk X
+media-libs/clutter-gst X
+
+# cheese, wire
+media-libs/gst-plugins-base theora abi_x86_32
+
+# virt-manager
+app-emulation/virt-manager gui policykit
+app-emulation/qemu spice
+net-misc/spice-gtk usbredir
+net-dns/dnsmasq script
+x11-libs/libXft abi_x86_32
+x11-libs/libXv abi_x86_32
+
+# virt-manager, wine 
+net-libs/gnutls pkcs11 tools abi_x86_32
+sys-apps/dbus X abi_x86_32
+
+# dwl
+gui-wm/dwl savedconfig
+
+# wine
+dev-libs/gmp abi_x86_32
+app-crypt/p11-kit abi_x86_32
+net-dns/libidn2 abi_x86_32
+x11-libs/libXcursor abi_x86_32
+dev-libs/libxml2 abi_x86_32
+virtual/libintl abi_x86_32
+virtual/libiconv abi_x86_32
+virtual/opengl abi_x86_32
+virtual/glu abi_x86_32
+media-libs/glu abi_x86_32
+net-print/cups abi_x86_32
+sys-apps/util_linux abi_x86_32
+dev-libs/libtasn1 abi_x86_32
+dev-libs/libunistring abi_x86_32
+dev-libs/nettle abi_x86_32
+x11-libs/libXi abi_x86_32
+media-gfx/graphite2 abi_x86_32
+dev-libs/icu abi_x86_32
+sys-apps/util-linux abi_x86_32
+dev-libs/lzo abi_x86_32
+x11-libs/pixman abi_x86_32
+x11-libs/libpciaccess abi_x86_32
+dev-libs/fribidi abi_x86_32
+x11-libs/libXau abi_x86_32
+x11-libs/libXdmcp abi_x86_32
+sys-libs/ncurses abi_x86_32
+media-libs/fontconfig abi_x86_32
+media-libs/freetype abi_x86_32
+media-libs/alsa-lib abi_x86_32
+dev-libs/glib abi_x86_32
+media-libs/gstreamer abi_x86_32
+media-libs/libpulse abi_x86_32
+sys-libs/libunwind abi_x86_32
+dev-libs/wayland abi_x86_32
+media-plugins/gst-plugins-meta abi_x86_32
+media-libs/gst-plugins-good abi_x86_32
+media-plugins/gst-plugins-pulse abi_x86_32
+app-arch/bzip2 abi_x86_32
+dev-libs/libffi abi_x86_32
+net-libs/libasyncns abi_x86_32
+sys-libs/libcap abi_x86_32
+sys-libs/pam abi_x86_32
+sys-process/audit abi_x86_32
+sys-libs/libselinux abi_x86_32
+dev-libs/libpcre2 abi_x86_32
+sys-libs/libsepol abi_x86_32
+media-libs/libogg abi_x86_32
+x11-libs/pango abi_x86_32
+media-libs/libtheora abi_x86_32
+media-libs/libvorbis abi_x86_32
+media-libs/graphene abi_x86_32
+media-libs/libpng abi_x86_32
+media-libs/libjpeg-turbo abi_x86_32
+dev-libs/expat abi_x86_32
+x11-libs/libdrm abi_x86_32
+x11-libs/libX11 abi_x86_32
+x11-libs/libxshmfence abi_x86_32
+x11-libs/libXext abi_x86_32
+x11-libs/libXxf86vm abi_x86_32
+x11-libs/libxcb abi_x86_32
+x11-libs/libXfixes abi_x86_32
+app-arch/zstd abi_x86_32
+sys-devel/llvm abi_x86_32
+x11-libs/libXrandr abi_x86_32
+x11-libs/libXrender abi_x86_32
+x11-libs/libXcomposite abi_x86_32
+
+# tor browser
+app-crypt/gpgme python
+dev-python/PyQt5 widgets gui
+
+# nginx
+app-misc/mime-types nginx
+
+# monitorix
+net-analyzer/rrdtool graph perl
+
+# wireshark, wine
+sys-libs/zlib abi_x86_32 minizip
+
+# vs codium
+app-crypt/gcr gtk
+
+# mutt-wizard 
+mail-client/neomutt sasl notmuch
+
+# sway
+gui-wm/sway swaybar grimshot tray
+
+# firefox 
+media-libs/libvpx postproc
+
+# dmenu
+x11-misc/dmenu savedconfig 
+
+# python
+#dev-python/cython 
+
+# waybar
+gui-apps/waybar network pipewire tray upower 
+dev-libs/libdbusmenu gtk3
