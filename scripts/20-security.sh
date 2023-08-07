@@ -75,7 +75,7 @@ sudo emerge www-servers/apache --autounmask{,-write,-continue}
 sudo rc-update add apache2 defualt
 sudo rc-service apache2 start
 
-sudo wget -O /etc/apache2/vhosts.d/00_default_ssl_vhost.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/00_default_ssl_vhost.conf 
+sudo wget -O /etc/apache2/vhosts.d/00_default_ssl_vhost.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-bspwm/main/assets/00_default_ssl_vhost.conf 
 echo 'rc_need="net.FOO"' | sudo tee -a /etc/conf.d/apache2
 
 sudo emerge www-servers/nginx --autounmask{,-write,-continue}
@@ -116,7 +116,7 @@ sudo emerge sys-process/lsof --autounmask{,-write,-continue}
 
 sudo emerge net-misc/stunnel --autounmask{,-write,-continue}
 sudo rc-update add stunnel default
-sudo wget -O /etc/stunnel/stunnel.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/stunnel.conf 
+sudo wget -O /etc/stunnel/stunnel.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-bspwm/main/assets/stunnel.conf 
 sudo openssl req -new -x509 -days 365 -nodes -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem
 sudo mkdir /var/log/stunnel4
 sudo touch /var/log/stunnel4/stunnel.log
@@ -135,9 +135,9 @@ sudo touch /var/log/monitorix-httpd
 sudo rc-update add monitorix default
 sudo rc-service monitorix start
 
-sudo wget -O /etc/fail2ban/paths-common.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/paths-common.conf
+sudo wget -O /etc/fail2ban/paths-common.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-bspwm/main/assets/paths-common.conf
 
-sudo wget -O /etc/fail2ban/jail.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/jail.conf 
+sudo wget -O /etc/fail2ban/jail.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-bspwm/main/assets/jail.conf 
 cat /etc/fail2ban/jail.conf | sudo tee /etc/fail2ban/jail.local
 
 sudo emerge www-servers/lighttpd --autounmask{,-write,-continue}
@@ -157,7 +157,7 @@ sudo dispatch-conf
 sudo emerge app-admin/sysklogd --autounmask{,-write,-continue}
 sudo rc-update add sysklogd default
 
-sudo wget -O /etc/sysklog.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-dwl/main/assets/sysklog.conf  
+sudo wget -O /etc/sysklog.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-bspwm/main/assets/sysklog.conf  
 sudo bash -c 'echo -e "# Config file for /etc/init.d/sysklogd\n\nSYSLOGD=\"-m 0 -s -s -k\"" > /etc/conf.d/sysklogd'
 
 sudo rc-service sysklogd start
