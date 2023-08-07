@@ -30,3 +30,6 @@ wget -O /home/$us/.config/polybar/modules/user_modules.ini https://raw.githubuse
 wget -O /home/$us/.config/rofi/config.rasi https://raw.githubusercontent.com/xchar08/gentoo-secured-bspwm/main/assets/bspwm/.config/rofi/config.rasi
 wget -O /home/$us/.config/rofi/theme.rasi https://raw.githubusercontent.com/xchar08/gentoo-secured-bspwm/main/assets/bspwm/.config/rofi/theme.rasi
 wget -O /home/$us/.config/sxhkd/sxhkdrc https://raw.githubusercontent.com/xchar08/gentoo-secured-bspwm/main/assets/bspwm/.config/sxhkd/sxhkdrc
+
+chmod +x /home/$us/.config/polybar/launch.sh
+
