@@ -1,16 +1,28 @@
 #!/bin/bash
 
-cd /mnt/gentoo 
+change_directory() {
+    local directory="$1"
+    cd "$directory" || exit
+}
 
-# read in and unzip the stage 3 tar
+read_and_unzip_stage3() {
+    echo -n "Enter stage 3 tar url: "
+    read -r tarurl
+    wget "$tarurl"
+    tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
+}
 
-echo -n "Enter stage 3 tar url: "
-read -r tarurl
-wget "$tarurl"
-tar xvJpf stage3-*.tar.xz --xattrs --numeric-owner
+prepare_for_chroot() {
+    mkdir -p /mnt/gentoo/etc/portage/repos.conf
+    cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+    cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf
+}
 
-# prepare for chroot
+# Change directory
+change_directory "/mnt/gentoo"
 
-mkdir /mnt/gentoo/etc/portage/repos.conf
-cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
-cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf
+# Read in and unzip the stage 3 tar
+read_and_unzip_stage3
+
+# Prepare for chroot
+prepare_for_chroot
