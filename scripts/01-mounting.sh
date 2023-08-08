@@ -6,8 +6,9 @@ get_partuuid() {
 
 read_partition() {
     local prompt="$1"
+    local example="$2"
     local partition
-    read -rp "Enter $prompt partition (e.g. nvme0n1p1): " partition
+    read -rp "Enter $prompt partition (e.g. $example): " partition
     echo "$partition"
 }
 
@@ -26,8 +27,8 @@ mount_partition() {
 
 partuuid=$(get_partuuid)
 
-efipart=$(read_partition "efi")
-bootpart=$(read_partition "boot")
+efipart=$(read_partition "efi" "nvme0n1p1")
+bootpart=$(read_partition "boot" "nvme0n1p2")
 
 # Create Btrfs filesystem and subvolumes
 mkfs.btrfs "/dev/mapper/luks-$partuuid"
