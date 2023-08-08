@@ -6,11 +6,28 @@ read -p 'Enter efi partition (e.g., nvme0n1p1): ' efipart
 read -p 'Enter boot partition (e.g., nvme0n1p2): ' bootpart
 read -p 'Enter root partition (e.g., nvme0n1p3): ' rootpart
 
-# Prompt user for total size in GB
-read -p 'Enter total size for partitions (e.g., 100GB): ' totalsize_gb
+# Function to convert sizes to MiB
+convert_to_mib() {
+    input=$1
+    unit=$2
+
+    case $unit in
+        GB) echo "${input} * 953.674" | bc ;;
+        GiB) echo "${input} * 1024" | bc ;;
+        MB) echo "${input} / 0.0009765625" | bc ;;
+        MiB) echo "${input}" ;;
+    esac
+}
+
+# Prompt user for total size and unit
+read -p 'Enter total size for partitions (e.g., 100GB, 200GiB, 500MB, 2MiB): ' totalsize_input
+
+# Extract size and unit from input
+totalsize=$(echo $totalsize_input | grep -oE '[0-9]+')
+size_unit=$(echo $totalsize_input | grep -oE '[A-Za-z]+')
 
 # Convert total size to MiB
-totalsize_mib=$(echo "${totalsize_gb%GB} * 953.674" | bc)
+totalsize_mib=$(convert_to_mib $totalsize $size_unit)
 
 # Create partitions based on calculated sizes
 parted -a optimal "/dev/$primpart" -- mklabel gpt
