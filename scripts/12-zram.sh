@@ -21,31 +21,17 @@ function unmount_device() {
   fi
 }
 
-# Ask the user for the desired size
-read -rp "Enter the size for zram0 (e.g., 6 GiB, 6144 MB, or 6 MiB): " size_input
+read -p "Enter the path or device name of the swap partition: " swap_partition
 
-# Parse user input to get the size in bytes
-size_bytes=0
-if echo "$size_input" | grep -qi ' GiB'; then
-    size_input=$(echo "$size_input" | sed 's/ GiB//')
-    size_bytes=$((size_input * 1024 * 1024 * 1024))
-elif echo "$size_input" | grep -qi ' GB'; then
-    size_input=$(echo "$size_input" | sed 's/ GB//')
-    size_bytes=$((size_input * 1000 * 1000 * 1000))
-elif echo "$size_input" | grep -qi ' MiB'; then
-    size_input=$(echo "$size_input" | sed 's/ MiB//')
-    size_bytes=$((size_input * 1024 * 1024))
-elif echo "$size_input" | grep -qi ' MB'; then
-    size_input=$(echo "$size_input" | sed 's/ MB//')
-    size_bytes=$((size_input * 1000 * 1000))
-fi
+read -p "Do you want to set up regular zram or encrypted zram? (r/e)" choice
+
 
 # Set up regular zram
 sudo modprobe zram
 
 # Unmount and detach zram0 if it's in use
 unmount_device "/dev/zram0"
-echo "$size_bytes" | sudo tee /sys/block/zram0/disksize > /dev/null
+echo $((6144*1024*1024)) | sudo tee /sys/block/zram0/disksize > /dev/null
 
 sudo mkswap /dev/zram0
 sudo swapon /dev/zram0 -p 10
@@ -53,7 +39,7 @@ sudo swapon /dev/zram0 -p 10
 sudo bash -c 'cat << EOF > /etc/local.d/zram.start
 #!/bin/sh
 modprobe zram
-echo $size_bytes > /sys/block/zram0/disksize
+echo $((6144*1024*1024)) > /sys/block/zram0/disksize
 mkswap /dev/zram0
 swapon /dev/zram0 -p 10
 EOF'
