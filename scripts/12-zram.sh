@@ -21,11 +21,6 @@ function unmount_device() {
   fi
 }
 
-read -p "Enter the path or device name of the swap partition: " swap_partition
-
-read -p "Do you want to set up regular zram or encrypted zram? (r/e)" choice
-
-
 # Set up regular zram
 sudo modprobe zram
 
