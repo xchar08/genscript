@@ -110,3 +110,7 @@ sudo emerge mail-client/mutt-wizard --autounmask{,-write,-continue}
 sudo emerge x11-apps/xsetroot --autounmask{,-write,-continue}
 sudo emerge x11-misc/wmname --autounmask{,-write,-continue}
 sudo emerge sys-devel/bc --autounmask{,-write,-continue}
+
+sudo emerge x11-base/xorg-server --autounmask{,-write,-continue}
+
+sudo emerge x11-base/xorg-drivers --autounmask{,-write,-continue}
