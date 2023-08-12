@@ -13,7 +13,7 @@ sudo emerge media-fonts/alee-fonts --autounmask{,-write,-continue}
 sudo emerge media-fonts/cantarell --autounmask{,-write,-continue}
 sudo emerge media-fonts/corefonts --autounmask{,-write,-continue}
 sudo emerge media-fonts/courier-prime --autounmask{,-write,-continue}
-sudo emerge media-fonts/arphicfonts --autounmask{,-write,-continue}
+#sudo emerge media-fonts/arphicfonts --autounmask{,-write,-continue}
 sudo emerge media-fonts/dejavu --autounmask{,-write,-continue}
 sudo emerge media-fonts/droid --autounmask{,-write,-continue}
 sudo emerge media-fonts/encodings --autounmask{,-write,-continue}
@@ -27,11 +27,11 @@ sudo emerge media-fonts/font-cursor-misc --autounmask{,-write,-continue}
 sudo emerge media-fonts/font-misc-misc --autounmask{,-write,-continue}
 sudo emerge media-fonts/font-util --autounmask{,-write,-continue}
 sudo emerge media-fonts/fonts-meta --autounmask{,-write,-continue}
-sudo emerge media-fonts/kochi-substitute --autounmask{,-write,-continue}
+#sudo emerge media-fonts/kochi-substitute --autounmask{,-write,-continue}
 sudo emerge media-fonts/liberation-fonts --autounmask{,-write,-continue}
-sudo emerge media-fonts/lohit-bengali --autounmask{,-write,-continue}
-sudo emerge media-fonts/lohit-tamil --autounmask{,-write,-continue}
-sudo emerge media-fonts/mikachan-font-ttf --autounmask{,-write,-continue}
+#sudo emerge media-fonts/lohit-bengali --autounmask{,-write,-continue}
+#sudo emerge media-fonts/lohit-tamil --autounmask{,-write,-continue}
+#sudo emerge media-fonts/mikachan-font-ttf --autounmask{,-write,-continue}
 sudo emerge media-fonts/noto --autounmask{,-write,-continue}
 sudo emerge media-fonts/noto-emoji --autounmask{,-write,-continue}
 sudo emerge media-fonts/oldstandard --autounmask{,-write,-continue}
