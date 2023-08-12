@@ -43,7 +43,7 @@ sudo emerge media-fonts/signika --autounmask{,-write,-continue}
 sudo emerge media-fonts/source-code-pro --autounmask{,-write,-continue}
 sudo emerge media-fonts/terminus-font --autounmask{,-write,-continue}
 sudo emerge media-fonts/tex-gyre --autounmask{,-write,-continue}
-sudo emerge media-fonts/thaifonts-scalable --autounmask{,-write,-continue}
+#sudo emerge media-fonts/thaifonts-scalable --autounmask{,-write,-continue}
 sudo emerge media-fonts/ttf-bitstream-vera --autounmask{,-write,-continue}
 sudo emerge media-fonts/ubuntu-font-family --autounmask{,-write,-continue}
 sudo emerge media-fonts/urw-fonts --autounmask{,-write,-continue}
