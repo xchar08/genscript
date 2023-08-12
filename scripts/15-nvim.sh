@@ -22,11 +22,10 @@ sudo emerge media-fonts/fira-code --autounmask{,-write,-continue}
 sudo emerge media-fonts/fira-mono --autounmask{,-write,-continue}
 sudo emerge media-fonts/fira-sans --autounmask{,-write,-continue}
 sudo emerge media-fonts/font-alias --autounmask{,-write,-continue}
-sudo emerge media-fonts/font-bh-ttf --autounmask{,-write,-continue}
+#sudo emerge media-fonts/font-bh-ttf --autounmask{,-write,-continue}
 sudo emerge media-fonts/font-cursor-misc --autounmask{,-write,-continue}
-sudo emerge media-fonts/font-misc-misc --autounmask{,-write,-continue}
 sudo emerge media-fonts/font-util --autounmask{,-write,-continue}
-sudo emerge media-fonts/fonts-meta --autounmask{,-write,-continue}
+#sudo emerge media-fonts/fonts-meta --autounmask{,-write,-continue}
 #sudo emerge media-fonts/kochi-substitute --autounmask{,-write,-continue}
 sudo emerge media-fonts/liberation-fonts --autounmask{,-write,-continue}
 #sudo emerge media-fonts/lohit-bengali --autounmask{,-write,-continue}
