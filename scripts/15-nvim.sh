@@ -24,7 +24,7 @@ sudo emerge media-fonts/encodings --autounmask{,-write,-continue}
 sudo emerge media-fonts/font-alias --autounmask{,-write,-continue}
 #sudo emerge media-fonts/font-bh-ttf --autounmask{,-write,-continue}
 sudo emerge media-fonts/font-cursor-misc --autounmask{,-write,-continue}
-sudo emerge media-fonts/font-util --autounmask{,-write,-continue}
+#sudo emerge media-fonts/font-util --autounmask{,-write,-continue}
 #sudo emerge media-fonts/fonts-meta --autounmask{,-write,-continue}
 #sudo emerge media-fonts/kochi-substitute --autounmask{,-write,-continue}
 sudo emerge media-fonts/liberation-fonts --autounmask{,-write,-continue}
