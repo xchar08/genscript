@@ -10,12 +10,12 @@ sudo emerge --sync
 
 sudo emerge media-gfx/fontforge --autounmask{,-write,-continue}
 #sudo emerge media-fonts/alee-fonts --autounmask{,-write,-continue}
-sudo emerge media-fonts/cantarell --autounmask{,-write,-continue}
+#sudo emerge media-fonts/cantarell --autounmask{,-write,-continue}
 sudo emerge media-fonts/corefonts --autounmask{,-write,-continue}
-sudo emerge media-fonts/courier-prime --autounmask{,-write,-continue}
+#sudo emerge media-fonts/courier-prime --autounmask{,-write,-continue}
 #sudo emerge media-fonts/arphicfonts --autounmask{,-write,-continue}
-sudo emerge media-fonts/dejavu --autounmask{,-write,-continue}
-sudo emerge media-fonts/droid --autounmask{,-write,-continue}
+#sudo emerge media-fonts/dejavu --autounmask{,-write,-continue}
+#sudo emerge media-fonts/droid --autounmask{,-write,-continue}
 sudo emerge media-fonts/encodings --autounmask{,-write,-continue}
 #sudo emerge media-fonts/farsi-fonts --autounmask{,-write,-continue}
 sudo emerge media-fonts/fira-code --autounmask{,-write,-continue}
@@ -31,16 +31,16 @@ sudo emerge media-fonts/liberation-fonts --autounmask{,-write,-continue}
 #sudo emerge media-fonts/lohit-bengali --autounmask{,-write,-continue}
 #sudo emerge media-fonts/lohit-tamil --autounmask{,-write,-continue}
 #sudo emerge media-fonts/mikachan-font-ttf --autounmask{,-write,-continue}
-sudo emerge media-fonts/oldstandard --autounmask{,-write,-continue}
-sudo emerge media-fonts/open-sans --autounmask{,-write,-continue}
+#sudo emerge media-fonts/oldstandard --autounmask{,-write,-continue}
+#sudo emerge media-fonts/open-sans --autounmask{,-write,-continue}
 sudo emerge media-fonts/powerline-symbols --autounmask{,-write,-continue}
-sudo emerge media-fonts/quivira --autounmask{,-write,-continue}
-sudo emerge media-fonts/roboto --autounmask{,-write,-continue}
-sudo emerge media-fonts/signika --autounmask{,-write,-continue}
-sudo emerge media-fonts/terminus-font --autounmask{,-write,-continue}
-sudo emerge media-fonts/tex-gyre --autounmask{,-write,-continue}
+#sudo emerge media-fonts/quivira --autounmask{,-write,-continue}
+#sudo emerge media-fonts/roboto --autounmask{,-write,-continue}
+#sudo emerge media-fonts/signika --autounmask{,-write,-continue}
+#sudo emerge media-fonts/terminus-font --autounmask{,-write,-continue}
+#sudo emerge media-fonts/tex-gyre --autounmask{,-write,-continue}
 #sudo emerge media-fonts/thaifonts-scalable --autounmask{,-write,-continue}
-sudo emerge media-fonts/ttf-bitstream-vera --autounmask{,-write,-continue}
+#sudo emerge media-fonts/ttf-bitstream-vera --autounmask{,-write,-continue}
 sudo emerge media-fonts/ubuntu-font-family --autounmask{,-write,-continue}
 sudo emerge media-fonts/urw-fonts --autounmask{,-write,-continue}
 
