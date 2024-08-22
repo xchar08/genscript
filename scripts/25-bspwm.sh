@@ -19,7 +19,7 @@ wget -O /home/$us/.xinitrc https://raw.githubusercontent.com/xchar08/genscript/m
 wget -O /home/$us/.fehbg https://raw.githubusercontent.com/xchar08/genscript/main/assets/bspwm/.fehbg
 wget -O /home/$us/wallpapers/wallpaper.png https://github.com/xchar08/genscript/blob/main/assets/bspwm/wallpapers/wallpaper.png?raw=true
 
-wget -O /home/$us/.config/picom.conf https://raw.githubusercontent.com/xchar08/gentoo-secured-bspwm/main/assets/bspwm/.config/picom.conf
+wget -O /home/$us/.config/picom.conf https://raw.githubusercontent.com/xchar08/genscript/main/assets/bspwm/.config/picom.conf
 
 wget -O /home/$us/.config/bspwm/bspwmrc https://raw.githubusercontent.com/xchar08/genscript/main/assets/bspwm/.config/bspwm/bspwmrc
 wget -O /home/$us/.config/kitty/kitty.conf https://raw.githubusercontent.com/xchar08/genscript/main/assets/bspwm/.config/kitty/kitty.conf
